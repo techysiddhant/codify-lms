@@ -2,6 +2,8 @@ import express from "express";
 import passport from "passport";
 import cookieSession from "cookie-session";
 import dotenv from "dotenv";
+import { HttpError } from "http-errors";
+import logger from "./config/logger.js";
 import googleAuthRoutes from "./routes/GoogleAuth.js";
 import githubAuthRoutes from "./routes/GithubAuth.js";
 import initializePassport from "./passport.js";
@@ -37,3 +39,17 @@ app.get("/", (req, res) => {
 });
 app.use("/api/v1/auth", googleAuthRoutes);
 app.use("/api/v1/auth", githubAuthRoutes);
+app.use((err, req, res, next) => {
+	logger.error(err.message);
+	const statusCode = err.statusCode || err.status || 500;
+	res.status(statusCode).json({
+		errors: [
+			{
+				type: err.name,
+				msg: err.message,
+				path: "",
+				location: "",
+			},
+		],
+	});
+});
