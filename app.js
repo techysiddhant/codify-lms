@@ -6,6 +6,7 @@ import { HttpError } from "http-errors";
 import logger from "./config/logger.js";
 import googleAuthRoutes from "./routes/GoogleAuth.js";
 import githubAuthRoutes from "./routes/GithubAuth.js";
+import courseRoutes from "./routes/CourseRoutes.js";
 import initializePassport from "./passport.js";
 
 dotenv.config();
@@ -14,7 +15,7 @@ initializePassport();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(
-	cookieSession({ name: "session", keys: ["sid"], maxAge: 24 * 60 * 60 * 100 })
+	cookieSession({ name: "session", keys: ["test"], maxAge: 24 * 60 * 60 * 100 })
 );
 app.use(function (request, response, next) {
 	if (request.session && !request.session.regenerate) {
@@ -39,6 +40,7 @@ app.get("/", (req, res) => {
 });
 app.use("/api/v1/auth", googleAuthRoutes);
 app.use("/api/v1/auth", githubAuthRoutes);
+app.use("/api/v1/course", courseRoutes);
 app.use((err, req, res, next) => {
 	logger.error(err.message);
 	const statusCode = err.statusCode || err.status || 500;
