@@ -23,6 +23,7 @@ model User {
   updated_at DateTime @default(now())
   role       String   @default("USER")
   profile    String?
+  courses    Course[]
 }
 
 model Category {
@@ -33,7 +34,8 @@ model Category {
 
 model Course {
   id          String  @id @default(uuid())
-  userId      String
+  userId      Int
+  user        User    @relation(fields: [userId], references: [id])
   title       String  @db.Text
   description String? @db.Text
   imageUrl    String? @db.Text

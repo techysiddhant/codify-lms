@@ -5,6 +5,10 @@ export default checkSchema({
 		errorMessage: "Course title is required!",
 		notEmpty: true,
 		trim: true,
+		isLength: {
+			options: { min: 3 },
+			errorMessage: "Course title must be at least 3 Characters long!",
+		},
 	},
 	// password: {
 	// 	errorMessage: "password is required!",
