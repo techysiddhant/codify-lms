@@ -14,6 +14,8 @@ import { validationResult } from "express-validator";
 import prisma from "../config/db.config.js";
 import { v2 as cloudinary } from "cloudinary";
 import uploadCloudinary from "../utils/cloudinary.js";
+import uploadImage from "../utils/imageUpload.js";
+import getDataUri from "../utils/dataUri.js";
 
 class CourseController {
 	static async createCourse(req, res, next) {
@@ -109,12 +111,19 @@ class CourseController {
 	static async courseImage(req, res, next) {
 		try {
 			const { courseId } = req.body;
-			const { image } = req.files;
-			const result = uploadCloudinary(image);
-			if (result == null) {
-				return res.json({ errors: [{ error: "Upload failed Try again!" }] });
-			}
-			// console.log(image);
+			const image = req.file;
+			const avatarLocalPath = req.files?.image[0]?.path;
+			// const result = uploadCloudinary(image);
+			console.log(image);
+			console.log(image.path);
+			const result = await uploadCloudinary(image.path);
+			// const fileUri = getDataUri(file);
+			// console.log(fileUri);
+			// const result = await uploadImage(file.originalname, fileUri.content);
+			// if (result == null) {
+			// 	return res.json({ errors: [{ error: "Upload failed Try again!" }] });
+			// }
+			// // console.log(image);
 			return res.json(result);
 		} catch (error) {
 			next(error);
