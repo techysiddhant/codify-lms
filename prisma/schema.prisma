@@ -33,17 +33,17 @@ model Category {
 }
 
 model Course {
-  id          String  @id @default(uuid())
-  userId      Int
-  user        User    @relation(fields: [userId], references: [id])
-  title       String  @db.Text
-  description String? @db.Text
-  imageUrl    String? @db.Text
-  price       Float?
-  isPublished Boolean @default(false)
-
-  categoryId String?
-  category   Category? @relation(fields: [categoryId], references: [id])
+  id            String    @id @default(uuid())
+  userId        Int
+  user          User      @relation(fields: [userId], references: [id])
+  title         String    @db.Text
+  description   String?   @db.Text
+  imageUrl      String?   @db.Text
+  price         Float?
+  isPublished   Boolean   @default(false)
+  imagePublicId String?
+  categoryId    String?
+  category      Category? @relation(fields: [categoryId], references: [id])
 
   // chapters    Chapter[]
   // attachments Attachment[]

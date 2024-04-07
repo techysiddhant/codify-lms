@@ -1,18 +1,12 @@
 import express from "express";
 import passport from "passport";
 import cookieSession from "cookie-session";
-import dotenv from "dotenv";
-import { HttpError } from "http-errors";
 import logger from "./config/logger.js";
 import googleAuthRoutes from "./routes/GoogleAuth.js";
 import githubAuthRoutes from "./routes/GithubAuth.js";
 import courseRoutes from "./routes/CourseRoutes.js";
 import initializePassport from "./passport.js";
-import fileUpload from "express-fileupload";
-import { v2 as cloudinary } from "cloudinary";
-import { Config } from "./config/index.js";
 
-// dotenv.config();
 const app = express();
 initializePassport();
 app.use(express.json());
@@ -21,18 +15,6 @@ app.use(express.static("public"));
 app.use(
 	cookieSession({ name: "session", keys: ["test"], maxAge: 24 * 60 * 60 * 100 })
 );
-// app.use(fileUpload());
-// app.use(
-// 	fileUpload({
-// 		useTempFiles: true,
-// 		tempFileDir: "/tmp/",
-// 	})
-// );
-// cloudinary.config({
-// 	cloud_name: String(Config.CLOUDINARY_NAME),
-// 	api_key: String(Config.CLOUDINARY_KEY),
-// 	api_secret: String(Config.CLOUDINARY_SECRET),
-// });
 app.use(function (request, response, next) {
 	if (request.session && !request.session.regenerate) {
 		request.session.regenerate = (cb) => {

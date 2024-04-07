@@ -12,10 +12,7 @@
 // };
 import { validationResult } from "express-validator";
 import prisma from "../config/db.config.js";
-import { v2 as cloudinary } from "cloudinary";
 import uploadCloudinary from "../utils/cloudinary.js";
-import uploadImage from "../utils/imageUpload.js";
-import getDataUri from "../utils/dataUri.js";
 
 class CourseController {
 	static async createCourse(req, res, next) {
@@ -112,19 +109,25 @@ class CourseController {
 		try {
 			const { courseId } = req.body;
 			const image = req.file;
-			const avatarLocalPath = req.files?.image[0]?.path;
-			// const result = uploadCloudinary(image);
-			console.log(image);
-			console.log(image.path);
-			const result = await uploadCloudinary(image.path);
-			// const fileUri = getDataUri(file);
-			// console.log(fileUri);
-			// const result = await uploadImage(file.originalname, fileUri.content);
-			// if (result == null) {
-			// 	return res.json({ errors: [{ error: "Upload failed Try again!" }] });
-			// }
-			// // console.log(image);
-			return res.json(result);
+			const folder = "thumbnail";
+			const result = await uploadCloudinary(image.path, folder);
+			if (result == null) {
+				return res
+					.status(404)
+					.json({ errors: [{ error: "Upload failed Try again!" }] });
+			}
+			// console.log(result);
+
+			const course = await prisma.course.update({
+				where: {
+					id: courseId,
+				},
+				data: {
+					imageUrl: result.secure_url,
+					imagePublicId: result.asset_id,
+				},
+			});
+			return res.status(201).json(course);
 		} catch (error) {
 			next(error);
 		}
