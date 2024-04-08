@@ -7,7 +7,7 @@ import { upload } from "../middlewares/multer.js";
 const router = Router();
 router.get("/all", CourseController.index);
 router.post("/create", courseValidator, CourseController.createCourse);
-router.get("/:courseId", courseValidator, CourseController.getCourse);
+router.get("/:courseId", CourseController.getCourse);
 router.patch(
 	"/update/:courseId",
 	courseValidator,

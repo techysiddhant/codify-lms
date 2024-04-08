@@ -40,8 +40,7 @@ class CourseController {
 			if (!result.isEmpty()) {
 				return res.status(400).json({ errors: result.array() });
 			}
-			const { description, isPublished, price, imageUrl, categoryId, title } =
-				req.body;
+			const { description, price, imageUrl, categoryId, title } = req.body;
 			const { courseId } = req.params;
 			const course = await prisma.course.update({
 				where: {
@@ -49,7 +48,6 @@ class CourseController {
 				},
 				data: {
 					description,
-					isPublished,
 					categoryId,
 					price,
 					imageUrl,
