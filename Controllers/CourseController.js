@@ -24,6 +24,7 @@ class CourseController {
 			const { title } = req.body;
 			const user = req.user;
 			const course = await prisma.course.create({
+				//FIXME: user id should be dyanamic
 				data: {
 					userId: 1,
 					title: title,

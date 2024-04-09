@@ -5,6 +5,7 @@ import logger from "./config/logger.js";
 import googleAuthRoutes from "./routes/GoogleAuth.js";
 import githubAuthRoutes from "./routes/GithubAuth.js";
 import courseRoutes from "./routes/CourseRoutes.js";
+import chapterRoutes from "./routes/ChapterRoutes.js";
 import initializePassport from "./passport.js";
 
 const app = express();
@@ -39,6 +40,7 @@ app.get("/", (req, res) => {
 app.use("/api/v1/auth", googleAuthRoutes);
 app.use("/api/v1/auth", githubAuthRoutes);
 app.use("/api/v1/course", courseRoutes);
+app.use("/api/v1/chapter", chapterRoutes);
 app.use((err, req, res, next) => {
 	logger.error(err.message);
 	const statusCode = err.statusCode || err.status || 500;
