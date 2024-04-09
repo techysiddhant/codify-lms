@@ -62,6 +62,7 @@ model Chapter {
   isPublished Boolean @default(false)
   isFree      Boolean @default(false)
   courseId    String
+  userId      Int
   course      Course  @relation(fields: [courseId], references: [id], onDelete: Cascade)
 
   createdAt DateTime @default(now())

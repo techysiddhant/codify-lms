@@ -7,4 +7,9 @@ router.post(
 	chapterValidator,
 	ChapterController.createChapter
 );
+router.patch("/update/:chapterId", ChapterController.updateChapter);
+router.patch("/reorder/:courseId", ChapterController.updateChapter);
+router.put("/publish/:chapterId", ChapterController.publishChapter);
+router.put("/unpublish/:chapterId", ChapterController.unPublishChapter);
+router.delete("/delete/:chapterId", ChapterController.deleteChapter);
 export default router;
