@@ -1,6 +1,10 @@
 import { validationResult } from "express-validator";
 import prisma from "../config/db.config.js";
-
+import Mux from "@mux/mux-node";
+import { Config } from "../config/index.js";
+import uploadCloudinary, { deleteUpload } from "../utils/cloudinary.js";
+// import { error } from "winston";
+// const { Video } = new Mux(Config.MUX_TOKEN_ID, Config.MUX_TOKEN_SECRET);
 class ChapterController {
 	static async createChapter(req, res, next) {
 		try {
@@ -36,10 +40,12 @@ class ChapterController {
 	}
 	static async updateChapter(req, res, next) {
 		try {
+			const mux = new Mux(Config.MUX_TOKEN_ID, Config.MUX_TOKEN_SECRET);
 			const { chapterId } = req.params;
 			const user = req.user;
-
+			// const video = req.file;
 			const { description, videoUrl, position, isFree } = req.body;
+			// console.log("VIDEO: ", video);
 			const chapter = await prisma.chapter.update({
 				where: {
 					id: chapterId,
@@ -53,6 +59,47 @@ class ChapterController {
 					isFree,
 				},
 			});
+			//TODO: Cloudinary upload cost us more timing so try to upload from frontend using uploadthing
+			// const folder = "thumbnail";
+			// const result = await uploadCloudinary(video.path, folder);
+			// if (result == null) {
+			// 	return res
+			// 		.status(404)
+			// 		.json({ errors: [{ error: "Upload failed Try again!" }] });
+			// }
+			// console.log(result);
+			// for mux data
+			if (videoUrl) {
+				const existingMuxData = await prisma.muxData.findFirst({
+					where: {
+						chapterId: chapterId,
+					},
+				});
+
+				if (existingMuxData) {
+					// await Video.Assets.del(existingMuxData.assetId);
+					await mux.video.assets.delete(existingMuxData.assetId);
+					await prisma.muxData.delete({
+						where: {
+							id: existingMuxData.id,
+						},
+					});
+				}
+
+				const asset = await mux.video.assets.create({
+					// input: result.secure_url,
+					input: videoUrl,
+					playback_policy: "public",
+					test: false,
+				});
+				await prisma.muxData.create({
+					data: {
+						chapterId: chapterId,
+						assetId: asset.id,
+						playbackId: asset.playback_ids?.[0]?.id,
+					},
+				});
+			}
 			return res.status(200).json({ chapter });
 		} catch (error) {
 			next(error);
@@ -110,12 +157,11 @@ class ChapterController {
 				// FIXME: add dynamic user
 				where: { id: chapterId, userId: 1 },
 			});
-			//TODO: Find the mux data as well
-			// const muxData = await prisma.muxData.findUnique({
-			// 	where: {
-			// 		chapterId: params.chapterId,
-			// 	},
-			// });
+			const muxData = await prisma.muxData.findUnique({
+				where: {
+					chapterId: params.chapterId,
+				},
+			});
 			if (
 				!chapter ||
 				!muxData ||
@@ -150,6 +196,55 @@ class ChapterController {
 				},
 			});
 			return res.status(200).json(unPublishChapter);
+		} catch (error) {
+			next(error);
+		}
+	}
+	static async addAttachment(req, res, next) {
+		try {
+			const { chapterId } = req.params;
+			const file = req.file;
+			const folder = "attachment";
+			const result = await uploadCloudinary(file.path, folder);
+			console.log(result);
+			if (result == null) {
+				return res
+					.status(404)
+					.json({ errors: [{ error: "Upload failed Try again!" }] });
+			}
+			const attachment = await prisma.attachment.create({
+				data: {
+					chapterId: chapterId,
+					url: result.secure_url,
+					name: result.original_filename,
+					publicId: result.public_id.split("/")[1],
+				},
+			});
+
+			return res.status(201).json(attachment);
+		} catch (error) {
+			next(error);
+		}
+	}
+	static async deleteAttachment(req, res, next) {
+		try {
+			const { attachmentId } = req.params;
+			const attachment = await prisma.attachment.findUnique({
+				where: { id: attachmentId },
+			});
+			if (!attachment) {
+				next(error);
+			}
+			const result = await deleteUpload(attachment.publicId, "attachment");
+			if (result == null) {
+				return res
+					.status(404)
+					.json({ errors: [{ error: "Delete failed Try again!" }] });
+			}
+			await prisma.attachment.delete({
+				where: { id: attachmentId },
+			});
+			return res.status(200).json({ message: "Success" });
 		} catch (error) {
 			next(error);
 		}
