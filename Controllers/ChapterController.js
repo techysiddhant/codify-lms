@@ -233,7 +233,7 @@ class ChapterController {
 				where: { id: attachmentId },
 			});
 			if (!attachment) {
-				next(error);
+				return res.status(400).json({ errors: [{ error: "File Not Found!" }] });
 			}
 			const result = await deleteUpload(attachment.publicId, "attachment");
 			if (result == null) {
@@ -245,6 +245,32 @@ class ChapterController {
 				where: { id: attachmentId },
 			});
 			return res.status(200).json({ message: "Success" });
+		} catch (error) {
+			next(error);
+		}
+	}
+	static async updateUserProgress(req, res, next) {
+		try {
+			const { chapterId } = req.params;
+			const { isCompleted } = req.body;
+			const user = req.user;
+			const userProgress = await prisma.userProgress.upsert({
+				where: {
+					userId_chapterId: {
+						userId: user.id,
+						chapterId: chapterId,
+					},
+				},
+				update: {
+					isCompleted,
+				},
+				create: {
+					userId: user.id,
+					chapterId: chapterId,
+					isCompleted,
+				},
+			});
+			return res.status(201).json(userProgress);
 		} catch (error) {
 			next(error);
 		}

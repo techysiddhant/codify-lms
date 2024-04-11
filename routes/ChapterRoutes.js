@@ -23,4 +23,5 @@ router.post(
 	ChapterController.addAttachment
 );
 router.delete("/attachment/:attachmentId", ChapterController.deleteAttachment);
+router.post("/progress/:chapterId", ChapterController.updateUserProgress);
 export default router;
