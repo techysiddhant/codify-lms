@@ -21,6 +21,8 @@ const {
 	IMAGEKIT_URL_ENDPOINT,
 	MUX_TOKEN_ID,
 	MUX_TOKEN_SECRET,
+	STRIPE_API_KEY,
+	STRIPE_WEBHOOK_SECRET,
 } = process.env;
 
 export const Config = {
@@ -38,4 +40,6 @@ export const Config = {
 	IMAGEKIT_URL_ENDPOINT,
 	MUX_TOKEN_ID,
 	MUX_TOKEN_SECRET,
+	STRIPE_API_KEY,
+	STRIPE_WEBHOOK_SECRET,
 };
