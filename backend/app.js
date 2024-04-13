@@ -8,9 +8,11 @@ import courseRoutes from "./routes/CourseRoutes.js";
 import chapterRoutes from "./routes/ChapterRoutes.js";
 import paymentRoutes from "./routes/CheckoutRoutes.js";
 import initializePassport from "./passport.js";
-
+import cors from "cors";
+import corsOptions from "./config/corsOptions.js";
 const app = express();
 initializePassport();
+app.use(cors(corsOptions));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static("public"));
