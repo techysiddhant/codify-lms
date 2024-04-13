@@ -25,7 +25,7 @@ const LoginButton = () => {
 					<Button className="w-full bg-blue-600 hover:bg-blue-600/80">
 						Continue with Google
 					</Button>
-					<p>OR</p>
+					<p className="text-center my-1">OR</p>
 					<Button className="w-full">Continue with Github</Button>
 				</div>
 			</DialogContent>
