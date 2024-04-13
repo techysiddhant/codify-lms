@@ -1,0 +1,397 @@
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-02T21:06:55.618Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-02T21:08:13.885Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-03T12:12:03.325Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-03T12:12:51.966Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-03T12:26:24.883Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-03T12:29:52.332Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-03T12:32:49.523Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-03T12:33:28.128Z"}
+{"email":"dearcrush.you@gmail.com","level":"error","message":"Error While Logging using Google","serviceName":"lms-backend","timestamp":"2024-04-03T12:34:02.469Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-03T12:35:16.679Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-03T12:38:05.177Z"}
+{"email":"dearcrush.you@gmail.com","level":"error","message":"Error While Login using Google","serviceName":"lms-backend","timestamp":"2024-04-03T12:38:19.091Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-03T12:39:37.049Z"}
+{"level":"error","message":"Bad Request","serviceName":"lms-backend","timestamp":"2024-04-03T12:39:38.026Z"}
+{"email":"dearcrush.you@gmail.com","level":"error","message":"Error While Login using Google","serviceName":"lms-backend","timestamp":"2024-04-03T12:40:05.403Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-03T12:40:51.727Z"}
+{"email":"dearcrush.you@gmail.com","level":"error","message":"Error While Login using Google","serviceName":"lms-backend","timestamp":"2024-04-03T12:41:13.532Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-03T12:42:40.187Z"}
+{"level":"error","message":"Bad Request","serviceName":"lms-backend","timestamp":"2024-04-03T12:42:40.804Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-03T12:44:43.572Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-03T12:48:06.220Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-03T12:49:00.243Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-03T12:52:14.341Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-03T12:53:35.949Z"}
+{"level":"error","message":"Error while De-serialized User","serviceName":"lms-backend","timestamp":"2024-04-03T12:53:45.087Z"}
+{"level":"error","message":"\nInvalid `prisma.user.findUnique()` invocation:\n\n{\n  where: {\n    email: undefined,\n?   id?: Int,\n?   AND?: UserWhereInput | UserWhereInput[],\n?   OR?: UserWhereInput[],\n?   NOT?: UserWhereInput | UserWhereInput[],\n?   name?: StringNullableFilter | String | Null,\n?   provider?: StringFilter | String,\n?   providerId?: StringFilter | String,\n?   created_at?: DateTimeFilter | DateTime,\n?   updated_at?: DateTimeFilter | DateTime,\n?   role?: StringFilter | String,\n?   profile?: StringNullableFilter | String | Null\n  }\n}\n\nArgument `where` of type UserWhereUniqueInput needs at least one of `id` or `email` arguments. Available options are marked with ?.","serviceName":"lms-backend","timestamp":"2024-04-03T12:53:45.090Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-03T12:57:27.916Z"}
+{"level":"error","message":"Error while De-serialized User","serviceName":"lms-backend","timestamp":"2024-04-03T12:57:57.006Z"}
+{"level":"error","message":"\nInvalid `prisma.user.findUnique()` invocation:\n\n{\n  where: {\n    email: undefined,\n?   id?: Int,\n?   AND?: UserWhereInput | UserWhereInput[],\n?   OR?: UserWhereInput[],\n?   NOT?: UserWhereInput | UserWhereInput[],\n?   name?: StringNullableFilter | String | Null,\n?   provider?: StringFilter | String,\n?   providerId?: StringFilter | String,\n?   created_at?: DateTimeFilter | DateTime,\n?   updated_at?: DateTimeFilter | DateTime,\n?   role?: StringFilter | String,\n?   profile?: StringNullableFilter | String | Null\n  }\n}\n\nArgument `where` of type UserWhereUniqueInput needs at least one of `id` or `email` arguments. Available options are marked with ?.","serviceName":"lms-backend","timestamp":"2024-04-03T12:57:57.007Z"}
+{"level":"error","message":"Error while De-serialized User","serviceName":"lms-backend","timestamp":"2024-04-03T12:58:11.249Z"}
+{"level":"error","message":"\nInvalid `prisma.user.findUnique()` invocation:\n\n{\n  where: {\n    email: undefined,\n?   id?: Int,\n?   AND?: UserWhereInput | UserWhereInput[],\n?   OR?: UserWhereInput[],\n?   NOT?: UserWhereInput | UserWhereInput[],\n?   name?: StringNullableFilter | String | Null,\n?   provider?: StringFilter | String,\n?   providerId?: StringFilter | String,\n?   created_at?: DateTimeFilter | DateTime,\n?   updated_at?: DateTimeFilter | DateTime,\n?   role?: StringFilter | String,\n?   profile?: StringNullableFilter | String | Null\n  }\n}\n\nArgument `where` of type UserWhereUniqueInput needs at least one of `id` or `email` arguments. Available options are marked with ?.","serviceName":"lms-backend","timestamp":"2024-04-03T12:58:11.250Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-03T12:58:56.410Z"}
+{"level":"error","message":"Error while De-serialized User","serviceName":"lms-backend","timestamp":"2024-04-03T12:58:59.455Z"}
+{"level":"error","message":"\nInvalid `prisma.user.findUnique()` invocation:\n\n{\n  where: {\n    email: undefined,\n?   id?: Int,\n?   AND?: UserWhereInput | UserWhereInput[],\n?   OR?: UserWhereInput[],\n?   NOT?: UserWhereInput | UserWhereInput[],\n?   name?: StringNullableFilter | String | Null,\n?   provider?: StringFilter | String,\n?   providerId?: StringFilter | String,\n?   created_at?: DateTimeFilter | DateTime,\n?   updated_at?: DateTimeFilter | DateTime,\n?   role?: StringFilter | String,\n?   profile?: StringNullableFilter | String | Null\n  }\n}\n\nArgument `where` of type UserWhereUniqueInput needs at least one of `id` or `email` arguments. Available options are marked with ?.","serviceName":"lms-backend","timestamp":"2024-04-03T12:58:59.458Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-03T12:59:54.505Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-03T13:01:39.961Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-03T16:23:40.941Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-03T16:24:42.565Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-03T16:25:43.762Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-03T16:54:42.106Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-03T16:55:07.868Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-03T16:55:36.112Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-04T12:00:24.575Z"}
+{"level":"error","message":"Bad Request","serviceName":"lms-backend","timestamp":"2024-04-04T12:06:50.918Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-04T12:10:24.026Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-04T12:10:44.397Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-04T12:15:13.178Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-04T12:18:03.526Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-04T12:51:10.734Z"}
+{"level":"error","message":"Bad Request","serviceName":"lms-backend","timestamp":"2024-04-04T12:59:26.529Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-04T16:50:00.170Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-04T16:50:21.720Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-04T16:51:33.541Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-04T16:51:44.572Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-04T16:52:02.510Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-04T16:55:35.984Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-04T16:58:05.453Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-04T16:58:12.926Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-04T16:59:32.103Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-04T17:00:35.715Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-04T17:22:23.186Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-05T05:31:45.416Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-05T05:33:00.193Z"}
+{"level":"error","message":"Cannot read properties of undefined (reading 'id')","serviceName":"lms-backend","timestamp":"2024-04-05T05:33:16.181Z"}
+{"level":"error","message":"Cannot read properties of undefined (reading 'id')","serviceName":"lms-backend","timestamp":"2024-04-05T05:34:30.657Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-05T05:35:39.852Z"}
+{"level":"error","message":"\nInvalid `prisma.course.create()` invocation:\n\n{\n  data: {\n    userId: 1,\n            ~\n    title: \"\"\n  }\n}\n\nArgument `userId`: Invalid value provided. Expected String, provided Int.","serviceName":"lms-backend","timestamp":"2024-04-05T05:35:44.330Z"}
+{"level":"error","message":"\nInvalid `prisma.course.create()` invocation:\n\n{\n  data: {\n    userId: 1,\n            ~\n    title: \"\"\n  }\n}\n\nArgument `userId`: Invalid value provided. Expected String, provided Int.","serviceName":"lms-backend","timestamp":"2024-04-05T05:38:02.421Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-05T05:38:15.012Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-05T05:40:23.474Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-05T05:42:31.666Z"}
+{"level":"error","message":"\nInvalid `prisma.course.create()` invocation:\n\n{\n  data: {\n    userId: 1,\n+   title: String\n  }\n}\n\nArgument `title` is missing.","serviceName":"lms-backend","timestamp":"2024-04-05T05:42:55.941Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-05T05:45:02.451Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-05T05:46:28.094Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-05T05:46:57.760Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-05T05:47:10.870Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-05T05:52:42.139Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-05T05:53:38.806Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-05T05:54:02.061Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-05T05:57:45.014Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-05T05:58:21.034Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-05T05:58:28.904Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-05T06:02:01.985Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-05T06:02:03.721Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-05T06:02:55.057Z"}
+{"level":"error","message":"\nInvalid `prisma.course.findMany()` invocation:\n\n\nCan't reach database server at `ep-misty-firefly-a10sv9nf.ap-southeast-1.aws.neon.tech`:`5432`\n\nPlease make sure your database server is running at `ep-misty-firefly-a10sv9nf.ap-southeast-1.aws.neon.tech`:`5432`.","serviceName":"lms-backend","timestamp":"2024-04-05T06:03:10.783Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-05T06:06:56.081Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-05T06:08:43.410Z"}
+{"level":"error","message":"\nInvalid `prisma.course.findMany()` invocation:\n\n\nCannot select both '$scalars: true' and a specific scalar field 'user'.","serviceName":"lms-backend","timestamp":"2024-04-05T06:08:47.704Z"}
+{"level":"error","message":"\nInvalid `prisma.course.findMany()` invocation:\n\n\nCannot select both '$scalars: true' and a specific scalar field 'user'.","serviceName":"lms-backend","timestamp":"2024-04-05T06:08:49.380Z"}
+{"level":"error","message":"\nInvalid `prisma.course.findMany()` invocation:\n\n\nCannot select both '$scalars: true' and a specific scalar field 'user'.","serviceName":"lms-backend","timestamp":"2024-04-05T06:09:09.133Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-05T06:10:30.173Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-05T06:14:04.052Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-05T06:16:52.597Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-05T06:44:08.870Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-05T06:46:09.847Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-05T06:46:11.261Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-05T06:46:18.036Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-05T06:47:17.610Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-05T06:47:56.966Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-05T06:48:15.851Z"}
+{"level":"error","message":"name is not defined","serviceName":"lms-backend","timestamp":"2024-04-05T06:48:28.001Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-05T06:49:03.182Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-05T06:50:24.786Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-05T07:44:07.945Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-05T07:47:57.039Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-05T07:48:59.340Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-05T07:54:11.680Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-05T07:54:14.742Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-05T08:09:13.321Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-05T08:13:59.439Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-05T08:14:53.322Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-05T08:17:41.647Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-05T08:18:13.979Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-05T08:22:21.139Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-05T08:24:30.904Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-05T08:28:22.163Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-05T08:30:30.576Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-05T08:30:48.808Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-05T08:31:07.429Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-05T08:32:27.809Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-05T08:33:14.486Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-05T08:33:21.455Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-05T08:33:57.831Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-05T08:34:12.510Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-05T08:34:21.149Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-05T08:34:36.294Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-05T08:34:47.287Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-05T08:35:15.814Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-05T08:35:24.021Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-05T08:35:32.235Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-05T08:36:31.289Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-05T08:36:37.868Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-05T08:37:24.605Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-05T10:22:43.035Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-05T10:26:03.115Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-05T10:26:12.460Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-05T10:27:22.270Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-05T10:29:27.956Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-05T10:37:15.679Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-05T11:23:22.139Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-05T11:43:31.248Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-05T11:43:34.671Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-05T11:49:29.244Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-06T13:30:08.771Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-06T13:30:39.759Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-06T13:33:29.864Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-06T13:37:08.660Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-06T13:41:54.857Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-06T13:44:32.655Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-06T13:44:43.052Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-06T13:47:12.887Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-06T13:48:04.440Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-06T13:48:09.416Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-06T13:50:35.690Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-06T13:51:33.266Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-06T13:56:11.732Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-06T14:04:43.632Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-06T14:13:23.574Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-06T14:14:03.917Z"}
+{"level":"error","message":"Unexpected end of form","serviceName":"lms-backend","timestamp":"2024-04-06T14:14:07.215Z"}
+{"level":"error","message":"Unexpected end of form","serviceName":"lms-backend","timestamp":"2024-04-06T14:14:11.126Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-06T14:15:00.433Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-06T14:15:05.815Z"}
+{"level":"error","message":"Unexpected end of form","serviceName":"lms-backend","timestamp":"2024-04-06T14:15:12.060Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-06T14:22:59.029Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-06T14:23:31.543Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-06T14:24:01.882Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-06T14:25:23.900Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-06T14:26:01.411Z"}
+{"level":"error","message":"Cannot destructure property 'image' of 'req.file' as it is undefined.","serviceName":"lms-backend","timestamp":"2024-04-06T14:26:05.304Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-06T14:26:16.145Z"}
+{"level":"error","message":"The \"path\" argument must be of type string. Received undefined","serviceName":"lms-backend","timestamp":"2024-04-06T14:26:18.140Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-06T14:26:38.010Z"}
+{"level":"error","message":"The \"path\" argument must be of type string. Received undefined","serviceName":"lms-backend","timestamp":"2024-04-06T14:26:40.073Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-06T14:27:00.726Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-06T14:27:11.121Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-06T14:27:31.186Z"}
+{"level":"error","message":"Cannot read properties of undefined (reading 'originalname')","serviceName":"lms-backend","timestamp":"2024-04-06T14:27:34.159Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-06T14:28:00.750Z"}
+{"level":"error","message":"Unexpected end of form","serviceName":"lms-backend","timestamp":"2024-04-06T14:28:09.032Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-06T14:28:16.929Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-06T14:28:58.507Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-06T14:29:23.165Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-06T14:29:33.162Z"}
+{"level":"error","message":"Cannot read properties of undefined (reading 'originalname')","serviceName":"lms-backend","timestamp":"2024-04-06T14:29:35.409Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-06T14:30:01.620Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-06T14:30:16.414Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-06T14:31:10.641Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-06T14:31:18.750Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-06T14:31:29.932Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-06T14:31:39.228Z"}
+{"level":"error","message":"Unexpected field","serviceName":"lms-backend","timestamp":"2024-04-06T14:31:40.578Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-06T14:32:30.938Z"}
+{"level":"error","message":"Unexpected field","serviceName":"lms-backend","timestamp":"2024-04-06T14:32:34.898Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-06T14:32:51.967Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-06T14:33:02.572Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-06T14:33:19.642Z"}
+{"level":"error","message":"image is not defined","serviceName":"lms-backend","timestamp":"2024-04-06T14:33:22.214Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-06T14:33:50.096Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-06T14:34:04.585Z"}
+{"level":"error","message":"image is not defined","serviceName":"lms-backend","timestamp":"2024-04-06T14:34:08.013Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-06T14:34:22.248Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-06T14:36:14.313Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-06T14:36:32.997Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-06T14:38:27.926Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-06T14:38:45.840Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-06T14:38:51.012Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-06T14:39:40.912Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-06T14:40:05.907Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-06T14:42:33.079Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-06T16:59:00.242Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-06T17:05:21.553Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-06T17:10:09.012Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-06T17:10:33.357Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-06T17:11:18.088Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-06T17:15:24.548Z"}
+{"level":"error","message":"Unexpected field","serviceName":"lms-backend","timestamp":"2024-04-06T17:15:30.136Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-06T17:16:49.608Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-06T17:16:52.328Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-06T17:17:16.244Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-06T17:17:49.138Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-06T17:18:58.052Z"}
+{"level":"error","message":"fs is not defined","serviceName":"lms-backend","timestamp":"2024-04-06T17:19:22.413Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-06T17:19:57.636Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-06T17:21:18.059Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-06T17:21:56.420Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-06T17:22:21.832Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-06T17:22:26.758Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-06T17:22:51.352Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-06T17:23:35.233Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-06T17:24:10.330Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-06T17:26:16.982Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-06T17:26:19.369Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-06T17:26:24.127Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-06T17:27:14.986Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-06T17:27:35.794Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-07T07:30:03.702Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-07T07:36:01.607Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-07T07:38:08.808Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-07T07:38:22.853Z"}
+{"level":"info","message":"Server is Working on PORT:3000","serviceName":"lms-backend","timestamp":"2024-04-07T07:40:12.380Z"}
+{"level":"info","message":"Server is Working on PORT:3000","serviceName":"lms-backend","timestamp":"2024-04-07T07:49:24.487Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-07T07:49:30.955Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-07T07:49:38.844Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-07T07:59:19.629Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-07T08:01:56.578Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-07T08:03:30.745Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-07T08:05:19.257Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-07T08:05:25.334Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-07T08:09:20.094Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-07T08:09:26.513Z"}
+{"level":"error","message":"\nInvalid `prisma.course.update()` invocation:\n\n{\n  where: {\n    id: undefined,\n?   AND?: CourseWhereInput | CourseWhereInput[],\n?   OR?: CourseWhereInput[],\n?   NOT?: CourseWhereInput | CourseWhereInput[],\n?   userId?: IntFilter | Int,\n?   title?: StringFilter | String,\n?   description?: StringNullableFilter | String | Null,\n?   imageUrl?: StringNullableFilter | String | Null,\n?   price?: FloatNullableFilter | Float | Null,\n?   isPublished?: BoolFilter | Boolean,\n?   imagePublicId?: StringNullableFilter | String | Null,\n?   categoryId?: StringNullableFilter | String | Null,\n?   createdAt?: DateTimeFilter | DateTime,\n?   updatedAt?: DateTimeFilter | DateTime,\n?   user?: UserRelationFilter | UserWhereInput,\n?   category?: CategoryNullableRelationFilter | CategoryWhereInput | Null\n  },\n  data: {\n    imageUrl: \"https://res.cloudinary.com/dtdbuvbto/image/upload/v1712477408/thumbnail/stgdmcqvkrrmc5lvw87h.jpg\",\n    imagePublicId: \"thumbnail/stgdmcqvkrrmc5lvw87h\"\n  }\n}\n\nArgument `where` of type CourseWhereUniqueInput needs at least one of `id` arguments. Available options are marked with ?.","serviceName":"lms-backend","timestamp":"2024-04-07T08:10:11.777Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-07T08:11:41.023Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-07T08:21:48.049Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-07T08:23:27.336Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-07T08:28:40.621Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-07T08:31:31.663Z"}
+{"level":"error","message":"File too large","serviceName":"lms-backend","timestamp":"2024-04-07T08:31:48.582Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-07T08:34:24.390Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-07T08:34:47.486Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-07T08:36:15.769Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-07T08:36:22.348Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-07T08:36:47.613Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-07T08:37:39.286Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-07T08:38:55.193Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-07T08:39:38.419Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-07T08:39:49.400Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-07T08:39:55.945Z"}
+{"level":"error","message":"\nInvalid `prisma.course.update()` invocation:\n\n{\n  where: {\n    id: undefined,\n?   AND?: CourseWhereInput | CourseWhereInput[],\n?   OR?: CourseWhereInput[],\n?   NOT?: CourseWhereInput | CourseWhereInput[],\n?   userId?: IntFilter | Int,\n?   title?: StringFilter | String,\n?   description?: StringNullableFilter | String | Null,\n?   imageUrl?: StringNullableFilter | String | Null,\n?   price?: FloatNullableFilter | Float | Null,\n?   isPublished?: BoolFilter | Boolean,\n?   imagePublicId?: StringNullableFilter | String | Null,\n?   categoryId?: StringNullableFilter | String | Null,\n?   createdAt?: DateTimeFilter | DateTime,\n?   updatedAt?: DateTimeFilter | DateTime,\n?   user?: UserRelationFilter | UserWhereInput,\n?   category?: CategoryNullableRelationFilter | CategoryWhereInput | Null\n  },\n  data: {\n    imageUrl: \"https://res.cloudinary.com/dtdbuvbto/image/upload/v1712479222/thumbnail/fwltfaiffi5kjpt4r8il.jpg\",\n    imagePublicId: \"5fec2179a6e399e73be5fbc8a4edbc26\"\n  }\n}\n\nArgument `where` of type CourseWhereUniqueInput needs at least one of `id` arguments. Available options are marked with ?.","serviceName":"lms-backend","timestamp":"2024-04-07T08:40:25.600Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-08T08:45:31.857Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-08T08:46:54.676Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-08T08:49:04.572Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-08T08:49:09.211Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-09T13:20:08.995Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-09T13:20:20.207Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-09T13:21:50.070Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-09T13:22:47.052Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-09T13:23:10.767Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-09T13:23:47.248Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-09T13:26:02.483Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-09T13:27:43.570Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-09T13:29:24.286Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-09T13:31:58.773Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-09T18:06:48.487Z"}
+{"level":"error","message":"\nInvalid `prisma.chapter.create()` invocation:\n\n{\n  data: {\n    title: \"intro of react\",\n    userId: 1,\n+   position: Int\n  }\n}\n\nArgument `position` is missing.","serviceName":"lms-backend","timestamp":"2024-04-09T18:09:19.542Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-09T18:10:50.620Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-09T18:13:28.514Z"}
+{"level":"error","message":"db is not defined","serviceName":"lms-backend","timestamp":"2024-04-09T18:13:45.044Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-09T18:13:56.388Z"}
+{"level":"error","message":"\nInvalid `prisma.chapter.create()` invocation:\n\n{\n  data: {\n    title: \"intro of react\",\n    userId: 1,\n    ~~~~~~\n    courseId: \"a3315c83-1213-489c-9474-559b9750fefb\",\n    position: 1,\n?   id?: String,\n?   description?: String | Null,\n?   videoUrl?: String | Null,\n?   isPublished?: Boolean,\n?   isFree?: Boolean,\n?   createdAt?: DateTime,\n?   updatedAt?: DateTime\n  }\n}\n\nUnknown argument `userId`. Available options are marked with ?.","serviceName":"lms-backend","timestamp":"2024-04-09T18:13:59.369Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-09T18:14:24.837Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-09T18:14:48.388Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-09T18:16:41.165Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-09T18:17:04.549Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-09T18:17:12.768Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-09T18:29:16.906Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-09T19:11:16.210Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-09T19:13:44.692Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-09T19:18:42.279Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-09T19:19:59.026Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-09T19:20:37.530Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-09T19:21:01.092Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-09T19:21:09.255Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-09T19:22:14.682Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-09T19:23:44.861Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-09T19:23:47.375Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-09T19:26:23.469Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-09T19:30:02.062Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-09T19:30:19.921Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-09T19:36:47.698Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-09T19:37:02.795Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-09T19:37:30.388Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-09T19:37:35.995Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-09T19:43:05.371Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-09T19:43:43.352Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-09T19:43:56.933Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-09T19:44:48.398Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-09T19:44:59.275Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-09T19:46:00.543Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-09T19:46:38.595Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-09T19:49:07.843Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-09T19:56:53.988Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-10T10:09:38.805Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-10T10:10:22.910Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-10T10:10:42.067Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-10T10:16:53.527Z"}
+{"level":"error","message":"Cannot read properties of undefined (reading 'Assets')","serviceName":"lms-backend","timestamp":"2024-04-10T10:17:11.817Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-10T10:19:50.508Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-10T10:26:26.871Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-10T10:26:40.561Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-10T10:38:48.511Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-10T10:39:34.262Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-10T10:41:08.160Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-10T10:41:23.655Z"}
+{"level":"error","message":"Unexpected field","serviceName":"lms-backend","timestamp":"2024-04-10T10:41:46.988Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-10T10:44:11.512Z"}
+{"level":"error","message":"Unexpected field","serviceName":"lms-backend","timestamp":"2024-04-10T10:44:23.057Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-10T10:50:37.900Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-10T10:52:47.347Z"}
+{"level":"error","message":"400 {\"error\":{\"type\":\"invalid_parameters\",\"messages\":[\"invalid input URL, parsing failed: parse \\\"public\\\\\\\\temp\\\\\\\\pexels_videos_2278095 (1080p).mp4\\\": invalid URI for request\"]}}","serviceName":"lms-backend","timestamp":"2024-04-10T10:53:00.463Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-10T10:55:53.271Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-10T11:00:37.629Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-10T11:00:45.171Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-10T11:02:24.530Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-10T11:02:36.767Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-10T12:40:50.447Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-10T12:51:32.567Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-10T12:51:41.394Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-10T12:52:17.167Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-10T12:52:25.340Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-10T12:59:17.983Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-10T12:59:32.514Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-10T13:02:13.305Z"}
+{"level":"error","message":"\nInvalid `prisma.attachment.create()` invocation:\n\n{\n  data: {\n    chapterId: \"6e26f3d4-c5ac-4537-8fe9-c53be2f8a105\",\n    url: \"https://res.cloudinary.com/dtdbuvbto/image/upload/v1712754147/attachment/m5hdojr8bmekxvewhdzp.pdf\",\n+   name: String\n  }\n}\n\nArgument `name` is missing.","serviceName":"lms-backend","timestamp":"2024-04-10T13:02:29.170Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-10T13:03:10.102Z"}
+{"level":"error","message":"\nInvalid `prisma.attachment.create()` invocation:\n\n{\n  data: {\n    chapterId: \"6e26f3d4-c5ac-4537-8fe9-c53be2f8a105\",\n    url: \"https://res.cloudinary.com/dtdbuvbto/image/upload/v1712754197/attachment/byejy4qwnwyhejhyb3cg.pdf\",\n+   name: String\n  }\n}\n\nArgument `name` is missing.","serviceName":"lms-backend","timestamp":"2024-04-10T13:03:19.533Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-10T13:03:50.495Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-10T13:09:11.618Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-10T13:11:04.802Z"}
+{"level":"error","message":"\nInvalid `prisma.attachment.create()` invocation:\n\n{\n  data: {\n    chapterId: \"6e26f3d4-c5ac-4537-8fe9-c53be2f8a105\",\n    url: \"https://res.cloudinary.com/dtdbuvbto/image/upload/v1712754734/attachment/gvilv93vk0tbsmi3ujth.pdf\",\n    name: \"developer (1)\",\n    publicId: \"attachment/gvilv93vk0tbsmi3ujth\",\n    ~~~~~~~~\n?   id?: String,\n?   courseId?: String | Null,\n?   createdAt?: DateTime,\n?   updatedAt?: DateTime\n  }\n}\n\nUnknown argument `publicId`. Available options are marked with ?.","serviceName":"lms-backend","timestamp":"2024-04-10T13:12:16.295Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-10T13:13:13.502Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-10T13:16:51.220Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-10T13:25:08.661Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-10T13:25:31.044Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-10T13:29:02.946Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-10T13:41:25.548Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-10T13:41:30.189Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-10T13:52:38.894Z"}
+{"level":"error","message":"error is not defined","serviceName":"lms-backend","timestamp":"2024-04-10T13:52:42.740Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-10T13:57:57.608Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-10T13:58:24.876Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-10T13:59:16.402Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-10T13:59:35.657Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-11T08:29:20.287Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-11T08:29:32.770Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-11T08:30:45.524Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-11T08:31:15.716Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-11T08:32:43.068Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-11T08:34:09.426Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-11T08:35:14.861Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-11T08:35:53.987Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-11T08:42:23.971Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-11T08:46:10.781Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-11T08:47:48.130Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-11T08:49:33.966Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-11T08:49:45.133Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-11T08:52:48.592Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-11T08:55:03.687Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-11T08:56:00.872Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-11T09:05:10.757Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-11T09:05:22.300Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-11T09:16:25.515Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-11T09:17:36.851Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-11T09:18:00.904Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-11T09:18:33.844Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-11T09:18:37.603Z"}
