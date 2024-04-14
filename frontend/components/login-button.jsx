@@ -16,6 +16,12 @@ const LoginButton = () => {
 		const { data } = login();
 		console.log(data);
 	};
+	const loginwithgoogle = () => {
+		window.open(
+			"https://weak-rose-lobster-vest.cyclic.app/api/v1/auth/google/callback",
+			"_self"
+		);
+	};
 	return (
 		<Dialog>
 			<DialogTrigger asChild>
@@ -30,7 +36,7 @@ const LoginButton = () => {
 				</DialogHeader>
 				<div>
 					<Button
-						onClick={handleGoogleLogin}
+						onClick={loginwithgoogle}
 						className="w-full bg-blue-600 hover:bg-blue-600/80"
 					>
 						Continue with Google
