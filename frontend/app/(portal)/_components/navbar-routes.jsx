@@ -5,6 +5,10 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import SearchInput from "./search-input";
 import LoginButton from "@/components/login-button";
+import { useSelector } from "react-redux";
+import { useLogoutMutation } from "@/redux/slices/userApiSlice";
+import { useDispatch } from "react-redux";
+import { logout } from "@/redux/slices/authSlice";
 // import { isTeacher } from "@/lib/teacher";
 
 const NavbarRoutes = () => {
@@ -13,6 +17,18 @@ const NavbarRoutes = () => {
 	const isTeacherPage = pathname?.startsWith("/teacher");
 	const isCoursePage = pathname?.includes("/courses");
 	const isSearchPage = pathname === "/";
+	const user = useSelector((state) => state.auth.userData);
+	const dispatch = useDispatch();
+	const [Userlogout] = useLogoutMutation();
+	const handleLogout = async () => {
+		try {
+			const data = await Userlogout();
+			console.log(data);
+			dispatch(logout());
+		} catch (error) {
+			console.log(error);
+		}
+	};
 	return (
 		<>
 			{isSearchPage && (
@@ -21,6 +37,26 @@ const NavbarRoutes = () => {
 				</div>
 			)}
 			<div className="flex gap-x-2 ml-auto">
+				{user != null ? (
+					<Button
+						variant="destructive"
+						onClick={handleLogout}
+					>
+						Logout
+					</Button>
+				) : (
+					<div className="space-x-4">
+						<Button
+							variant="outline"
+							asChild
+						>
+							<Link href="/login">Login</Link>
+						</Button>
+						<Button asChild>
+							<Link href="/signup">Sign Up</Link>
+						</Button>
+					</div>
+				)}
 				{/* {isTeacherPage || isCoursePage ? (
 					<Link href="/">
 						<Button
@@ -42,7 +78,7 @@ const NavbarRoutes = () => {
 					</Link>
 				) : null} */}
 				{/* <UserButton afterSignOutUrl="/" /> */}
-				<LoginButton />
+				{/* <LoginButton /> */}
 			</div>
 		</>
 	);

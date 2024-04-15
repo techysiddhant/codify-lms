@@ -13,10 +13,10 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { useLoginMutation } from "@/redux/slices/userApiSlice";
+import { useSignUpMutation } from "@/redux/slices/userApiSlice";
 import { toast } from "sonner";
 import { useDispatch } from "react-redux";
-import { login, setToken } from "@/redux/slices/authSlice";
+import { login } from "@/redux/slices/authSlice";
 import { useRouter } from "next/navigation";
 
 const FormSchema = z.object({
@@ -26,9 +26,10 @@ const FormSchema = z.object({
 	password: z.string().min(8, {
 		message: "Password length shoubld be more then 8",
 	}),
+	name: z.string(),
 });
-const LoginForm = () => {
-	const [userlogin] = useLoginMutation();
+const SignUpForm = () => {
+	const [userSignIn] = useSignUpMutation();
 	const dispatch = useDispatch();
 	const router = useRouter();
 	const form = useForm({
@@ -36,14 +37,14 @@ const LoginForm = () => {
 		defaultValues: {
 			email: "",
 			password: "",
+			name: "",
 		},
 	});
 	const onSubmit = async (data) => {
 		try {
-			const { user, token } = await userlogin({ ...data }).unwrap();
+			const { user, token } = await userSignIn({ ...data }).unwrap();
 			console.log(user);
 			dispatch(login(user));
-			dispatch(setToken(token));
 			router.push("/");
 		} catch (error) {
 			console.log(error);
@@ -59,12 +60,28 @@ const LoginForm = () => {
 		<div className="flex justify-center items-center h-screen w-full px-4">
 			<div className="w-full max-w-[350px] h-full max-h-[450px] border border-zinc-300 rounded flex flex-col justify-center items-center p-4 gap-3">
 				<h1 className="text-2xl font-semibold ">Welcome to Codify</h1>
-				<h2>Login </h2>
+				<h2>Create an Account </h2>
 				<Form {...form}>
 					<form
 						onSubmit={form.handleSubmit(onSubmit)}
 						className="w-2/3 space-y-6"
 					>
+						<FormField
+							control={form.control}
+							name="name"
+							render={({ field }) => (
+								<FormItem>
+									<FormLabel>Enter Name</FormLabel>
+									<FormControl>
+										<Input
+											placeholder="enter your name"
+											{...field}
+										/>
+									</FormControl>
+									<FormMessage />
+								</FormItem>
+							)}
+						/>
 						<FormField
 							control={form.control}
 							name="email"
@@ -111,4 +128,4 @@ const LoginForm = () => {
 	);
 };
 
-export default LoginForm;
+export default SignUpForm;
