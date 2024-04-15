@@ -23,6 +23,7 @@ const {
 	MUX_TOKEN_SECRET,
 	STRIPE_API_KEY,
 	STRIPE_WEBHOOK_SECRET,
+	JWT_SECRET,
 } = process.env;
 
 export const Config = {
@@ -42,4 +43,5 @@ export const Config = {
 	MUX_TOKEN_SECRET,
 	STRIPE_API_KEY,
 	STRIPE_WEBHOOK_SECRET,
+	JWT_SECRET,
 };
