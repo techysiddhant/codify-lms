@@ -35,7 +35,12 @@ class AuthController {
 			}
 			const { email, password } = req.body;
 			const user = await prisma.user.findUnique({ where: { email: email } });
-			const comparePassword = await bcrypt.compare(password, user.password);
+			if (!user) {
+				return res
+					.status(400)
+					.json({ errors: [{ error: "Invalid email or password" }] });
+			}
+			const comparePassword = bcrypt.compare(password, user.password);
 			if (comparePassword) {
 				const token = jwt.sign({ id: user.id }, jwtOptions.secretOrKey, {
 					expiresIn: "1d",
@@ -44,9 +49,21 @@ class AuthController {
 			}
 			return res
 				.status(400)
-				.json({ errors: [{ error: "check email or password" }] });
+				.json({ errors: [{ error: "Invalid email or password" }] });
 		} catch (error) {
 			next(error);
+		}
+	}
+	static async logout(req, res, next) {
+		try {
+			req.logout((err) => {
+				if (err) {
+					return res.status(500).json({ message: "Failed to log out" });
+				}
+				res.json({ message: "Logged out successfully" });
+			});
+		} catch (error) {
+			console.log(error);
 		}
 	}
 }

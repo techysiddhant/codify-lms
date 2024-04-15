@@ -61,3 +61,6 @@
 {"level":"error","message":"Cannot read properties of undefined (reading 'role')","serviceName":"lms-backend","timestamp":"2024-04-15T07:46:05.248Z"}
 {"level":"error","message":"Access Denied","serviceName":"lms-backend","timestamp":"2024-04-15T07:48:51.128Z"}
 {"level":"error","message":"Access Denied","serviceName":"lms-backend","timestamp":"2024-04-15T07:52:09.297Z"}
+{"level":"error","message":"Cannot read properties of null (reading 'password')","serviceName":"lms-backend","timestamp":"2024-04-15T19:03:04.935Z"}
+{"level":"error","message":"Cannot read properties of null (reading 'password')","serviceName":"lms-backend","timestamp":"2024-04-15T19:03:38.890Z"}
+{"level":"error","message":"Cannot read properties of null (reading 'password')","serviceName":"lms-backend","timestamp":"2024-04-15T19:04:54.125Z"}
