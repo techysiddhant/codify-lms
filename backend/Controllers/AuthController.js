@@ -19,7 +19,9 @@ class AuthController {
 					name,
 				},
 			});
-			const token = jwt.sign({ id: user.id }, jwtOptions.secretOrKey);
+			const token = jwt.sign({ id: user.id }, jwtOptions.secretOrKey, {
+				expiresIn: "1d",
+			});
 			return res.status(201).json({ token, user });
 		} catch (error) {
 			next(error);
@@ -36,7 +38,7 @@ class AuthController {
 			const comparePassword = await bcrypt.compare(password, user.password);
 			if (comparePassword) {
 				const token = jwt.sign({ id: user.id }, jwtOptions.secretOrKey, {
-					expiresIn: "1m",
+					expiresIn: "1d",
 				});
 				return res.json({ token, user });
 			}

@@ -13,7 +13,7 @@ router.post(
 router.post(
 	"/login",
 	userLoginValidator,
-	passport.authenticate("jwt", { session: false }),
+	// passport.authenticate("jwt", { session: false }),
 	AuthController.login
 );
 export default router;
