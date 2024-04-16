@@ -8,6 +8,8 @@ import { canAccess } from "../middlewares/canAccess.js";
 import { Roles } from "../constants/index.js";
 
 const router = Router();
+router.get("/categories", CourseController.getCategoryList);
+
 router.get("/all", CourseController.index);
 router.post(
 	"/create",

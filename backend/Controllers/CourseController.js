@@ -62,21 +62,93 @@ class CourseController {
 	}
 	static async index(req, res, next) {
 		try {
+			const { title, categoryId } = req.query;
+			// const { title, categoryId } = req.body;
+			// console.log(title, categoryId);
 			const courses = await prisma.course.findMany({
+				where: {
+					isPublished: true,
+					title: {
+						contains: title,
+					},
+					categoryId,
+				},
 				include: {
-					user: {
-						select: {
-							name: true,
-						},
-					},
-					category: {
-						select: {
-							name: true,
-						},
-					},
+					category: true,
 				},
 			});
+			// console.log("Wpp-t,c: ", courses);
 			return res.status(200).json(courses);
+			// if (title !== "undefined" && categoryId !== "undefined") {
+			// 	const courses = await prisma.course.findMany({
+			// 		where: {
+			// 			isPublished: true,
+			// 			title: {
+			// 				contains: title,
+			// 			},
+			// 			categoryId,
+			// 		},
+			// 		include: {
+			// 			category: true,
+			// 		},
+			// 	});
+			// 	console.log("WO-t,c: ", courses);
+			// 	return res.status(200).json(courses);
+			// } else if (title !== "undefined") {
+			// 	const courses = await prisma.course.findMany({
+			// 		where: {
+			// 			isPublished: true,
+			// 			title: {
+			// 				contains: title,
+			// 			},
+			// 		},
+			// 		include: {
+			// 			category: true,
+			// 		},
+			// 	});
+			// 	console.log("W-t: ", courses);
+
+			// 	return res.status(200).json(courses);
+			// } else if (categoryId !== "undefined") {
+			// 	const courses = await prisma.course.findMany({
+			// 		where: {
+			// 			isPublished: true,
+			// 			categoryId,
+			// 		},
+			// 		include: {
+			// 			category: true,
+			// 		},
+			// 	});
+			// 	console.log("W-c: ", courses);
+
+			// 	return res.status(200).json(courses);
+			// } else {
+			// 	const courses = await prisma.course.findMany({
+			// 		where: {
+			// 			isPublished: true,
+			// 		},
+			// 		include: {
+			// 			category: true,
+			// 		},
+			// 	});
+			// 	console.log("WB all: ", courses);
+
+			// 	return res.status(200).json(courses);
+			// }
+			// const courses = await prisma.course.findMany({
+			// 	include: {
+			// 		user: {
+			// 			select: {
+			// 				name: true,
+			// 			},
+			// 		},
+			// 		category: {
+			// 			select: {
+			// 				name: true,
+			// 			},
+			// 		},
+			// 	},
+			// });
 		} catch (error) {
 			next(error);
 		}
@@ -127,6 +199,14 @@ class CourseController {
 				},
 			});
 			return res.status(201).json(course);
+		} catch (error) {
+			next(error);
+		}
+	}
+	static async getCategoryList(req, res, next) {
+		try {
+			const categories = await prisma.category.findMany({});
+			return res.status(200).json(categories);
 		} catch (error) {
 			next(error);
 		}
