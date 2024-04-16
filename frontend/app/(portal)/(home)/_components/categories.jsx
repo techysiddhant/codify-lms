@@ -1,3 +1,4 @@
+"use client";
 import {
 	FcEngineering,
 	FcFilmReel,
@@ -8,6 +9,7 @@ import {
 	FcSportsMode,
 } from "react-icons/fc";
 import CategoryItem from "./category-item";
+import { useGetCategoriesQuery } from "@/redux/slices/categoryApiSlice";
 const iconMap = {
 	Music: FcMusic,
 	Photography: FcOldTimeCamera,
@@ -17,10 +19,12 @@ const iconMap = {
 	Filming: FcFilmReel,
 	Engineering: FcEngineering,
 };
-const Categories = ({ items }) => {
+const Categories = () => {
+	const { data, isLoading } = useGetCategoriesQuery();
+	// console.log(data);
 	return (
 		<div className="flex items-center gap-x-2 overflow-x-auto pb-2">
-			{items.map((item) => (
+			{data?.map((item) => (
 				<CategoryItem
 					key={item.id}
 					label={item.name}

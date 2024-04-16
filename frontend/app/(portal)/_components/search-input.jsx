@@ -25,7 +25,6 @@ const SearchInput = () => {
 			},
 			{ skipEmptyString: true, skipNull: true }
 		);
-
 		router.push(url);
 	}, [debouncedValue, currentCategoryId, router, pathname]);
 	return (
