@@ -17,7 +17,7 @@ const NavbarRoutes = () => {
 	const isTeacherPage = pathname?.startsWith("/teacher");
 	const isCoursePage = pathname?.includes("/courses");
 	const isSearchPage = pathname === "/";
-	const user = useSelector((state) => state.auth.userData);
+	const user = useSelector((state) => state.persistedReducer.auth.userData);
 	const dispatch = useDispatch();
 	const [Userlogout] = useLogoutMutation();
 	const handleLogout = async () => {
@@ -36,7 +36,16 @@ const NavbarRoutes = () => {
 					<SearchInput />
 				</div>
 			)}
+
 			<div className="flex gap-x-2 ml-auto">
+				{user.role === "CREATOR" && (
+					<Button
+						asChild
+						variant="secondary"
+					>
+						<Link href="/creator">Creator</Link>
+					</Button>
+				)}
 				{user != null ? (
 					<Button
 						variant="destructive"
@@ -57,6 +66,7 @@ const NavbarRoutes = () => {
 						</Button>
 					</div>
 				)}
+
 				{/* {isTeacherPage || isCoursePage ? (
 					<Link href="/">
 						<Button

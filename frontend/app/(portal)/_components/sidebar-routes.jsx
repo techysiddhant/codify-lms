@@ -38,7 +38,7 @@ const teacherRoutes = [
 ];
 const SidebarRoutes = () => {
 	const pathname = usePathname();
-	const user = useSelector((state) => state.auth.userData);
+	const user = useSelector((state) => state.persistedReducer.auth.userData);
 	const routes = user != null ? protectedRoutes : guestRoutes;
 	// const isTeacherPage = pathname?.includes("/teacher");
 
