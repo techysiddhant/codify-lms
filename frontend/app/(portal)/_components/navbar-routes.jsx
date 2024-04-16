@@ -43,7 +43,7 @@ const NavbarRoutes = () => {
 						asChild
 						variant="secondary"
 					>
-						<Link href="/creator">Creator</Link>
+						<Link href="/creator/create">Creator</Link>
 					</Button>
 				)}
 				{user != null ? (

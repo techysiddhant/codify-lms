@@ -24,35 +24,44 @@ const protectedRoutes = [
 		href: "/dashboard",
 	},
 ];
-const teacherRoutes = [
+const creatorRoutes = [
 	{
 		icon: List,
 		label: "Courses",
-		href: "/teacher/courses",
+		href: "/creator/courses",
 	},
 	{
 		icon: BarChart,
 		label: "Analytics",
-		href: "/teacher/analytics",
+		href: "/creator/analytics",
 	},
 ];
 const SidebarRoutes = () => {
 	const pathname = usePathname();
 	const user = useSelector((state) => state.persistedReducer.auth.userData);
-	const routes = user != null ? protectedRoutes : guestRoutes;
-	// const isTeacherPage = pathname?.includes("/teacher");
+	// const routes = user != null ? protectedRoutes : guestRoutes;
+	const isCreatorPage = pathname?.includes("/creator");
 
-	// const routes = isTeacherPage ? teacherRoutes : guestRoutes;
+	const routes = isCreatorPage ? creatorRoutes : protectedRoutes;
 	return (
 		<div className="flex flex-col w-full">
-			{routes.map((route) => (
-				<SidebarItem
-					key={route.href}
-					icon={route.icon}
-					label={route.label}
-					href={route.href}
-				/>
-			))}
+			{user != null
+				? routes.map((route) => (
+						<SidebarItem
+							key={route.href}
+							icon={route.icon}
+							label={route.label}
+							href={route.href}
+						/>
+				  ))
+				: guestRoutes.map((route) => (
+						<SidebarItem
+							key={route.href}
+							icon={route.icon}
+							label={route.label}
+							href={route.href}
+						/>
+				  ))}
 		</div>
 	);
 };
