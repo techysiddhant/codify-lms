@@ -9,6 +9,7 @@ import { useSelector } from "react-redux";
 import { useLogoutMutation } from "@/redux/slices/userApiSlice";
 import { useDispatch } from "react-redux";
 import { logout } from "@/redux/slices/authSlice";
+import { useAppSelector } from "@/redux/persist";
 // import { isTeacher } from "@/lib/teacher";
 
 const NavbarRoutes = () => {
@@ -17,9 +18,13 @@ const NavbarRoutes = () => {
 	const isTeacherPage = pathname?.startsWith("/teacher");
 	const isCoursePage = pathname?.includes("/courses");
 	const isSearchPage = pathname === "/";
-	const user = useSelector((state) => state.persistedReducer.auth.userData);
+	// const user = null;
+	// const role = null;
+	const user = useSelector((state) => state.auth.userData);
+	// const user = useAppSelector((state) => state.auth.userData);
+	const role = useSelector((state) => state.auth.role);
 	const dispatch = useDispatch();
-	const [Userlogout] = useLogoutMutation();
+	// const [Userlogout] = useLogoutMutation();
 	const handleLogout = async () => {
 		try {
 			const data = await Userlogout();
@@ -38,15 +43,7 @@ const NavbarRoutes = () => {
 			)}
 
 			<div className="flex gap-x-2 ml-auto">
-				{user.role === "CREATOR" && (
-					<Button
-						asChild
-						variant="secondary"
-					>
-						<Link href="/creator/create">Creator</Link>
-					</Button>
-				)}
-				{user != null ? (
+				{user && user != null ? (
 					<Button
 						variant="destructive"
 						onClick={handleLogout}
@@ -55,18 +52,19 @@ const NavbarRoutes = () => {
 					</Button>
 				) : (
 					<div className="space-x-4">
-						<Button
-							variant="outline"
-							asChild
-						>
-							<Link href="/login">Login</Link>
-						</Button>
-						<Button asChild>
-							<Link href="/signup">Sign Up</Link>
-						</Button>
+						<Link href="/login">
+							<Button variant="outline">Login</Button>
+						</Link>
+						<Link href="/signup">
+							<Button>Sign Up</Button>
+						</Link>
 					</div>
 				)}
-
+				{role === "CREATOR" && (
+					<Link href="/creator/create">
+						<Button variant="secondary">Creator</Button>
+					</Link>
+				)}
 				{/* {isTeacherPage || isCoursePage ? (
 					<Link href="/">
 						<Button

@@ -1,7 +1,12 @@
 import React from "react";
+import CreateFrom from "./_components/create-form";
 
-const page = () => {
-	return <div>page</div>;
+const CreateCoursePage = () => {
+	return (
+		<>
+			<CreateFrom />
+		</>
+	);
 };
 
-export default page;
+export default CreateCoursePage;

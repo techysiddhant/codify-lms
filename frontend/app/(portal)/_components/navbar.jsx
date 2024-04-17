@@ -1,4 +1,4 @@
-import React from "react";
+"use client";
 import MobileSidebar from "./mobile-sidebar";
 import NavbarRoutes from "./navbar-routes";
 

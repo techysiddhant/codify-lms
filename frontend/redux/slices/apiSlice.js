@@ -7,8 +7,8 @@ const baseQuery = fetchBaseQuery({
 	baseUrl: apiUrl,
 	credentials: "include",
 	prepareHeaders: (headers, { getState }) => {
-		const token = getState().persistedReducer.auth.token;
-		// const token = getState().auth.token;
+		// const token = getState().persistedReducer.auth.token;
+		const token = getState().auth.token;
 		if (token) {
 			headers.set("Authorization", `bearer ${token}`);
 			headers.set("Content-Type", "application/json");
@@ -18,6 +18,7 @@ const baseQuery = fetchBaseQuery({
 });
 
 export const apiSlice = createApi({
+	reducerPath: "api",
 	baseQuery,
 	tagTypes: ["User", "Category", "CustomerSupport", "BusinessSupport"],
 	endpoints: (builder) => ({}),

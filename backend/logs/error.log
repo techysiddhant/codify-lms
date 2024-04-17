@@ -66,3 +66,7 @@
 {"level":"error","message":"Cannot read properties of null (reading 'password')","serviceName":"lms-backend","timestamp":"2024-04-15T19:04:54.125Z"}
 {"level":"error","message":"\nInvalid `prisma.category.findMany()` invocation:\n\n{\n  include: {\n    id: true,\n    ~~\n    name: true,\n?   courses?: true\n  }\n}\n\nInvalid scalar field `id` for include statement on model Category. Available options are marked with ?.\nNote that include statements only accept relation fields.","serviceName":"lms-backend","timestamp":"2024-04-16T14:17:46.362Z"}
 {"level":"error","message":"\nInvalid `prisma.category.findMany()` invocation:\n\n{\n  include: {\n    id: true,\n    ~~\n    name: true,\n?   courses?: true\n  }\n}\n\nInvalid scalar field `id` for include statement on model Category. Available options are marked with ?.\nNote that include statements only accept relation fields.","serviceName":"lms-backend","timestamp":"2024-04-16T14:17:56.155Z"}
+{"level":"error","message":"Access Denied","serviceName":"lms-backend","timestamp":"2024-04-17T13:01:39.809Z"}
+{"level":"error","message":"Access Denied","serviceName":"lms-backend","timestamp":"2024-04-17T13:10:13.881Z"}
+{"level":"error","message":"Access Denied","serviceName":"lms-backend","timestamp":"2024-04-17T13:13:59.427Z"}
+{"level":"error","message":"Access Denied","serviceName":"lms-backend","timestamp":"2024-04-17T13:15:02.199Z"}

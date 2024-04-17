@@ -1,5 +1,6 @@
 "use client";
 
+import { useAppSelector } from "@/redux/persist";
 import SidebarItem from "./sidebar-item";
 
 import { BarChart, Compass, Layout, List } from "lucide-react";
@@ -38,7 +39,8 @@ const creatorRoutes = [
 ];
 const SidebarRoutes = () => {
 	const pathname = usePathname();
-	const user = useSelector((state) => state.persistedReducer.auth.userData);
+	const user = null;
+	// const user = useAppSelector((state) => state.auth.userData);
 	// const routes = user != null ? protectedRoutes : guestRoutes;
 	const isCreatorPage = pathname?.includes("/creator");
 

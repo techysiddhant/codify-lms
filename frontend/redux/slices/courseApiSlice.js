@@ -8,7 +8,15 @@ export const courseApiSlice = apiSlice.injectEndpoints({
 				params: { ...data },
 			}),
 		}),
+		createCourse: builder.mutation({
+			query: (data) => ({
+				url: "/course/create",
+				method: "POST",
+				body: { ...data },
+			}),
+			// invalidatesTags: [{ type: "Course", id: "LIST" }],
+		}),
 	}),
 });
 
-export const { useGetCoursesQuery } = courseApiSlice;
+export const { useGetCoursesQuery, useCreateCourseMutation } = courseApiSlice;

@@ -16,8 +16,9 @@ import { Button } from "@/components/ui/button";
 import { useLoginMutation } from "@/redux/slices/userApiSlice";
 import { toast } from "sonner";
 import { useDispatch } from "react-redux";
-import { login, setToken } from "@/redux/slices/authSlice";
+import { login, setRole, setToken } from "@/redux/slices/authSlice";
 import { useRouter } from "next/navigation";
+import { useAppDispatch } from "@/redux/persist";
 
 const FormSchema = z.object({
 	email: z.string().email({
@@ -39,11 +40,13 @@ const LoginForm = () => {
 		},
 	});
 	const onSubmit = async (data) => {
+		console.log(data);
 		try {
 			const { user, token } = await userlogin({ ...data }).unwrap();
 			console.log(user);
 			dispatch(login(user));
 			dispatch(setToken(token));
+			dispatch(setRole(user.role));
 			router.push("/");
 		} catch (error) {
 			console.log(error);

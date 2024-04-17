@@ -20,8 +20,9 @@ const iconMap = {
 	Engineering: FcEngineering,
 };
 const Categories = () => {
-	const { data, isLoading } = useGetCategoriesQuery();
+	// const { data, isLoading } = useGetCategoriesQuery();
 	// console.log(data);
+	const data = [];
 	return (
 		<div className="flex items-center gap-x-2 overflow-x-auto pb-2">
 			{data?.map((item) => (
