@@ -66,6 +66,17 @@ class AuthController {
 			console.log(error);
 		}
 	}
+	static async index(req, res, next) {
+		try {
+			const user = req.user;
+			const userFind = await prisma.user.findUnique({
+				where: { id: user.id },
+			});
+			return res.status(200).json(userFind);
+		} catch (error) {
+			next(error);
+		}
+	}
 }
 
 export default AuthController;

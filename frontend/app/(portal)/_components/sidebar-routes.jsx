@@ -39,7 +39,7 @@ const creatorRoutes = [
 ];
 const SidebarRoutes = () => {
 	const pathname = usePathname();
-	const user = null;
+	const user = useSelector((state) => state.auth.userData);
 	// const user = useAppSelector((state) => state.auth.userData);
 	// const routes = user != null ? protectedRoutes : guestRoutes;
 	const isCreatorPage = pathname?.includes("/creator");

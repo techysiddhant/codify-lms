@@ -11,6 +11,7 @@ const router = Router();
 router.get("/categories", CourseController.getCategoryList);
 
 router.get("/all", CourseController.index);
+
 router.post(
 	"/create",
 	passport.authenticate("jwt", { session: false }),
@@ -25,4 +26,19 @@ router.patch(
 	CourseController.updateCourse
 );
 router.post("/image", upload.single("image"), CourseController.courseImage);
+
+// FOR Creator Routes
+router.get(
+	"/creator/courses",
+	passport.authenticate("jwt", { session: false }),
+	canAccess([Roles.CREATOR]),
+	CourseController.getCoursesForCreatorByUserId
+);
+router.get(
+	"/creator/:courseId",
+	passport.authenticate("jwt", { session: false }),
+	canAccess([Roles.CREATOR]),
+	CourseController.getCourseForCreator
+);
+
 export default router;

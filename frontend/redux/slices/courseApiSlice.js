@@ -14,9 +14,25 @@ export const courseApiSlice = apiSlice.injectEndpoints({
 				method: "POST",
 				body: { ...data },
 			}),
-			// invalidatesTags: [{ type: "Course", id: "LIST" }],
+		}),
+		getCreatorCourses: builder.query({
+			query: () => ({
+				url: "/course/creator/courses",
+				method: "GET",
+			}),
+		}),
+		getCreatorCourse: builder.query({
+			query: (courseId) => ({
+				url: `/course/creator/${courseId}`,
+				method: "GET",
+			}),
 		}),
 	}),
 });
 
-export const { useGetCoursesQuery, useCreateCourseMutation } = courseApiSlice;
+export const {
+	useGetCoursesQuery,
+	useCreateCourseMutation,
+	useGetCreatorCoursesQuery,
+	useGetCreatorCourseQuery,
+} = courseApiSlice;

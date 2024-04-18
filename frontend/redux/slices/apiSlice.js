@@ -3,6 +3,7 @@ import { apiUrl } from "@/lib/apiUrl";
 import { jwtDecode } from "jwt-decode";
 import { useDispatch } from "react-redux";
 import { logout } from "./authSlice";
+import { useRouter } from "next/navigation";
 const baseQuery = fetchBaseQuery({
 	baseUrl: apiUrl,
 	credentials: "include",
@@ -22,6 +23,29 @@ export const apiSlice = createApi({
 	baseQuery,
 	tagTypes: ["User", "Category", "CustomerSupport", "BusinessSupport"],
 	endpoints: (builder) => ({}),
+});
+apiSlice.injectEndpoints({
+	endpoints: (builder) => ({
+		expEnd: builder.query({
+			query: () => "/auth/profile",
+			async onQueryStarted(_, { dispatch, getState, requestId }) {
+				const state = getState();
+				const token = state.auth.token;
+				const router = useRouter();
+				if (token) {
+					const decoded = jwtDecode(token);
+					const currentTime = Math.floor(Date.now() / 1000);
+					console.log(token);
+					if (decoded.exp < currentTime) {
+						dispatch(logout());
+						router.push("/login");
+					}
+				} else {
+					router.push("/login");
+				}
+			},
+		}),
+	}),
 });
 // Add global error listener to check for token expiration
 // apiSlice.reducer.caseReducers["[api] fetchBaseQuery/rejected"] = (

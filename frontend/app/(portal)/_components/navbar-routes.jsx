@@ -22,9 +22,10 @@ const NavbarRoutes = () => {
 	// const role = null;
 	const user = useSelector((state) => state.auth.userData);
 	// const user = useAppSelector((state) => state.auth.userData);
-	const role = useSelector((state) => state.auth.role);
+	// const role = useSelector((state) => state.auth.role);
+	const role = user?.role;
 	const dispatch = useDispatch();
-	// const [Userlogout] = useLogoutMutation();
+	const [Userlogout] = useLogoutMutation();
 	const handleLogout = async () => {
 		try {
 			const data = await Userlogout();

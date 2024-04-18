@@ -211,6 +211,51 @@ class CourseController {
 			next(error);
 		}
 	}
+	static async getCoursesForCreatorByUserId(req, res, next) {
+		try {
+			const user = req.user;
+			const courses = await prisma.course.findMany({
+				where: {
+					userId: user.id,
+				},
+				orderBy: {
+					createdAt: "desc",
+				},
+			});
+			return res.status(200).json(courses);
+		} catch (error) {
+			next(error);
+		}
+	}
+	static async getCourseForCreator(req, res, next) {
+		try {
+			const { courseId } = req.params;
+			const user = req.user;
+			const course = await prisma.course.findUnique({
+				where: { id: courseId, userId: user.id },
+				include: {
+					// user: {
+					// 	select: {
+					// 		name: true,
+					// 	},
+					// },
+					chapters: {
+						orderBy: {
+							position: "asc",
+						},
+					},
+					category: {
+						select: {
+							name: true,
+						},
+					},
+				},
+			});
+			return res.status(200).json(course);
+		} catch (error) {
+			next(error);
+		}
+	}
 }
 
 export default CourseController;
