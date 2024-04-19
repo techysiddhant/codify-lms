@@ -41,11 +41,13 @@ class CourseController {
 			if (!result.isEmpty()) {
 				return res.status(400).json({ errors: result.array() });
 			}
+			const user = req.user;
 			const { description, price, imageUrl, categoryId, title } = req.body;
 			const { courseId } = req.params;
 			const course = await prisma.course.update({
 				where: {
 					id: courseId,
+					userId: user.id,
 				},
 				data: {
 					description,
@@ -180,6 +182,7 @@ class CourseController {
 		try {
 			const { courseId } = req.body;
 			const image = req.file;
+			const user = req.user;
 			const folder = "thumbnail";
 			const result = await uploadCloudinary(image.path, folder);
 			if (result == null) {
@@ -192,6 +195,7 @@ class CourseController {
 			const course = await prisma.course.update({
 				where: {
 					id: courseId,
+					userId: user.id,
 				},
 				data: {
 					imageUrl: result.secure_url,

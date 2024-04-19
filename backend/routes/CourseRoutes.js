@@ -22,10 +22,17 @@ router.post(
 router.get("/:courseId", CourseController.getCourse);
 router.patch(
 	"/update/:courseId",
-	courseValidator,
+	passport.authenticate("jwt", { session: false }),
+	canAccess([Roles.CREATOR]),
 	CourseController.updateCourse
 );
-router.post("/image", upload.single("image"), CourseController.courseImage);
+router.post(
+	"/image",
+	passport.authenticate("jwt", { session: false }),
+	canAccess([Roles.CREATOR]),
+	upload.single("image"),
+	CourseController.courseImage
+);
 
 // FOR Creator Routes
 router.get(

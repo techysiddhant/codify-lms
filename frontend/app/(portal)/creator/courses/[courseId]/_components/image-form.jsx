@@ -18,24 +18,42 @@ import { Button } from "@/components/ui/button";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Input } from "@/components/ui/input";
+import { useAddCreatorCourseImageMutation } from "@/redux/slices/courseApiSlice";
 // import { FileUpload } from "@/components/file-upload";
 const formSchema = z.object({
 	image: z.instanceof(FileList),
 });
 const ImageForm = ({ initialData, courseId }) => {
 	const [isEditing, setIsEditing] = useState(false);
-
+	const [image, setImage] = useState();
 	const toggleEdit = () => setIsEditing((current) => !current);
 
 	const router = useRouter();
 
 	const form = useForm({
-		resolver: zodResolver(formSchema),
+		// resolver: zodResolver(formSchema),
 	});
 	const imageRef = form.register("image");
-	const onSubmit = (data) => {
-		console.log(data);
+	const [addCourseImage] = useAddCreatorCourseImageMutation();
+	const convert2base64 = (file) => {
+		const reader = new FileReader();
+
+		reader.onloadend = () => {
+			setImage(reader.result.toString());
+		};
+		reader.readAsDataURL(file);
+	};
+	const onSubmit = async (data) => {
+		const formData = new FormData();
+		console.log(data.image);
+		formData.append("image", data?.image);
+		formData.append("courseId", courseId);
+		console.log(formData);
 		try {
+			const course = await addCourseImage(formData).unwrap();
+			console.log(course);
+			toggleEdit();
+			router.refresh();
 		} catch (error) {
 			toast.error("Something went wrong");
 		}
@@ -105,7 +123,7 @@ const ImageForm = ({ initialData, courseId }) => {
 													type="file"
 													placeholder="shadcn"
 													accept="image/png, image/jpeg"
-													{...imageRef}
+													// {...imageRef}
 													onChange={(event) => {
 														field.onChange(event.target?.files?.[0]);
 													}}

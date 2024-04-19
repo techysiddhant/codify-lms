@@ -31,19 +31,19 @@ export const authSlice = createSlice({
 			localStorage.clear();
 		},
 	},
-	extraReducers: (builder) => {
-		builder.addMatcher(
-			(action) => action.type.endsWith("/rejected"),
-			(state, action) => {
-				if (action.error && action.error.status === 401) {
-					// Token expired, clear authentication state
-					// Note: This assumes you have a slice named 'auth' with a 'clearToken' action
-					state.dispatch(logout());
-					// Redirect to login page if necessary
-				}
-			}
-		);
-	},
+	// extraReducers: (builder) => {
+	// 	builder.addMatcher(
+	// 		(action) => action.type.endsWith("/rejected"),
+	// 		(state, action) => {
+	// 			if (action.error && action.error.status === 401) {
+	// 				// Token expired, clear authentication state
+	// 				// Note: This assumes you have a slice named 'auth' with a 'clearToken' action
+	// 				state.dispatch(logout());
+	// 				// Redirect to login page if necessary
+	// 			}
+	// 		}
+	// 	);
+	// },
 });
 
 export default authSlice.reducer;

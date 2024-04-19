@@ -18,6 +18,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { Textarea } from "@/components/ui/textarea";
+import { useUpdateCreatorCourseMutation } from "@/redux/slices/courseApiSlice";
 const formSchema = z.object({
 	description: z.string().min(1, {
 		message: "Description is required",
@@ -37,12 +38,25 @@ const DescriptionForm = ({ initialData, courseId }) => {
 	});
 
 	const { isSubmitting, isValid } = form.formState;
-	const onSubmit = (data) => {
+	const [updateCourseDescription, { isError, error }] =
+		useUpdateCreatorCourseMutation();
+	const onSubmit = async (data) => {
 		try {
+			const course = await updateCourseDescription({
+				courseId: courseId,
+				...data,
+			});
+			toggleEdit();
+			router.refresh();
 		} catch (error) {
+			console.log(error);
 			toast.error("Something went wrong");
 		}
 	};
+	// if (isError) {
+	// 	console.log(error);
+	// 	toast.error("Something went wrong");
+	// }
 	return (
 		<div className="mt-6 border bg-slate-100 rounded-md p-4">
 			<div className="font-medium flex items-center justify-between">

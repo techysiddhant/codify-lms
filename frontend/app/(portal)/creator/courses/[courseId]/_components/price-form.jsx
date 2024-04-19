@@ -17,46 +17,41 @@ import {
 } from "@/components/ui/form";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { Textarea } from "@/components/ui/textarea";
-import { Combobox } from "@/components/ui/combobox";
+import { Input } from "@/components/ui/input";
+import { formatPrice } from "@/lib/format";
 import { useUpdateCreatorCourseMutation } from "@/redux/slices/courseApiSlice";
 const formSchema = z.object({
-	categoryId: z.string().min(1),
+	price: z.coerce.number(),
 });
 
-const CategoryForm = ({ initialData, courseId, options }) => {
+const PriceForm = ({ initialData, courseId }) => {
 	const [isEditing, setIsEditing] = useState(false);
-	// console.log(options);
+
 	const toggleEdit = () => setIsEditing((current) => !current);
 
 	const router = useRouter();
 	const form = useForm({
 		resolver: zodResolver(formSchema),
 		defaultValues: {
-			categoryId: initialData?.categoryId || "",
+			price: initialData?.price || undefined,
 		},
 	});
 	const { isSubmitting, isValid } = form.formState;
-	const [updateCategory] = useUpdateCreatorCourseMutation();
-	const onSubmit = async (data) => {
+	const [updatePrice] = useUpdateCreatorCourseMutation();
+	const onSubmit = (data) => {
+		const course = updatePrice({ courseId: courseId, ...data });
+		// console.log(course);
+		toggleEdit();
+		toast.success("Course updated Successfully");
 		try {
-			const { course } = await updateCategory({ courseId: courseId, ...data });
-			toast.success("Course updated");
-			toggleEdit();
-			router.refresh();
 		} catch (error) {
 			toast.error("Something went wrong");
 		}
 	};
-
-	const selectedOption = options?.find(
-		(option) => option.value === initialData?.categoryId
-	);
-	// console.log(selectedOption ? selectedOption : null);
 	return (
 		<div className="mt-6 border bg-slate-100 rounded-md p-4">
 			<div className="font-medium flex items-center justify-between">
-				Course category
+				Course price
 				<Button
 					onClick={toggleEdit}
 					variant="ghost"
@@ -66,7 +61,7 @@ const CategoryForm = ({ initialData, courseId, options }) => {
 					) : (
 						<>
 							<Pencil className="h-4 w-4 mr-2" />
-							Edit category
+							Edit price
 						</>
 					)}
 				</Button>
@@ -75,10 +70,10 @@ const CategoryForm = ({ initialData, courseId, options }) => {
 				<p
 					className={cn(
 						"text-sm mt-2",
-						!initialData?.categoryId && "text-slate-500 italic"
+						!initialData?.price && "text-slate-500 italic"
 					)}
 				>
-					{selectedOption?.label || "No category"}
+					{initialData?.price ? formatPrice(initialData?.price) : "No price"}
 				</p>
 			)}
 			{isEditing && (
@@ -89,18 +84,16 @@ const CategoryForm = ({ initialData, courseId, options }) => {
 					>
 						<FormField
 							control={form.control}
-							name="categoryId"
+							name="price"
 							render={({ field }) => (
 								<FormItem>
 									<FormControl>
-										<Combobox
+										<Input
+											type="number"
+											step="0.01"
+											disabled={isSubmitting}
+											placeholder="Set a price for your course"
 											{...field}
-											// options={Object.entries(options).map(([key, value]) => ({
-											// 	value: key,
-											// 	label: value.label,
-											// }))}
-											options={options}
-											// value={null}
 										/>
 									</FormControl>
 									<FormMessage />
@@ -122,4 +115,4 @@ const CategoryForm = ({ initialData, courseId, options }) => {
 	);
 };
 
-export default CategoryForm;
+export default PriceForm;

@@ -12,19 +12,23 @@ import Banner from "@/components/banner";
 import DescriptionForm from "./description-form";
 import ImageForm from "./image-form";
 import CategoryForm from "./category-form";
+import PriceForm from "./price-form";
+import ChaptersForm from "./chapters-form";
+import { useGetCategoriesQuery } from "@/redux/slices/categoryApiSlice";
 
 const CoursePageMain = ({ courseId }) => {
 	const { data: course } = useGetCreatorCourseQuery(courseId);
-	const categories = [
-		{
-			name: "Web",
-			id: "gfhsdghfdkf",
-		},
-		{
-			name: "Web",
-			id: "gfhsdghfdkf",
-		},
-	];
+	const { data: categories } = useGetCategoriesQuery();
+	// const categories = [
+	// 	{
+	// 		name: "Web",
+	// 		id: "gfhsdghfdkf",
+	// 	},
+	// 	{
+	// 		name: "Web",
+	// 		id: "gfhsdghfdkf",
+	// 	},
+	// ];
 	// console.log(course);
 	const requiredFields = [
 		course?.title,
@@ -95,20 +99,20 @@ const CoursePageMain = ({ courseId }) => {
 								<IconBadge icon={ListChecks} />
 								<h2 className="text-xl">Course chapters</h2>
 							</div>
-							{/* <ChaptersForm
+							<ChaptersForm
 								initialData={course}
-								courseId={course.id}
-							/> */}
+								courseId={course?.id}
+							/>
 						</div>
 						<div>
 							<div className="flex items-center gap-x-2">
 								<IconBadge icon={CircleDollarSign} />
 								<h2 className="text-xl">Sell your course</h2>
 							</div>
-							{/* <PriceForm
+							<PriceForm
 								initialData={course}
-								courseId={course.id}
-							/> */}
+								courseId={course?.id}
+							/>
 						</div>
 						<div>
 							<div className="flex items-center gap-x-2">

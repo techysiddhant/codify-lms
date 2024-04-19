@@ -27,6 +27,30 @@ export const courseApiSlice = apiSlice.injectEndpoints({
 				method: "GET",
 			}),
 		}),
+		updateCreatorCourse: builder.mutation({
+			query: (data) => {
+				return {
+					url: `/course/update/${data.courseId}`,
+					method: "PATCH",
+					body: { ...data },
+				};
+			},
+		}),
+		addCreatorCourseImage: builder.mutation({
+			query: (formData) => {
+				console.log(formData);
+				return {
+					url: "/course/image",
+					method: "POST",
+					// headers: {
+					// 	// Add necessary headers for file upload
+					// 	"Content-Type": `multipart/form-data; boundary=${formData._boundary}`,
+					// },
+					body: formData,
+					// formData: true,
+				};
+			},
+		}),
 	}),
 });
 
@@ -35,4 +59,6 @@ export const {
 	useCreateCourseMutation,
 	useGetCreatorCoursesQuery,
 	useGetCreatorCourseQuery,
+	useUpdateCreatorCourseMutation,
+	useAddCreatorCourseImageMutation,
 } = courseApiSlice;

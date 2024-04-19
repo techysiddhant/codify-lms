@@ -16,13 +16,14 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import { useUpdateCreatorCourseMutation } from "@/redux/slices/courseApiSlice";
 const formSchema = z.object({
 	title: z.string().min(1, {
 		message: "Title is required",
 	}),
 });
 
-const TitleForm = ({ initialData = "test", courseId }) => {
+const TitleForm = ({ initialData, courseId }) => {
 	const [isEditing, setIsEditing] = useState(false);
 	const toggleEdit = () => setIsEditing((current) => !current);
 	const router = useRouter();
@@ -31,8 +32,14 @@ const TitleForm = ({ initialData = "test", courseId }) => {
 		defaultValues: initialData,
 	});
 	const { isSubmitting, isValid } = form.formState;
+	const [updateCourseTitle] = useUpdateCreatorCourseMutation();
 	const onSubmit = async (data) => {
 		try {
+			const course = await updateCourseTitle({ courseId: courseId, ...data });
+			// console.log(course);
+			// toast.success("Course updated");
+			toggleEdit();
+			router.refresh();
 		} catch (error) {
 			toast.error("Something went wrong");
 		}
@@ -55,7 +62,7 @@ const TitleForm = ({ initialData = "test", courseId }) => {
 					)}
 				</Button>
 			</div>
-			{!isEditing && <p className="text-sm mt-2">{initialData.title}</p>}
+			{!isEditing && <p className="text-sm mt-2">{initialData?.title}</p>}
 			{isEditing && (
 				<Form {...form}>
 					<form
