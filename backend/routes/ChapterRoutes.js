@@ -26,7 +26,12 @@ router.patch(
 	// upload.single("video"),
 	ChapterController.updateChapter
 );
-router.patch("/reorder/:courseId", ChapterController.updateChapter);
+router.patch(
+	"/reorder/:courseId",
+	passport.authenticate("jwt", { session: false }),
+	canAccess([Roles.CREATOR]),
+	ChapterController.reorderChapter
+);
 router.put("/publish/:chapterId", ChapterController.publishChapter);
 router.put("/unpublish/:chapterId", ChapterController.unPublishChapter);
 router.delete("/delete/:chapterId", ChapterController.deleteChapter);

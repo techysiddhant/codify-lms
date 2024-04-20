@@ -18,7 +18,10 @@ import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { Input } from "@/components/ui/input";
 import ChaptersList from "./chapters-list";
-import { useCreateChapterMutation } from "@/redux/slices/chapterApiSlice";
+import {
+	useCreateChapterMutation,
+	useReorderChapterMutation,
+} from "@/redux/slices/chapterApiSlice";
 
 // import { ChaptersList } from "./chapters-list";
 const formSchema = z.object({
@@ -52,10 +55,14 @@ const ChaptersForm = ({ initialData, courseId }) => {
 			toast.error("Something went wrong");
 		}
 	};
-	const onReorder = async (updateData) => {
+	const [reorderChapters] = useReorderChapterMutation();
+	const onReorder = async (list) => {
+		// console.log(updateData);
 		try {
 			setIsUpdating(true);
 			//LOGIC
+			const data = await reorderChapters({ courseId: courseId, list });
+			console.log(data);
 			toast.success("Chapters reordered");
 			router.refresh();
 		} catch (error) {

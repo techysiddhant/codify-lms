@@ -585,3 +585,15 @@
 {"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-20T06:44:24.642Z"}
 {"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-20T06:44:52.168Z"}
 {"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-20T06:50:35.553Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-20T07:00:56.935Z"}
+{"level":"error","message":"Cannot read properties of undefined (reading 'id')","serviceName":"lms-backend","timestamp":"2024-04-20T07:02:48.084Z"}
+{"level":"error","message":"Cannot read properties of undefined (reading 'id')","serviceName":"lms-backend","timestamp":"2024-04-20T07:03:16.762Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-20T07:03:55.892Z"}
+{"level":"error","message":"\nInvalid `prisma.chapter.update()` invocation:\n\n{\n  where: {\n    id: undefined,\n    userId: 6,\n?   AND?: ChapterWhereInput | ChapterWhereInput[],\n?   OR?: ChapterWhereInput[],\n?   NOT?: ChapterWhereInput | ChapterWhereInput[],\n?   title?: StringFilter | String,\n?   description?: StringNullableFilter | String | Null,\n?   videoUrl?: StringNullableFilter | String | Null,\n?   position?: IntFilter | Int,\n?   isPublished?: BoolFilter | Boolean,\n?   isFree?: BoolFilter | Boolean,\n?   courseId?: StringFilter | String,\n?   createdAt?: DateTimeFilter | DateTime,\n?   updatedAt?: DateTimeFilter | DateTime,\n?   course?: CourseRelationFilter | CourseWhereInput,\n?   muxData?: MuxDataNullableRelationFilter | MuxDataWhereInput | Null,\n?   attachment?: AttachmentListRelationFilter,\n?   userProgress?: UserProgressListRelationFilter\n  },\n  data: {\n    description: undefined,\n    videoUrl: undefined,\n    position: undefined,\n    isFree: undefined,\n    title: undefined\n  }\n}\n\nArgument `where` of type ChapterWhereUniqueInput needs at least one of `id` arguments. Available options are marked with ?.","serviceName":"lms-backend","timestamp":"2024-04-20T07:04:08.323Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-20T07:04:55.826Z"}
+{"level":"error","message":"list is not iterable","serviceName":"lms-backend","timestamp":"2024-04-20T07:05:15.025Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-20T07:05:59.582Z"}
+{"level":"error","message":"list is not iterable","serviceName":"lms-backend","timestamp":"2024-04-20T07:06:05.999Z"}
+{"level":"error","message":"list is not iterable","serviceName":"lms-backend","timestamp":"2024-04-20T07:06:46.316Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-20T07:07:39.919Z"}
+{"level":"error","message":"list is not iterable","serviceName":"lms-backend","timestamp":"2024-04-20T07:07:44.030Z"}

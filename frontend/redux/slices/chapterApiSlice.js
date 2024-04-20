@@ -22,10 +22,18 @@ export const chapterApiSlice = apiSlice.injectEndpoints({
 				body: { ...data },
 			}),
 		}),
+		reorderChapter: builder.mutation({
+			query: (data) => ({
+				url: `/chapter/reorder/${data.courseId}`,
+				method: "PATCH",
+				body: { ...data },
+			}),
+		}),
 	}),
 });
 export const {
 	useCreateChapterMutation,
 	useGetChapterQuery,
 	useUpdateChapterMutation,
+	useReorderChapterMutation,
 } = chapterApiSlice;

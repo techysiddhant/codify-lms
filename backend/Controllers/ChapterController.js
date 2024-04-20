@@ -123,12 +123,15 @@ class ChapterController {
 		try {
 			const { courseId } = req.params;
 			const { list } = req.body;
+			const { data } = req.body;
+			console.log(data);
+			console.log(list);
 			const user = req.user;
 			// FIXME: fix the user
 			const ownCourse = await prisma.course.findUnique({
 				where: {
 					id: courseId,
-					userId: 1,
+					userId: user.id,
 				},
 			});
 			if (!ownCourse) {
