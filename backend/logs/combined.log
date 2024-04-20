@@ -597,3 +597,4 @@
 {"level":"error","message":"list is not iterable","serviceName":"lms-backend","timestamp":"2024-04-20T07:06:46.316Z"}
 {"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-20T07:07:39.919Z"}
 {"level":"error","message":"list is not iterable","serviceName":"lms-backend","timestamp":"2024-04-20T07:07:44.030Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-20T07:08:05.859Z"}
