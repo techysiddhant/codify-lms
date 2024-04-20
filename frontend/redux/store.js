@@ -4,6 +4,7 @@ import { userApiSlice } from "./slices/userApiSlice";
 import { categoryApiSlice } from "./slices/categoryApiSlice";
 import { courseApiSlice } from "./slices/courseApiSlice";
 import { apiSlice } from "./slices/apiSlice";
+import { chapterApiSlice } from "./slices/chapterApiSlice";
 
 export const store = configureStore({
 	reducer: {
@@ -13,12 +14,14 @@ export const store = configureStore({
 		[userApiSlice.reducerPath]: userApiSlice.reducer,
 		[categoryApiSlice.reducerPath]: categoryApiSlice.reducer,
 		[courseApiSlice.reducerPath]: courseApiSlice.reducer,
+		[chapterApiSlice.reducerPath]: chapterApiSlice.reducer,
 	},
 	middleware: (getDefaultMiddleware) =>
 		getDefaultMiddleware().concat(
 			userApiSlice.middleware,
 			courseApiSlice.middleware,
 			apiSlice.middleware,
-			categoryApiSlice.middleware
+			categoryApiSlice.middleware,
+			chapterApiSlice.middleware
 		),
 });

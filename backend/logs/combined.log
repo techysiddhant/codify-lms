@@ -573,3 +573,14 @@
 {"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-19T08:10:12.256Z"}
 {"level":"error","message":"\nInvalid `prisma.course.update()` invocation:\n\n\nAn operation failed because it depends on one or more records that were required but not found. Record to update not found.","serviceName":"lms-backend","timestamp":"2024-04-19T08:21:10.179Z"}
 {"level":"error","message":"\nInvalid `prisma.course.update()` invocation:\n\n\nAn operation failed because it depends on one or more records that were required but not found. Record to update not found.","serviceName":"lms-backend","timestamp":"2024-04-19T08:22:29.627Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-20T05:36:27.676Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-20T06:18:38.624Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-20T06:19:16.199Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-20T06:32:58.200Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-20T06:33:05.353Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-20T06:33:08.498Z"}
+{"level":"error","message":"prisma.findUnique is not a function","serviceName":"lms-backend","timestamp":"2024-04-20T06:39:40.607Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-20T06:40:31.076Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-20T06:43:31.059Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-20T06:44:24.642Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-20T06:44:52.168Z"}

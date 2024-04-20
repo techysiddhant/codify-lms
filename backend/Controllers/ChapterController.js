@@ -19,6 +19,7 @@ class ChapterController {
 			const lastChapter = await prisma.chapter.findFirst({
 				where: {
 					courseId: courseId,
+					userId: user.id,
 				},
 				orderBy: {
 					position: "desc",
@@ -30,10 +31,22 @@ class ChapterController {
 					title: title,
 					courseId: courseId,
 					position: newPosition,
-					userId: 1,
+					userId: user.id,
 				},
 			});
 			return res.status(201).json(chapter);
+		} catch (error) {
+			next(error);
+		}
+	}
+	static async getChapter(req, res, next) {
+		try {
+			const { chapterId } = req.params;
+			const user = req.user;
+			const chapter = await prisma.chapter.findUnique({
+				where: { id: chapterId, userId: user.id },
+			});
+			return res.status(200).json(chapter);
 		} catch (error) {
 			next(error);
 		}
@@ -44,19 +57,20 @@ class ChapterController {
 			const { chapterId } = req.params;
 			const user = req.user;
 			// const video = req.file;
-			const { description, videoUrl, position, isFree } = req.body;
+			const { description, videoUrl, position, isFree, title } = req.body;
 			// console.log("VIDEO: ", video);
 			const chapter = await prisma.chapter.update({
 				where: {
 					id: chapterId,
 					//FIXME: add dynamic value
-					userId: 1,
+					userId: user.id,
 				},
 				data: {
 					description,
 					videoUrl,
 					position,
 					isFree,
+					title,
 				},
 			});
 			//TODO: Cloudinary upload cost us more timing so try to upload from frontend using uploadthing
@@ -100,7 +114,7 @@ class ChapterController {
 					},
 				});
 			}
-			return res.status(200).json({ chapter });
+			return res.status(200).json(chapter);
 		} catch (error) {
 			next(error);
 		}

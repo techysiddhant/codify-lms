@@ -18,6 +18,7 @@ import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { Input } from "@/components/ui/input";
 import ChaptersList from "./chapters-list";
+import { useCreateChapterMutation } from "@/redux/slices/chapterApiSlice";
 
 // import { ChaptersList } from "./chapters-list";
 const formSchema = z.object({
@@ -38,9 +39,15 @@ const ChaptersForm = ({ initialData, courseId }) => {
 		},
 	});
 	const { isSubmitting, isValid } = form.formState;
+	const [createChapter] = useCreateChapterMutation();
 
-	const onSubmit = (data) => {
+	const onSubmit = async (data) => {
 		try {
+			const chapter = await createChapter({ courseId: courseId, ...data });
+			console.log(chapter);
+			toast.success("Chapter Created Successfully");
+			toggleEdit();
+			router.refresh();
 		} catch (error) {
 			toast.error("Something went wrong");
 		}
