@@ -43,6 +43,7 @@ export default app;
 app.get("/", (req, res) => {
 	res.send(`Server is Running`);
 });
+
 app.use("/api/v1/auth", googleAuthRoutes);
 app.use("/api/v1/auth", githubAuthRoutes);
 app.use("/api/v1/auth", userRoutes);

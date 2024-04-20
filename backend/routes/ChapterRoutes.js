@@ -42,5 +42,11 @@ router.post(
 );
 router.delete("/attachment/:attachmentId", ChapterController.deleteAttachment);
 router.post("/progress/:chapterId", ChapterController.updateUserProgress);
-
+router.post(
+	"/upload-video",
+	passport.authenticate("jwt", { session: false }),
+	canAccess([Roles.CREATOR]),
+	upload.single("video"),
+	ChapterController.uploadVideo
+);
 export default router;

@@ -29,6 +29,14 @@ export const chapterApiSlice = apiSlice.injectEndpoints({
 				body: { ...data },
 			}),
 		}),
+
+		videoUploadChapter: builder.mutation({
+			query: (formData) => ({
+				url: `/chapter/upload-video`,
+				method: "POST",
+				body: formData,
+			}),
+		}),
 	}),
 });
 export const {
@@ -36,4 +44,5 @@ export const {
 	useGetChapterQuery,
 	useUpdateChapterMutation,
 	useReorderChapterMutation,
+	useVideoUploadChapterMutation,
 } = chapterApiSlice;

@@ -45,6 +45,9 @@ class ChapterController {
 			const user = req.user;
 			const chapter = await prisma.chapter.findUnique({
 				where: { id: chapterId, userId: user.id },
+				include: {
+					muxData: true,
+				},
 			});
 			return res.status(200).json(chapter);
 		} catch (error) {
@@ -288,6 +291,72 @@ class ChapterController {
 				},
 			});
 			return res.status(201).json(userProgress);
+		} catch (error) {
+			next(error);
+		}
+	}
+	static async uploadVideo(req, res, next) {
+		try {
+			const mux = new Mux(Config.MUX_TOKEN_ID, Config.MUX_TOKEN_SECRET);
+			const { chapterId } = req.body;
+			const user = req.user;
+			const video = req.file;
+			const folder = "thumbnail";
+			const result = await uploadCloudinary(video.path, folder);
+			if (result == null) {
+				return res
+					.status(404)
+					.json({ errors: [{ error: "Upload failed Try again!" }] });
+			}
+			const existVideo = await prisma.chapter.findUnique({
+				where: { id: chapterId, userId: user.id },
+			});
+			const deleteResult = await deleteUpload(existVideo.videoId, folder, "video");
+			if (deleteResult == null) {
+				return res
+					.status(404)
+					.json({ errors: [{ error: "Delete failed Try again!" }] });
+			}
+			const chapter = await prisma.chapter.update({
+				where: { id: chapterId, userId: user.id },
+				data: {
+					videoUrl: result.secure_url,
+					videoId: result.public_id.split("/")[1],
+				},
+			});
+
+			if (result.secure_url) {
+				const existingMuxData = await prisma.muxData.findFirst({
+					where: {
+						chapterId: chapterId,
+					},
+				});
+
+				if (existingMuxData) {
+					// await Video.Assets.del(existingMuxData.assetId);
+					await mux.video.assets.delete(existingMuxData.assetId);
+					await prisma.muxData.delete({
+						where: {
+							id: existingMuxData.id,
+						},
+					});
+				}
+
+				const asset = await mux.video.assets.create({
+					// input: result.secure_url,
+					input: result.secure_url,
+					playback_policy: "public",
+					test: false,
+				});
+				await prisma.muxData.create({
+					data: {
+						chapterId: chapterId,
+						assetId: asset.id,
+						playbackId: asset.playback_ids?.[0]?.id,
+					},
+				});
+			}
+			return res.status(201).json(chapter);
 		} catch (error) {
 			next(error);
 		}

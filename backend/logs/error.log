@@ -131,3 +131,9 @@
 {"level":"error","message":"list is not iterable","serviceName":"lms-backend","timestamp":"2024-04-20T07:06:05.999Z"}
 {"level":"error","message":"list is not iterable","serviceName":"lms-backend","timestamp":"2024-04-20T07:06:46.316Z"}
 {"level":"error","message":"list is not iterable","serviceName":"lms-backend","timestamp":"2024-04-20T07:07:44.030Z"}
+{"level":"error","message":"File too large","serviceName":"lms-backend","timestamp":"2024-04-20T10:51:26.539Z"}
+{"level":"error","message":"Cannot read properties of undefined (reading 'path')","serviceName":"lms-backend","timestamp":"2024-04-20T10:51:49.765Z"}
+{"level":"error","message":"Cannot read properties of undefined (reading 'path')","serviceName":"lms-backend","timestamp":"2024-04-20T10:53:20.095Z"}
+{"level":"error","message":"\nInvalid `prisma.chapter.update()` invocation:\n\n\nAn operation failed because it depends on one or more records that were required but not found. Record to update not found.","serviceName":"lms-backend","timestamp":"2024-04-20T10:54:24.861Z"}
+{"level":"error","message":"\nInvalid `prisma.user.findUnique()` invocation:\n\n\nCan't reach database server at `ep-misty-firefly-a10sv9nf.ap-southeast-1.aws.neon.tech`:`5432`\n\nPlease make sure your database server is running at `ep-misty-firefly-a10sv9nf.ap-southeast-1.aws.neon.tech`:`5432`.","serviceName":"lms-backend","timestamp":"2024-04-20T11:10:38.414Z"}
+{"level":"error","message":"EPERM: operation not permitted, open 'D:\\PRO-Projects\\lms-backend\\backend\\public\\temp\\flow.mp4'","serviceName":"lms-backend","timestamp":"2024-04-20T11:33:03.905Z"}

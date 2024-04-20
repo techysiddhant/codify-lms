@@ -26,12 +26,15 @@ const uploadCloudinary = async (localFilePath, folder) => {
 		return null;
 	}
 };
-export const deleteUpload = async (publicId, folder) => {
+export const deleteUpload = async (publicId, folder, type) => {
 	try {
 		if (!publicId || !folder) {
 			return null;
 		}
-		const resp = await cloudinary.uploader.destroy(`${folder + "/" + publicId}`);
+		const resp = await cloudinary.uploader.destroy(`${folder + "/" + publicId}`, {
+			invalidate: true,
+			resource_type: type,
+		});
 		return resp;
 	} catch (error) {
 		console.log(error);

@@ -6,23 +6,37 @@ import { Pencil, PlusCircle, Video } from "lucide-react";
 import { useState } from "react";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
-// import { Chapter, MuxData } from "@prisma/client";
-import Image from "next/image";
-
+import {
+	Form,
+	FormControl,
+	FormField,
+	FormItem,
+	FormLabel,
+	FormMessage,
+} from "@/components/ui/form";
 import { Button } from "@/components/ui/button";
-// import { FileUpload } from "@/components/file-upload";
-const formSchema = z.object({
-	videoUrl: z.string().min(1),
-});
+import { useForm } from "react-hook-form";
+import Image from "next/image";
+import { Input } from "@/components/ui/input";
+import { useVideoUploadChapterMutation } from "@/redux/slices/chapterApiSlice";
 
 const ChapterVideoForm = ({ initialData, courseId, chapterId }) => {
 	const [isEditing, setIsEditing] = useState(false);
 
 	const toggleEdit = () => setIsEditing((current) => !current);
-
+	const form = useForm({
+		// resolver: zodResolver(formSchema),
+	});
 	const router = useRouter();
-	const onSubmit = async (values) => {
+	const [uploadVideo] = useVideoUploadChapterMutation();
+	const onSubmit = async (data) => {
+		const formData = new FormData();
+		console.log(data.video);
+		formData.append("video", data?.video);
+		formData.append("chapterId", chapterId);
 		try {
+			const data = await uploadVideo(formData).unwrap();
+			console.log(data);
 			// await axios.patch(`/api/courses/${courseId}/chapters/${chapterId}`, values);
 			toast.success("Chapter updated");
 			toggleEdit();
@@ -67,6 +81,37 @@ const ChapterVideoForm = ({ initialData, courseId, chapterId }) => {
 				))}
 			{isEditing && (
 				<div>
+					<Form {...form}>
+						<form
+							onSubmit={form.handleSubmit(onSubmit)}
+							className="w-full p-10"
+						>
+							<FormField
+								control={form.control}
+								name="video"
+								render={({ field }) => {
+									return (
+										<FormItem>
+											<FormLabel>File</FormLabel>
+											<FormControl>
+												<Input
+													type="file"
+													placeholder="shadcn"
+													// accept="image/png, image/jpeg"
+													// {...imageRef}
+													onChange={(event) => {
+														field.onChange(event.target?.files?.[0]);
+													}}
+												/>
+											</FormControl>
+											<FormMessage />
+										</FormItem>
+									);
+								}}
+							/>
+							<Button type="submit">Submit</Button>
+						</form>
+					</Form>
 					{/* <FileUpload
 						endpoint="chapterVideo"
 						onChange={(url) => {
