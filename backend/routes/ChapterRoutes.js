@@ -32,16 +32,32 @@ router.patch(
 	canAccess([Roles.CREATOR]),
 	ChapterController.reorderChapter
 );
-router.put("/publish/:chapterId", ChapterController.publishChapter);
-router.put("/unpublish/:chapterId", ChapterController.unPublishChapter);
+router.put(
+	"/publish/:chapterId",
+	passport.authenticate("jwt", { session: false }),
+	canAccess([Roles.CREATOR]),
+	ChapterController.publishChapter
+);
+router.put(
+	"/unpublish/:chapterId",
+	passport.authenticate("jwt", { session: false }),
+	canAccess([Roles.CREATOR]),
+	ChapterController.unPublishChapter
+);
 router.delete("/delete/:chapterId", ChapterController.deleteChapter);
 router.post(
-	"/attachment/:chapterId",
+	"/attachment",
 	upload.single("file"),
 	ChapterController.addAttachment
 );
 router.delete("/attachment/:attachmentId", ChapterController.deleteAttachment);
 router.post("/progress/:chapterId", ChapterController.updateUserProgress);
+router.delete(
+	"/:chapterId",
+	passport.authenticate("jwt", { session: false }),
+	canAccess([Roles.CREATOR]),
+	ChapterController.deleteChapter
+);
 router.post(
 	"/upload-video",
 	passport.authenticate("jwt", { session: false }),

@@ -47,6 +47,7 @@ class ChapterController {
 				where: { id: chapterId, userId: user.id },
 				include: {
 					muxData: true,
+					attachments: true,
 				},
 			});
 			return res.status(200).json(chapter);
@@ -175,11 +176,11 @@ class ChapterController {
 			const user = req.user;
 			const chapter = await prisma.chapter.findUnique({
 				// FIXME: add dynamic user
-				where: { id: chapterId, userId: 1 },
+				where: { id: chapterId, userId: user.id },
 			});
 			const muxData = await prisma.muxData.findUnique({
 				where: {
-					chapterId: params.chapterId,
+					chapterId: chapterId,
 				},
 			});
 			if (
@@ -194,7 +195,7 @@ class ChapterController {
 					.json({ errors: [{ error: "Fill the all Details of the chapters" }] });
 			}
 			const publishedChapter = await prisma.chapter.update({
-				where: { id: chapterId, userId: 1 },
+				where: { id: chapterId, userId: user.id },
 				data: {
 					isPublished: true,
 				},
@@ -210,7 +211,7 @@ class ChapterController {
 			const user = req.user;
 			const unPublishChapter = await prisma.chapter.update({
 				// FIXME: add the dynamic user
-				where: { id: chapterId, userId: 1 },
+				where: { id: chapterId, userId: user.id },
 				data: {
 					isPublished: false,
 				},
@@ -222,7 +223,7 @@ class ChapterController {
 	}
 	static async addAttachment(req, res, next) {
 		try {
-			const { chapterId } = req.params;
+			const { chapterId } = req.body;
 			const file = req.file;
 			const folder = "attachment";
 			const result = await uploadCloudinary(file.path, folder);
@@ -357,6 +358,54 @@ class ChapterController {
 				});
 			}
 			return res.status(201).json(chapter);
+		} catch (error) {
+			next(error);
+		}
+	}
+	static async deleteChapter(req, res, next) {
+		try {
+			const mux = new Mux(Config.MUX_TOKEN_ID, Config.MUX_TOKEN_SECRET);
+			const { chapterId } = req.params;
+			const user = req.user;
+			const chapter = await prisma.chapter.findUnique({
+				where: { id: chapterId, userId: user.id },
+				include: {
+					attachments: true,
+					muxData: true,
+				},
+			});
+			// DELETE: Attachments;
+			// const folder = "attachment";
+			for (const attachment of chapter.attachments) {
+				// console.log("attachment :", attachment);
+				if (attachment?.publicId) {
+					const result = await deleteUpload(attachment.publicId, "attachment");
+					if (result == null) {
+						return res
+							.status(404)
+							.json({ errors: [{ error: "Delete failed Try again!" }] });
+					}
+					// console.log("Result :", result);
+				}
+			}
+			//DELETE Cloudinary VIDEO;
+			if (chapter.videoUrl || chapter.videoId) {
+				const result = await deleteUpload(chapter.videoId, "thumbnail", "video");
+				if (result == null) {
+					return res
+						.status(404)
+						.json({ errors: [{ error: "Delete failed Try again!" }] });
+				}
+			}
+			// DELETE MUX DATA;
+			if (chapter.muxData) {
+				// console.log(chapter.muxData);
+				await mux.video.assets.delete(chapter.muxData.assetId);
+			}
+			await prisma.chapter.delete({
+				where: { id: chapterId, userId: user.id },
+			});
+			return res.status(200).json({ message: "success!" });
 		} catch (error) {
 			next(error);
 		}

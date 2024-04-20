@@ -2,8 +2,6 @@
 import { redirect } from "next/navigation";
 import Link from "next/link";
 import { ArrowLeft, Eye, LayoutDashboard, Video } from "lucide-react";
-
-// import { db } from "@/lib/db";
 import IconBadge from "@/components/icon-badge";
 import Banner from "@/components/banner";
 import ChapterTitleForm from "./chapter-title-form";
@@ -11,17 +9,23 @@ import ChapterDescriptionForm from "./chapter-description-form";
 import ChapterAccessForm from "./chapter-access-form";
 import ChapterVideoForm from "./chapter-video-form";
 import { useGetChapterQuery } from "@/redux/slices/chapterApiSlice";
+import { File } from "lucide-react";
+import AttachmentForm from "./attachment-form";
+import ChapterActions from "./actions";
 
 const ChapterId = ({ chapterId, courseId }) => {
 	const { data: chapter } = useGetChapterQuery({ chapterId: chapterId });
-	// console.log(chapter);
-	// const requiredFields = [chapter.title, chapter.description, chapter.videoUrl];
-	// const totalFields = requiredFields.length;
-	// const completedFields = requiredFields.filter(Boolean).length;
+	const requiredFields = [
+		chapter?.title,
+		chapter?.description,
+		chapter?.videoUrl,
+	];
+	const totalFields = requiredFields.length;
+	const completedFields = requiredFields.filter(Boolean).length;
 
-	// const completionText = `(${completedFields}/${totalFields})`;
+	const completionText = `(${completedFields}/${totalFields})`;
 
-	// const isComplete = requiredFields.every(Boolean);
+	const isComplete = requiredFields.every(Boolean);
 	return (
 		<>
 			{!chapter?.isPublished && (
@@ -44,15 +48,15 @@ const ChapterId = ({ chapterId, courseId }) => {
 							<div className="flex flex-col gap-y-2">
 								<h1 className="text-2xl font-medium">Chapter Creation</h1>
 								<span className="text-sm text-slate-700">
-									{/* Complete all fields {completionText} */}
+									Complete all fields {completionText}
 								</span>
 							</div>
-							{/* <ChapterActions
+							<ChapterActions
 								disabled={!isComplete}
-								courseId={params?.courseId}
-								chapterId={params?.chapterId}
+								courseId={courseId}
+								chapterId={chapterId}
 								isPublished={chapter?.isPublished}
-							/> */}
+							/>
 						</div>
 					</div>
 				</div>
@@ -95,6 +99,16 @@ const ChapterId = ({ chapterId, courseId }) => {
 							initialData={chapter}
 							chapterId={chapterId}
 							courseId={courseId}
+						/>
+					</div>
+					<div>
+						<div className="flex items-center gap-x-2">
+							<IconBadge icon={File} />
+							<h2 className="text-xl">Resources & Attachments</h2>
+						</div>
+						<AttachmentForm
+							initialData={chapter}
+							chapterId={chapterId}
 						/>
 					</div>
 				</div>

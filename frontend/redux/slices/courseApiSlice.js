@@ -51,6 +51,14 @@ export const courseApiSlice = apiSlice.injectEndpoints({
 				};
 			},
 		}),
+		publishCourse: builder.mutation({
+			query: (courseId) => {
+				return {
+					url: `/course/publish/${courseId}`,
+					method: "PUT",
+				};
+			},
+		}),
 	}),
 });
 
@@ -61,4 +69,5 @@ export const {
 	useGetCreatorCourseQuery,
 	useUpdateCreatorCourseMutation,
 	useAddCreatorCourseImageMutation,
+	usePublishCourseMutation,
 } = courseApiSlice;

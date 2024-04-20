@@ -15,6 +15,7 @@ import CategoryForm from "./category-form";
 import PriceForm from "./price-form";
 import ChaptersForm from "./chapters-form";
 import { useGetCategoriesQuery } from "@/redux/slices/categoryApiSlice";
+import Actions from "./actions";
 
 const CoursePageMain = ({ courseId }) => {
 	const { data: course } = useGetCreatorCourseQuery(courseId);
@@ -58,11 +59,11 @@ const CoursePageMain = ({ courseId }) => {
 							Complete all fields {completionText}
 						</span>
 					</div>
-					{/* <Actions
+					<Actions
 						disabled={!isComplete}
 						courseId={courseId}
-						isPublished={course.isPublished}
-					/> */}
+						isPublished={course?.isPublished}
+					/>
 				</div>
 				<div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-16">
 					<div>
@@ -114,16 +115,16 @@ const CoursePageMain = ({ courseId }) => {
 								courseId={course?.id}
 							/>
 						</div>
-						<div>
+						{/* <div>
 							<div className="flex items-center gap-x-2">
 								<IconBadge icon={File} />
 								<h2 className="text-xl">Resources & Attachments</h2>
 							</div>
-							{/* <AttachmentForm
+							<AttachmentForm
 								initialData={course}
 								courseId={course.id}
-							/> */}
-						</div>
+							/>
+						</div> */}
 					</div>
 				</div>
 			</div>

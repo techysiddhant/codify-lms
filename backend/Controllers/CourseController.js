@@ -260,6 +260,45 @@ class CourseController {
 			next(error);
 		}
 	}
+	static async publishCourse(req, res, next) {
+		try {
+			const { courseId } = req.params;
+			const user = req.user;
+			const course = await prisma.course.findUnique({
+				where: { id: courseId, userId: user.id },
+				include: {
+					chapters: {
+						include: {
+							muxData: true,
+						},
+					},
+				},
+			});
+			const hasPublishedChapter = course.chapters.some(
+				(chapter) => chapter.isPublished
+			);
+			if (
+				!course.title ||
+				!course.description ||
+				!course.imageUrl ||
+				!course.categoryId ||
+				!hasPublishedChapter
+			) {
+				return res
+					.status(401)
+					.json({ errors: [{ error: "Fill the all Details of the chapters" }] });
+			}
+			const publishedCourse = await prisma.course.update({
+				where: { id: courseId, userId: user.id },
+				data: {
+					isPublished: true,
+				},
+			});
+			return res.status(200).json(publishedCourse);
+		} catch (error) {
+			next(error);
+		}
+	}
 }
 
 export default CourseController;

@@ -47,5 +47,22 @@ router.get(
 	canAccess([Roles.CREATOR]),
 	CourseController.getCourseForCreator
 );
-
+router.put(
+	"/publish/:courseId",
+	passport.authenticate("jwt", { session: false }),
+	canAccess([Roles.CREATOR]),
+	CourseController.publishCourse
+);
+// router.put(
+// 	"/unpublish/:chapterId",
+// 	passport.authenticate("jwt", { session: false }),
+// 	canAccess([Roles.CREATOR]),
+// 	ChapterController.unPublishChapter
+// );
+router.delete(
+	"/publish/:courseId",
+	passport.authenticate("jwt", { session: false }),
+	canAccess([Roles.CREATOR]),
+	CourseController.publishCourse
+);
 export default router;

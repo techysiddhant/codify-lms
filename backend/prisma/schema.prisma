@@ -70,7 +70,7 @@ model Chapter {
   createdAt    DateTime       @default(now())
   updatedAt    DateTime       @updatedAt
   muxData      MuxData?
-  attachment   Attachment[]
+  attachments  Attachment[]
   userProgress UserProgress[]
 
   @@index([courseId])

@@ -37,6 +37,37 @@ export const chapterApiSlice = apiSlice.injectEndpoints({
 				body: formData,
 			}),
 		}),
+		addAttachment: builder.mutation({
+			query: (formData) => ({
+				url: `/chapter/attachment`,
+				method: "POST",
+				body: formData,
+			}),
+		}),
+		removeAttachment: builder.mutation({
+			query: (id) => ({
+				url: `/chapter/attachment/${id}`,
+				method: "DELETE",
+			}),
+		}),
+		publishChapter: builder.mutation({
+			query: (chapterId) => ({
+				url: `/chapter/publish/${chapterId}`,
+				method: "PUT",
+			}),
+		}),
+		unPublishChapter: builder.mutation({
+			query: (chapterId) => ({
+				url: `/chapter/unpublish/${chapterId}`,
+				method: "PUT",
+			}),
+		}),
+		deleteChapter: builder.mutation({
+			query: (chapterId) => ({
+				url: `/chapter/${chapterId}`,
+				method: "DELETE",
+			}),
+		}),
 	}),
 });
 export const {
@@ -45,4 +76,9 @@ export const {
 	useUpdateChapterMutation,
 	useReorderChapterMutation,
 	useVideoUploadChapterMutation,
+	useAddAttachmentMutation,
+	useRemoveAttachmentMutation,
+	usePublishChapterMutation,
+	useUnPublishChapterMutation,
+	useDeleteChapterMutation,
 } = chapterApiSlice;

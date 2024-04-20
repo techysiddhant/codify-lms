@@ -4,6 +4,7 @@ import ReduxProvider from "@/redux/ReduxProvider";
 import { Toaster } from "@/components/ui/sonner";
 import ToastProvider from "@/providers/toaster-provider";
 import CheckProvider from "@/providers/check-provider";
+import ConfettiProvider from "@/components/providers/confetti-provider";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
@@ -15,6 +16,7 @@ export default function RootLayout({ children }) {
 	return (
 		<html lang="en">
 			<body className={inter.className}>
+				<ConfettiProvider />
 				<Toaster />
 				<ToastProvider />
 				{/* {children} */}
