@@ -837,3 +837,4 @@
 {"level":"error","message":"Cannot read properties of null (reading 'isFree')","serviceName":"lms-backend","timestamp":"2024-04-22T19:12:34.987Z"}
 {"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-22T19:16:32.734Z"}
 {"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-22T19:17:33.192Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-22T19:19:28.317Z"}
