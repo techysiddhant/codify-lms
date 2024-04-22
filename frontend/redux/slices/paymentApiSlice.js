@@ -8,6 +8,13 @@ export const paymentApiSlice = apiSlice.injectEndpoints({
 				method: "GET",
 			}),
 		}),
+		checkout: builder.mutation({
+			query: (courseId) => ({
+				url: `/payment/checkout/${courseId}`,
+				method: "POST",
+				// body: { ...data },
+			}),
+		}),
 	}),
 });
-export const { useGetUserPurchaseQuery } = paymentApiSlice;
+export const { useGetUserPurchaseQuery, useCheckoutMutation } = paymentApiSlice;

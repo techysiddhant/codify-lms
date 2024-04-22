@@ -789,3 +789,51 @@
 {"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-22T11:48:20.085Z"}
 {"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-22T11:50:03.997Z"}
 {"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-22T11:50:25.115Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-22T14:12:31.904Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-22T14:25:06.600Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-22T14:35:20.007Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-22T14:37:37.140Z"}
+{"level":"error","message":"Cannot read properties of undefined (reading 'id')","serviceName":"lms-backend","timestamp":"2024-04-22T14:42:25.343Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-22T14:43:04.005Z"}
+{"level":"error","message":"Cannot read properties of null (reading 'isFree')","serviceName":"lms-backend","timestamp":"2024-04-22T14:46:08.458Z"}
+{"level":"error","message":"Cannot read properties of null (reading 'isFree')","serviceName":"lms-backend","timestamp":"2024-04-22T14:46:32.845Z"}
+{"level":"error","message":"Cannot read properties of null (reading 'isFree')","serviceName":"lms-backend","timestamp":"2024-04-22T14:46:58.856Z"}
+{"level":"error","message":"Cannot read properties of null (reading 'isFree')","serviceName":"lms-backend","timestamp":"2024-04-22T14:47:49.108Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-22T16:36:33.531Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-22T17:46:14.470Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-22T17:50:29.657Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-22T17:54:54.056Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-22T18:00:38.538Z"}
+{"level":"error","message":"Cannot read properties of null (reading 'isFree')","serviceName":"lms-backend","timestamp":"2024-04-22T18:00:45.840Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-22T18:06:54.366Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-22T18:13:17.918Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-22T18:13:54.545Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-22T18:15:15.911Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-22T18:20:06.470Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-22T18:21:52.616Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-22T18:24:24.798Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-22T18:24:50.684Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-22T18:27:31.555Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-22T18:28:05.191Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-22T18:28:14.836Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-22T18:28:28.782Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-22T18:28:57.182Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-22T18:30:55.891Z"}
+{"level":"error","message":"Cannot read properties of null (reading 'isFree')","serviceName":"lms-backend","timestamp":"2024-04-22T18:31:36.381Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-22T18:34:48.918Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-22T18:35:46.638Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-22T18:42:11.853Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-22T18:44:06.392Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-22T18:47:57.549Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-22T18:48:44.020Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-22T18:56:56.460Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-22T18:58:35.159Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-22T19:03:25.805Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-22T19:04:09.533Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-22T19:05:11.903Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-22T19:08:57.883Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-22T19:12:02.805Z"}
+{"level":"error","message":"Cannot read properties of null (reading 'isFree')","serviceName":"lms-backend","timestamp":"2024-04-22T19:12:22.056Z"}
+{"level":"error","message":"Cannot read properties of null (reading 'isFree')","serviceName":"lms-backend","timestamp":"2024-04-22T19:12:34.987Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-22T19:16:32.734Z"}
+{"level":"info","message":"Server is Working on PORT:5000","serviceName":"lms-backend","timestamp":"2024-04-22T19:17:33.192Z"}

@@ -203,3 +203,12 @@
 {"level":"error","message":"Cannot read properties of null (reading 'isFree')","serviceName":"lms-backend","timestamp":"2024-04-22T11:01:56.066Z"}
 {"level":"error","message":"Cannot read properties of null (reading 'isFree')","serviceName":"lms-backend","timestamp":"2024-04-22T11:04:36.431Z"}
 {"level":"error","message":"Cannot read properties of null (reading 'isFree')","serviceName":"lms-backend","timestamp":"2024-04-22T11:10:16.028Z"}
+{"level":"error","message":"Cannot read properties of undefined (reading 'id')","serviceName":"lms-backend","timestamp":"2024-04-22T14:42:25.343Z"}
+{"level":"error","message":"Cannot read properties of null (reading 'isFree')","serviceName":"lms-backend","timestamp":"2024-04-22T14:46:08.458Z"}
+{"level":"error","message":"Cannot read properties of null (reading 'isFree')","serviceName":"lms-backend","timestamp":"2024-04-22T14:46:32.845Z"}
+{"level":"error","message":"Cannot read properties of null (reading 'isFree')","serviceName":"lms-backend","timestamp":"2024-04-22T14:46:58.856Z"}
+{"level":"error","message":"Cannot read properties of null (reading 'isFree')","serviceName":"lms-backend","timestamp":"2024-04-22T14:47:49.108Z"}
+{"level":"error","message":"Cannot read properties of null (reading 'isFree')","serviceName":"lms-backend","timestamp":"2024-04-22T18:00:45.840Z"}
+{"level":"error","message":"Cannot read properties of null (reading 'isFree')","serviceName":"lms-backend","timestamp":"2024-04-22T18:31:36.381Z"}
+{"level":"error","message":"Cannot read properties of null (reading 'isFree')","serviceName":"lms-backend","timestamp":"2024-04-22T19:12:22.056Z"}
+{"level":"error","message":"Cannot read properties of null (reading 'isFree')","serviceName":"lms-backend","timestamp":"2024-04-22T19:12:34.987Z"}

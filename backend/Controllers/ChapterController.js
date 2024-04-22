@@ -499,7 +499,7 @@ class ChapterController {
 			if (purchase) {
 				attachments = await prisma.attachment.findMany({
 					where: {
-						courseId: courseId,
+						chapterId: chapterId,
 					},
 				});
 			}
