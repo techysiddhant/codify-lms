@@ -158,17 +158,23 @@ class CourseController {
 	static async getCourse(req, res, next) {
 		try {
 			const { courseId } = req.params;
+			const user = req.user;
 			const course = await prisma.course.findUnique({
 				where: { id: courseId },
 				include: {
-					user: {
-						select: {
-							name: true,
+					chapters: {
+						where: {
+							isPublished: true,
 						},
-					},
-					category: {
-						select: {
-							name: true,
+						include: {
+							userProgress: {
+								where: {
+									userId: user.id,
+								},
+							},
+						},
+						orderBy: {
+							position: "asc",
 						},
 					},
 				},
@@ -295,6 +301,29 @@ class CourseController {
 				},
 			});
 			return res.status(200).json(publishedCourse);
+		} catch (error) {
+			next(error);
+		}
+	}
+	static async getDashboardCourse(req, res, next) {
+		try {
+			const user = req.user;
+			const purchasedCourses = await prisma.purchase.findMany({
+				where: { userId: user.id },
+				select: {
+					course: {
+						include: {
+							category: true,
+							chapters: {
+								where: {
+									isPublished: true,
+								},
+							},
+						},
+					},
+				},
+			});
+			return res.status(200).json(purchasedCourses);
 		} catch (error) {
 			next(error);
 		}

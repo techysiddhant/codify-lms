@@ -12,6 +12,13 @@ router.get(
 	canAccess([Roles.CREATOR]),
 	ChapterController.getChapter
 );
+
+router.get(
+	"/get-progress/:courseId",
+	passport.authenticate("jwt", { session: false }),
+	canAccess([Roles.USER]),
+	ChapterController.getProgress
+);
 router.post(
 	"/create/:courseId",
 	passport.authenticate("jwt", { session: false }),
@@ -65,4 +72,11 @@ router.post(
 	upload.single("video"),
 	ChapterController.uploadVideo
 );
+router.get(
+	"/:chapterId/:courseId",
+	passport.authenticate("jwt", { session: false }),
+	canAccess([Roles.USER]),
+	ChapterController.getUserChapter
+);
+
 export default router;

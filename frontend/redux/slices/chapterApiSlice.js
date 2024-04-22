@@ -68,6 +68,18 @@ export const chapterApiSlice = apiSlice.injectEndpoints({
 				method: "DELETE",
 			}),
 		}),
+		getUserProgress: builder.query({
+			query: (courseId) => ({
+				url: `/chapter/get-progress/${courseId}`,
+				method: "GET",
+			}),
+		}),
+		getUserChapter: builder.query({
+			query: (data) => ({
+				url: `/chapter/${data.chapterId}/${data.courseId}`,
+				method: "GET",
+			}),
+		}),
 	}),
 });
 export const {
@@ -81,4 +93,6 @@ export const {
 	usePublishChapterMutation,
 	useUnPublishChapterMutation,
 	useDeleteChapterMutation,
+	useGetUserProgressQuery,
+	useGetUserChapterQuery,
 } = chapterApiSlice;

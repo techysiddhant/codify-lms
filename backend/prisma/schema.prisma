@@ -103,7 +103,7 @@ model Attachment {
 
 model UserProgress {
   id     String @id @default(uuid())
-  userId String
+  userId Int
 
   chapterId String
   chapter   Chapter @relation(fields: [chapterId], references: [id], onDelete: Cascade)

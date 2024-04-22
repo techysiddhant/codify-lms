@@ -3,8 +3,6 @@ import prisma from "../config/db.config.js";
 import Mux from "@mux/mux-node";
 import { Config } from "../config/index.js";
 import uploadCloudinary, { deleteUpload } from "../utils/cloudinary.js";
-// import { error } from "winston";
-// const { Video } = new Mux(Config.MUX_TOKEN_ID, Config.MUX_TOKEN_SECRET);
 class ChapterController {
 	static async createChapter(req, res, next) {
 		try {
@@ -312,11 +310,17 @@ class ChapterController {
 			const existVideo = await prisma.chapter.findUnique({
 				where: { id: chapterId, userId: user.id },
 			});
-			const deleteResult = await deleteUpload(existVideo.videoId, folder, "video");
-			if (deleteResult == null) {
-				return res
-					.status(404)
-					.json({ errors: [{ error: "Delete failed Try again!" }] });
+			if (existVideo.videoId) {
+				const deleteResult = await deleteUpload(
+					existVideo.videoId,
+					folder,
+					"video"
+				);
+				if (deleteResult == null) {
+					return res
+						.status(404)
+						.json({ errors: [{ error: "Delete failed Try again!" }] });
+				}
 			}
 			const chapter = await prisma.chapter.update({
 				where: { id: chapterId, userId: user.id },
@@ -407,6 +411,146 @@ class ChapterController {
 			});
 			return res.status(200).json({ message: "success!" });
 		} catch (error) {
+			next(error);
+		}
+	}
+	static async getProgress(req, res, next) {
+		try {
+			const { courseId } = req.params;
+			console.log("COURSE :", courseId);
+			const user = req.user;
+			console.log("USER :", user);
+
+			const publishedChapters = await prisma.chapter.findMany({
+				where: { id: courseId, isPublished: true },
+				select: {
+					id: true,
+				},
+			});
+			console.log("Published Chapters :", publishedChapters);
+
+			const publishedChapterIds = publishedChapters.map((chapter) => chapter.id);
+			console.log("publishedChapterIds :", publishedChapterIds);
+
+			const validCompletedChapters = await prisma.userProgress.count({
+				where: {
+					userId: user.id,
+					chapterId: {
+						in: publishedChapterIds,
+					},
+					isCompleted: true,
+				},
+			});
+			console.log("validCompletedChapters type:", typeof validCompletedChapters);
+			const progressPercentage =
+				(validCompletedChapters / publishedChapterIds.length) * 100;
+			console.log("publishedChapterIds.length :", publishedChapterIds.length);
+			console.log(
+				"publishedChapterIds.length type :",
+				typeof publishedChapterIds.length
+			);
+			console.log("progressPercentage :", progressPercentage);
+			return res.status(200).json(progressPercentage);
+		} catch (error) {
+			console.log("2 :", error);
+			next(error);
+		}
+	}
+	static async getUserChapter(req, res, next) {
+		try {
+			const { courseId, chapterId } = req.params;
+			const user = req.user;
+			const purchase = await prisma.purchase.findUnique({
+				where: {
+					userId_courseId: {
+						userId: user.id,
+						courseId,
+					},
+				},
+			});
+
+			const course = await prisma.course.findUnique({
+				where: {
+					isPublished: true,
+					id: courseId,
+				},
+				select: {
+					price: true,
+				},
+			});
+
+			const chapter = await prisma.chapter.findUnique({
+				where: {
+					id: chapterId,
+					isPublished: true,
+				},
+			});
+
+			// if (!chapter || !course) {
+			// 	return res
+			// 		.json(404)
+			// 		.json({ errors: [{ error: "Chapter or course is not found!" }] });
+			// }
+
+			let muxData = null;
+			let attachments = [];
+			let nextChapter = null;
+
+			if (purchase) {
+				attachments = await prisma.attachment.findMany({
+					where: {
+						courseId: courseId,
+					},
+				});
+			}
+			if (chapter.isFree || purchase) {
+				muxData = await prisma.muxData.findUnique({
+					where: {
+						chapterId: chapterId,
+					},
+				});
+
+				nextChapter = await prisma.chapter.findFirst({
+					where: {
+						courseId: courseId,
+						isPublished: true,
+						position: {
+							gt: chapter?.position,
+						},
+					},
+					orderBy: {
+						position: "asc",
+					},
+				});
+			}
+			const userProgress = await prisma.userProgress.findUnique({
+				where: {
+					userId_chapterId: {
+						userId: user.id,
+						chapterId,
+					},
+				},
+			});
+			console.log(
+				chapter,
+				course,
+				muxData,
+				attachments,
+				nextChapter,
+				userProgress,
+				purchase
+			);
+			return res.status(200).json({
+				chapter,
+				course,
+				muxData,
+				attachments,
+				nextChapter,
+				userProgress,
+				purchase,
+			});
+		} catch (error) {
+			console.log("1: ", error);
 			next(error);
 		}
 	}

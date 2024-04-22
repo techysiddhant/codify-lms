@@ -59,6 +59,14 @@ export const courseApiSlice = apiSlice.injectEndpoints({
 				};
 			},
 		}),
+		getUserCourse: builder.query({
+			query: (courseId) => {
+				return {
+					url: `/course/${courseId}`,
+					method: "GET",
+				};
+			},
+		}),
 	}),
 });
 
@@ -70,4 +78,5 @@ export const {
 	useUpdateCreatorCourseMutation,
 	useAddCreatorCourseImageMutation,
 	usePublishCourseMutation,
+	useGetUserCourseQuery,
 } = courseApiSlice;

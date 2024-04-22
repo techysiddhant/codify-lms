@@ -113,6 +113,23 @@ class CheckoutController {
 
 		return res.status(200).json(null);
 	}
+	static async GetCoursePurchase(req, res, next) {
+		try {
+			const user = req.user;
+			const { courseId } = req.params;
+			const purchase = await prisma.purchase.findUnique({
+				where: {
+					userId_courseId: {
+						userId: user.id,
+						courseId,
+					},
+				},
+			});
+			return res.status(200).json(purchase);
+		} catch (error) {
+			next(error);
+		}
+	}
 }
 
 export default CheckoutController;

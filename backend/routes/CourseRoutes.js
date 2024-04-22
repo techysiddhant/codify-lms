@@ -11,7 +11,12 @@ const router = Router();
 router.get("/categories", CourseController.getCategoryList);
 
 router.get("/all", CourseController.index);
-
+router.get(
+	"/user-courses",
+	passport.authenticate("jwt", { session: false }),
+	canAccess([Roles.USER]),
+	CourseController.getDashboardCourse
+);
 router.post(
 	"/create",
 	passport.authenticate("jwt", { session: false }),
@@ -19,7 +24,11 @@ router.post(
 	courseValidator,
 	CourseController.createCourse
 );
-router.get("/:courseId", CourseController.getCourse);
+router.get(
+	"/:courseId",
+	passport.authenticate("jwt", { session: false }),
+	CourseController.getCourse
+);
 router.patch(
 	"/update/:courseId",
 	passport.authenticate("jwt", { session: false }),
