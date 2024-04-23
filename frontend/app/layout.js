@@ -5,6 +5,12 @@ import { Toaster } from "@/components/ui/sonner";
 import ToastProvider from "@/providers/toaster-provider";
 import CheckProvider from "@/providers/check-provider";
 import ConfettiProvider from "@/components/providers/confetti-provider";
+import dynamic from "next/dynamic";
+import Authinitializer from "@/providers/Authinitializer";
+const DyanamicStore = dynamic(() => import("@/redux/ReduxProvider"), {
+	ssr: false,
+	loading: () => <p>Loading ....</p>,
+});
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
@@ -20,8 +26,13 @@ export default function RootLayout({ children }) {
 				<Toaster />
 				<ToastProvider />
 				{/* {children} */}
-				<ReduxProvider>
+				{/* <DyanamicStore>
 					<CheckProvider>{children}</CheckProvider>
+				</DyanamicStore> */}
+				<ReduxProvider>
+					<Authinitializer>
+						<CheckProvider>{children}</CheckProvider>
+					</Authinitializer>
 				</ReduxProvider>
 			</body>
 		</html>

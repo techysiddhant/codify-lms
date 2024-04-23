@@ -28,3 +28,27 @@ export const store = configureStore({
 			paymentApiSlice.middleware
 		),
 });
+
+export const makeStore = () => {
+	return configureStore({
+		reducer: {
+			// posts: postsSlice,
+			auth: authSlice,
+			[apiSlice.reducerPath]: apiSlice.reducer,
+			[userApiSlice.reducerPath]: userApiSlice.reducer,
+			[categoryApiSlice.reducerPath]: categoryApiSlice.reducer,
+			[courseApiSlice.reducerPath]: courseApiSlice.reducer,
+			[chapterApiSlice.reducerPath]: chapterApiSlice.reducer,
+			[paymentApiSlice.reducerPath]: paymentApiSlice.reducer,
+		},
+		middleware: (getDefaultMiddleware) =>
+			getDefaultMiddleware().concat(
+				userApiSlice.middleware,
+				courseApiSlice.middleware,
+				apiSlice.middleware,
+				categoryApiSlice.middleware,
+				chapterApiSlice.middleware,
+				paymentApiSlice.middleware
+			),
+	});
+};
