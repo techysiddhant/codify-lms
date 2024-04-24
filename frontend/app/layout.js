@@ -30,9 +30,9 @@ export default function RootLayout({ children }) {
 					<CheckProvider>{children}</CheckProvider>
 				</DyanamicStore> */}
 				<ReduxProvider>
-					<Authinitializer>
-						<CheckProvider>{children}</CheckProvider>
-					</Authinitializer>
+					{/* <Authinitializer>
+					</Authinitializer> */}
+					<CheckProvider>{children}</CheckProvider>
 				</ReduxProvider>
 			</body>
 		</html>

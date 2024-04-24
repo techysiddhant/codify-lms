@@ -10,8 +10,8 @@ import { Separator } from "@/components/ui/separator";
 import Preview from "@/components/preview";
 const ChapterIdPageComp = ({ courseId, chapterId }) => {
 	const { data } = useGetUserChapterQuery({ courseId, chapterId });
-	console.log(data);
-	console.log(!data?.attachments.length);
+	// console.log(data);
+	// console.log(!data?.attachments.length);
 	// const {
 	// 	chapter,
 	// 	course,
