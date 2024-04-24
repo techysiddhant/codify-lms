@@ -7,6 +7,7 @@ import { ISODateString, Session, User, AuthOptions } from "next-auth";
 import { JWT } from "next-auth/jwt";
 import { Adapter } from "next-auth/adapters";
 import { OAuthConfig } from "next-auth/providers/oauth";
+import { options } from "./options";
 export type CustomSession = {
 	user?: CustomUser;
 	expires: ISODateString;
@@ -18,25 +19,11 @@ export type CustomUser = {
 	role?: string | null;
 	image?: string | null;
 };
-// export type authOptionType = {
-// 	adapter: Adapter;
-// 	providers: OAuthConfig<GoogleProfile>[];
-// 	callbacks: {
-// 		signIn({ account, profile }: any): Promise<boolean>;
-// 		jwt({ token, user }: { token: JWT; user: User }): Promise<JWT>;
-// 		session({
-// 			session,
-// 			token,
-// 			user,
-// 		}: {
-// 			token: JWT;
-// 			user: User;
-// 			session: CustomSession;
-// 		}): Promise<JWT>;
-// 	};
-// };
 export const authOptions: AuthOptions = {
 	adapter: PrismaAdapter(db) as Adapter,
+	session: {
+		strategy: "jwt",
+	  },
 	providers: [
 		GoogleProvider({
 			clientId: Env.GOOGLE_CLIENT_ID,
@@ -44,9 +31,11 @@ export const authOptions: AuthOptions = {
 			allowDangerousEmailAccountLinking: true,
 		}),
 	],
-
+	pages: {
+		signIn: "/auth/signin",
+	  },
 	callbacks: {
-		async signIn({ account, profile }: any) {
+		async signIn({ user,account, profile }) {
 			if (account?.provider === "google") {
 				//Check the email exists or not
 				const existingUser = await db.user.findUnique({
@@ -62,29 +51,31 @@ export const authOptions: AuthOptions = {
 						},
 					});
 				} else {
+					return true;
 				}
 			}
 			return true;
 		},
-		// async jwt({ token, user }: { token: JWT; user: CustomUser }) {
-		// 	if (user) {
-		// 		console.log(user);
-		// 		token.user = user;
-		// 	}
-		// 	return token;
-		// },
-		// async session({
-		// 	session,
-		// 	token,
-		// 	user,
-		// }: {
-		// 	session: CustomSession;
-		// 	token: JWT;
-		// 	user: User;
-		// }) {
-		// 	session.user = token.user as CustomUser;
-		// 	return session;
-		// },
+		async jwt({ token, user }: { token: JWT; user: CustomUser }) {
+			if (user) {
+				user.role = user.role == null ? "USER" : user?.role;
+				token.user = user;
+			}
+			return token;
+		},
+		async session({
+			session,
+			token,
+			user,
+		}: {
+			session: CustomSession;
+			token: JWT;
+			user: User;
+		}) {
+			session.user = token.user as CustomUser;
+			// console.log(session);
+			return session;
+		},
 	},
 };
 const handler = NextAuth(authOptions);
