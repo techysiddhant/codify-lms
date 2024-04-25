@@ -8,6 +8,7 @@ import { JWT } from "next-auth/jwt";
 import { Adapter } from "next-auth/adapters";
 import { OAuthConfig } from "next-auth/providers/oauth";
 import { options } from "./options";
+
 export type CustomSession = {
 	user?: CustomUser;
 	expires: ISODateString;
@@ -26,32 +27,47 @@ export const authOptions: AuthOptions = {
 	  },
 	providers: [
 		GoogleProvider({
+			profile(profile:GoogleProfile){
+				return{
+					...profile,
+					id:profile.sub,
+					image:profile.picture,
+					email_verified:profile.email_verified
+				}
+			},
 			clientId: Env.GOOGLE_CLIENT_ID,
 			clientSecret: Env.GOOGLE_CLIENT_SECRET,
-			allowDangerousEmailAccountLinking: true,
+			// allowDangerousEmailAccountLinking: true,
 		}),
 	],
 	pages: {
-		signIn: "/auth/signin",
+		signIn: "/",
 	  },
 	callbacks: {
-		async signIn({ user,account, profile }) {
+		async signIn({ user,account, profile }:any) {
 			if (account?.provider === "google") {
 				//Check the email exists or not
-				const existingUser = await db.user.findUnique({
-					where: { email: profile?.email },
+				// Write Upsert query
+				const checkUser = await db.user.upsert({
+					where:{email:profile?.email},
+					update:{
+						name:profile?.name,
+						image:profile?.picture,
+						//TODO:Update the SChema first
+						// emailVerified:profile?.email_verified,
+					},
+					create:{
+						name: profile?.name,
+						email: profile?.email,
+						image: profile?.picture,
+						//TODO:Update the SChema first
+						// emailVerified:profile?.email_verified,
+					}
 				});
-				if (!existingUser) {
-					//USER is not exist in DB
-					const newUser = await db.user.create({
-						data: {
-							name: profile?.name,
-							email: profile?.email,
-							image: profile?.image,
-						},
-					});
-				} else {
-					return true;
+				if(checkUser){
+					return true
+				}else{
+					return false
 				}
 			}
 			return true;
