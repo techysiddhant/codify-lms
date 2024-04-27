@@ -24,50 +24,50 @@ export const authOptions: AuthOptions = {
 	adapter: PrismaAdapter(db) as Adapter,
 	session: {
 		strategy: "jwt",
-	  },
+	},
 	providers: [
 		GoogleProvider({
-			profile(profile:GoogleProfile){
-				return{
+			profile(profile: GoogleProfile) {
+				return {
 					...profile,
-					id:profile.sub,
-					image:profile.picture,
-					email_verified:profile.email_verified
-				}
+					id: profile.sub,
+					image: profile.picture,
+					email_verified: profile.email_verified,
+				};
 			},
 			clientId: Env.GOOGLE_CLIENT_ID,
 			clientSecret: Env.GOOGLE_CLIENT_SECRET,
-			// allowDangerousEmailAccountLinking: true,
+			allowDangerousEmailAccountLinking: true,
 		}),
 	],
 	pages: {
 		signIn: "/",
-	  },
+	},
 	callbacks: {
-		async signIn({ user,account, profile }:any) {
+		async signIn({ user, account, profile }: any) {
 			if (account?.provider === "google") {
 				//Check the email exists or not
 				// Write Upsert query
 				const checkUser = await db.user.upsert({
-					where:{email:profile?.email},
-					update:{
-						name:profile?.name,
-						image:profile?.picture,
+					where: { email: profile?.email },
+					update: {
+						name: profile?.name,
+						image: profile?.picture,
 						//TODO:Update the SChema first
 						// emailVerified:profile?.email_verified,
 					},
-					create:{
+					create: {
 						name: profile?.name,
 						email: profile?.email,
 						image: profile?.picture,
 						//TODO:Update the SChema first
 						// emailVerified:profile?.email_verified,
-					}
+					},
 				});
-				if(checkUser){
-					return true
-				}else{
-					return false
+				if (checkUser) {
+					return true;
+				} else {
+					return false;
 				}
 			}
 			return true;

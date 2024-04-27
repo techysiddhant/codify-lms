@@ -117,63 +117,103 @@ import { CustomUser } from "./app/api/auth/[...nextauth]/route";
 
 // This function can be marked `async` if using `await` inside
 export async function middleware(request: NextRequest) {
-  const { pathname } = request.nextUrl;
-  // if (pathname == "/") {
-  //   return NextResponse.next();
-  // }
-  const token = await getToken({ req: request });
-  const user: CustomUser | null = token?.user as CustomUser;
-  const isPublicPath = pathname === "/";
-  // console.log("TOKEN :", token);
-  // console.log("USER :", user);
-  // console.log(request.url);
-  // if(user){
-  //   return NextResponse.redirect(new URL("/creator/create", request.url));
-  // }
-  const adminProtectedRoutes = ["/admin"];
-  const userProtectedRoutes = ["/courses"];
-  // if (!token) {
-  //   // return NextResponse.redirect(new URL("/", request.url));
-  //   return NextResponse.next();
-  // }
-  if(token){
-    console.log("TOKEN :",token);
-    if (
-      adminProtectedRoutes.includes(pathname) &&
-      (user.role === "USER" || user.role === "CREATOR")
-    ) {
-      return NextResponse.redirect(new URL("/", request.url));
-    }
-    if (pathname.startsWith("/courses") && user.role === "CREATOR") {
-      return NextResponse.redirect(new URL("/", request.url));
-    }
-    if (pathname.startsWith("/creator") && user.role === "USER") {
-      return NextResponse.redirect(new URL("/", request.url));
-    }
-  }else{
-    console.log("TOKEN-1",token);
-    if(pathname.startsWith('/courses') || pathname.startsWith('/admin') || pathname.startsWith('/creator')){
-      return NextResponse.redirect(new URL("/", request.url));
-    }
-    // return NextResponse.redirect(new URL("/", request.url));
-    // return NextResponse.next();
-  }
+	const { pathname } = request.nextUrl;
+	// if (pathname == "/") {
+	//   return NextResponse.next();
+	// }
+	const token = await getToken({ req: request });
+	const user: CustomUser | null = token?.user as CustomUser;
+	const isPublicPath = pathname === "/";
+	// console.log("TOKEN :", token);
+	// console.log("USER :", user);
+	// console.log(request.url);
+	// if(user){
+	//   return NextResponse.redirect(new URL("/creator/create", request.url));
+	// }
+	const adminProtectedRoutes = ["/admin"];
+	const userProtectedRoutes = ["/courses"];
+	// if (!token) {
+	// 	return NextResponse.redirect(new URL("/", request.url));
+	// 	// return NextResponse.next();
+	// }
+	if (token) {
+		if (
+			adminProtectedRoutes.includes(pathname) &&
+			(user.role === "USER" || user.role === "CREATOR")
+		) {
+			return NextResponse.redirect(new URL("/", request.url));
+		}
+		if (pathname.startsWith("/courses") && user.role === "CREATOR") {
+			return NextResponse.redirect(new URL("/", request.url));
+		}
+		if (pathname.startsWith("/creator") && user.role === "USER") {
+			return NextResponse.redirect(new URL("/", request.url));
+		}
+	} else {
+		console.log("TOKEN-1", token);
+		if (
+			pathname.startsWith("/courses") ||
+			pathname.startsWith("/admin") ||
+			pathname.startsWith("/creator")
+		) {
+			return NextResponse.redirect(new URL("/", request.url));
+		}
+	}
 }
 
 // See "Matching Paths" below to learn more
 export const config = {
-  matcher: [
-    // "/creator/:path*",
-    // "/admin/:path*",
-    // "/courses/:path*",
-    // "/",
-    /*
-     * Match all request paths except for the ones starting with:
-     * - api (API routes)
-     * - _next/static (static files)
-     * - _next/image (image optimization files)
-     * - favicon.ico (favicon file)
-     */
-    "/((?!api|_next/static|_next/image|favicon.ico).*)",
-  ],
+	matcher: [
+		"/creator/:path*",
+		"/admin/:path*",
+		"/courses/:path*",
+		"/api/categories",
+		"/",
+		/*
+		 * Match all request paths except for the ones starting with:
+		 * - api (API routes)
+		 * - _next/static (static files)
+		 * - _next/image (image optimization files)
+		 * - favicon.ico (favicon file)
+		 */
+		"/((?!api|_next/static|_next/image|favicon.ico).*)",
+	],
 };
+// import { withAuth } from "next-auth/middleware";
+
+// export default withAuth(
+// 	// `withAuth` augments your `Request` with the user's token.
+
+// 	function middleware(req) {
+// 		// console.log("TOKEN :", req.nextauth.token);
+// 		const { pathname } = req.nextUrl;
+// 		console.log("PATHNAME :", pathname);
+// 		const token = req.nextauth.token;
+// 		console.log("TOKEN :", token);
+// 	},
+
+// 	{
+// 		callbacks: {
+// 			authorized: ({ token }) => {
+// 				if (token) {
+// 					return true;
+// 				}
+// 				return false;
+// 			},
+// 		},
+// 		pages: {
+// 			signIn: "/",
+// 			error: "/auth/signin",
+// 		},
+// 	}
+// );
+
+// export const config = {
+// 	matcher: [
+// 		"/creator/:path*",
+// 		"/admin/:path*",
+// 		"/courses/:path*",
+// 		"/api/categories",
+// 		"/",
+// 	],
+// };
