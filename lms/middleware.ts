@@ -180,6 +180,8 @@
 // 	],
 // };
 import { withAuth } from "next-auth/middleware";
+import { CustomUser } from "./app/api/auth/[...nextauth]/route";
+import { NextResponse } from "next/server";
 
 export default withAuth(
 	// `withAuth` augments your `Request` with the user's token.
@@ -189,7 +191,18 @@ export default withAuth(
 		const { pathname } = req.nextUrl;
 		console.log("PATHNAME :", pathname);
 		const token = req.nextauth.token;
-		console.log("TOKEN :", token);
+		// console.log("TOKEN :", token);
+		const user: CustomUser | null = token?.user as CustomUser;
+		console.log("USER :", user);
+		if (pathname.startsWith("/creator") && user.role === "USER") {
+			return NextResponse.redirect(new URL("/", req.url));
+		}
+		if (
+			pathname.startsWith("/admin") &&
+			(user.role === "USER" || user.role === "CREATOR")
+		) {
+			return NextResponse.redirect(new URL("/", req.url));
+		}
 	},
 
 	{
