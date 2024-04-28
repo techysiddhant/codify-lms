@@ -1,17 +1,16 @@
-"use client";
-
+import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import { Button } from "@/components/ui/button";
+import { getServerSession } from "next-auth";
 import { signIn } from "next-auth/react";
 
-const SignInPage = () => {
-    const onSubmit = async()=>{
-        const result = await signIn('google', { callbackUrl : "http://localhost:3000/"})
-    }
-  return (
-    <div>
-        <Button onClick={onSubmit}>Try Now</Button>
-    </div>
-  )
-}
+const SignInPage = async () => {
+	const session = await getServerSession(authOptions);
+	console.log(session);
+	return (
+		<div>
+			<h1 className="">{"sid"}</h1>
+		</div>
+	);
+};
 
-export default SignInPage
+export default SignInPage;

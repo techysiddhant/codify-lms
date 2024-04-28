@@ -6,8 +6,6 @@ import { PrismaAdapter } from "@auth/prisma-adapter";
 import { ISODateString, Session, User, AuthOptions } from "next-auth";
 import { JWT } from "next-auth/jwt";
 import { Adapter } from "next-auth/adapters";
-import { OAuthConfig } from "next-auth/providers/oauth";
-import { options } from "./options";
 
 export type CustomSession = {
 	user?: CustomUser;
@@ -25,6 +23,7 @@ export const authOptions: AuthOptions = {
 	session: {
 		strategy: "jwt",
 	},
+	secret: Env.NEXTAUTH_SECRET!,
 	providers: [
 		GoogleProvider({
 			profile(profile: GoogleProfile) {
