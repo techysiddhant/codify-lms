@@ -5,6 +5,7 @@ import { cn } from "@/lib/utils";
 import NextAuthProvider from "@/components/providers/NextAuthProvider";
 
 const inter = Inter({ subsets: ["latin"] });
+import { ToastProvider } from "@/components/providers/toaster-provider";
 
 export const metadata: Metadata = {
 	title: "Create Next App",
@@ -19,6 +20,7 @@ export default function RootLayout({
 	return (
 		<html lang="en">
 			<body className={inter.className}>
+				<ToastProvider />
 				<NextAuthProvider>{children}</NextAuthProvider>
 			</body>
 		</html>

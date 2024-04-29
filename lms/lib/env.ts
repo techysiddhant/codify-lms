@@ -3,5 +3,7 @@ class Env {
 	static GOOGLE_CLIENT_SECRET: string = process.env.GOOGLE_CLIENT_SECRET!;
 	static NEXTAUTH_SECRET: string = process.env.NEXTAUTH_SECRET!;
 	static NEXTAUTH_URL: string = process.env.NEXTAUTH_URL!;
+	static MUX_TOKEN_ID: string = process.env.MUX_TOKEN_ID!;
+	static MUX_TOKEN_SECRET: string = process.env.MUX_TOKEN_SECRET!;
 }
 export default Env;

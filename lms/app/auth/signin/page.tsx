@@ -5,7 +5,7 @@ import { signIn } from "next-auth/react";
 
 const SignInPage = async () => {
 	const session = await getServerSession(authOptions);
-	console.log(session);
+	// console.log(session);
 	return (
 		<div>
 			<h1 className="">{"sid"}</h1>

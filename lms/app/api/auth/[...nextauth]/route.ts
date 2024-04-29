@@ -85,7 +85,7 @@ export const authOptions: AuthOptions = {
 		}: {
 			session: CustomSession;
 			token: JWT;
-			user: User;
+			user: CustomUser;
 		}) {
 			session.user = token.user as CustomUser;
 			// console.log(session);

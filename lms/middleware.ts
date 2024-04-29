@@ -189,12 +189,13 @@ export default withAuth(
 	function middleware(req) {
 		// console.log("TOKEN :", req.nextauth.token);
 		const { pathname } = req.nextUrl;
-		console.log("PATHNAME :", pathname);
+		// console.log("PATHNAME :", pathname);
 		const token = req.nextauth.token;
 		// console.log("TOKEN :", token);
 		const user: CustomUser | null = token?.user as CustomUser;
-		console.log("USER :", user);
+		// console.log("USER :", user);
 		if (pathname.startsWith("/creator") && user.role === "USER") {
+			console.log("USER :", user);
 			return NextResponse.redirect(new URL("/", req.url));
 		}
 		if (
@@ -203,6 +204,9 @@ export default withAuth(
 		) {
 			return NextResponse.redirect(new URL("/", req.url));
 		}
+		// if (pathname.startsWith("/api")) {
+		// 	return NextResponse.next();
+		// }
 	},
 
 	{
@@ -223,6 +227,7 @@ export default withAuth(
 
 export const config = {
 	matcher: [
+		// "/api/:path*",
 		"/creator/:path*",
 		"/admin/:path*",
 		"/courses/:path*",
