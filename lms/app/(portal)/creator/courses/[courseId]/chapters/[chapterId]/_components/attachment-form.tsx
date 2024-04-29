@@ -36,7 +36,7 @@ export const AttachmentForm = ({
 
 	const onSubmit = async (values: z.infer<typeof formSchema>) => {
 		try {
-			await axios.post(`/api/courses/${courseId}/attachments`, values);
+			await axios.post(`/api/courses/${courseId}/chapters/${chapterId}/attachments`, values);
 			toast.success("Course updated");
 			toggleEdit();
 			router.refresh();
@@ -48,7 +48,7 @@ export const AttachmentForm = ({
 	const onDelete = async (id: string) => {
 		try {
 			setDeletingId(id);
-			await axios.delete(`/api/courses/${courseId}/attachments/${id}`);
+			await axios.delete(`/api/courses/${courseId}/chapters/${chapterId}/attachments/${id}`);
 			toast.success("Attachment deleted");
 			router.refresh();
 		} catch {
@@ -77,12 +77,12 @@ export const AttachmentForm = ({
 			</div>
 			{!isEditing && (
 				<>
-					{initialData.attachments.length === 0 && (
+					{initialData?.attachments?.length === 0 && (
 						<p className="text-sm mt-2 text-slate-500 italic">No attachments yet</p>
 					)}
-					{initialData.attachments.length > 0 && (
+					{initialData?.attachments?.length > 0 && (
 						<div className="space-y-2">
-							{initialData.attachments.map((attachment) => (
+							{initialData?.attachments?.map((attachment) => (
 								<div
 									key={attachment.id}
 									className="flex items-center p-3 w-full bg-sky-100 border-sky-200 border text-sky-700 rounded-md"

@@ -62,6 +62,7 @@ export async function fetchCreatorCourseChapterById(chapterId: string) {
 			},
 			include: {
 				muxData: true,
+				attachments:true
 			},
 		});
 		return courses;

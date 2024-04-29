@@ -12,6 +12,7 @@ import { CategoryForm } from "./_components/category-form";
 import { fetchCategories } from "@/actions/user.actions";
 import { ChaptersForm } from "./_components/chapters-form";
 import { PriceForm } from "./_components/price-form";
+import { Actions } from "./_components/actions";
 
 const CoursePage = async ({ params }: { params: { courseId: string } }) => {
 	console.log(params);
@@ -48,11 +49,11 @@ const CoursePage = async ({ params }: { params: { courseId: string } }) => {
 							Complete all fields {completionText}
 						</span>
 					</div>
-					{/* <Actions
+					<Actions
 						disabled={!isComplete}
 						courseId={params.courseId}
-						isPublished={course.isPublished}
-					/> */}
+						isPublished={course?.isPublished}
+					/>
 				</div>
 				<div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-16">
 					<div>
