@@ -9,12 +9,7 @@ import { useSession } from "next-auth/react";
 import { UserMenu } from "./user-menu";
 // import SearchInput from "./search-input";
 // import LoginButton from "@/components/login-button";
-// import { useSelector } from "react-redux";
-// import { useLogoutMutation } from "@/redux/slices/userApiSlice";
-// import { useDispatch } from "react-redux";
-// import { logout } from "@/redux/slices/authSlice";
-// import { useAppSelector } from "@/redux/persist";
-// import { isTeacher } from "@/lib/teacher";
+
 export const NavbarRoutes = () => {
   const {data} = useSession();
     const pathname = usePathname();
