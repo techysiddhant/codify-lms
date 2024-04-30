@@ -11,26 +11,43 @@ import { UserMenu } from "./user-menu";
 // import LoginButton from "@/components/login-button";
 
 export const NavbarRoutes = () => {
-  const {data} = useSession();
-    const pathname = usePathname();
-    const isTeacherPage = pathname?.startsWith("/teacher");
-    const isCoursePage = pathname?.includes("/courses");
-    const isSearchPage = pathname === "/search";
-    // console.log(data);
-  return (
-    <>
-      {isSearchPage && (
-        <div className="hidden md:block">
-          <SearchInput />
-        </div>
-      )}
+	const { data } = useSession();
+	const pathname = usePathname();
+	const isCreatorPage = pathname?.startsWith("/creator");
+	const isCoursePage = pathname?.includes("/courses");
+	const isSearchPage = pathname === "/search";
+	// console.log(data);
+	return (
+		<>
+			{isSearchPage && (
+				<div className="hidden md:block">
+					<SearchInput />
+				</div>
+			)}
 
-      <div className="flex gap-x-2 ml-auto">
-        {
-          data?.user ? <UserMenu data={data.user} /> : <LoginButton />
-        }
-        
-        {/* {isTeacherPage || isCoursePage ? (
+			<div className="flex gap-x-2 ml-auto">
+				{data?.user ? <UserMenu data={data.user} /> : <LoginButton />}
+				{isCoursePage || isCreatorPage ? (
+					<Link href="/">
+						<Button
+							size="sm"
+							variant="ghost"
+						>
+							<LogOut className="h-4 w-4 mr-2" />
+							Exit
+						</Button>
+					</Link>
+				) : data?.user?.role === "CREATOR" ? (
+					<Link href="/creator/courses">
+						<Button
+							size="sm"
+							variant="ghost"
+						>
+							Creator mode
+						</Button>
+					</Link>
+				) : null}
+				{/* {isTeacherPage || isCoursePage ? (
           <Link href="/">
             <Button size="sm" variant="ghost">
               <LogOut className="h-4 w-4 mr-2" />
@@ -44,10 +61,10 @@ export const NavbarRoutes = () => {
             </Button>
           </Link>
         ) : null} */}
-        {/* <UserButton
+				{/* <UserButton
           afterSignOutUrl="/"
         /> */}
-      </div>
-    </>
-  )
-}
+			</div>
+		</>
+	);
+};

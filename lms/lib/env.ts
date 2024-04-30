@@ -5,5 +5,8 @@ class Env {
 	static NEXTAUTH_URL: string = process.env.NEXTAUTH_URL!;
 	static MUX_TOKEN_ID: string = process.env.MUX_TOKEN_ID!;
 	static MUX_TOKEN_SECRET: string = process.env.MUX_TOKEN_SECRET!;
+	static STRIPE_API_KEY: string = process.env.STRIPE_API_KEY!;
+	static NEXT_PUBLIC_APP_URL: string = process.env.NEXT_PUBLIC_APP_URL!;
+	static STRIPE_WEBHOOK_SECRET: string = process.env.STRIPE_WEBHOOK_SECRET!;
 }
 export default Env;

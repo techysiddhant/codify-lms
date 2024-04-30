@@ -195,7 +195,7 @@ export default withAuth(
 		const user: CustomUser | null = token?.user as CustomUser;
 		// console.log("USER :", user);
 		if (pathname.startsWith("/creator") && user.role === "USER") {
-			console.log("USER :", user);
+			// console.log("USER :", user);
 			return NextResponse.redirect(new URL("/", req.url));
 		}
 		if (
@@ -204,9 +204,6 @@ export default withAuth(
 		) {
 			return NextResponse.redirect(new URL("/", req.url));
 		}
-		// if (pathname.startsWith("/api")) {
-		// 	return NextResponse.next();
-		// }
 	},
 
 	{
@@ -231,7 +228,8 @@ export const config = {
 		"/creator/:path*",
 		"/admin/:path*",
 		"/courses/:path*",
-		// "/api/categories",
+		// "/api/webhook",
 		"/",
+		// "/((?!api|_next/static|_next/image|favicon.ico).*)",
 	],
 };

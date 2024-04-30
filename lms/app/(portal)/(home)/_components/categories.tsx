@@ -11,7 +11,6 @@ import {
 import { IconType } from "react-icons";
 import { Category } from "@prisma/client";
 import { CategoryItem } from "./category-item";
-import getCategories from "@/actions/getCategories";
 
 interface CategoriesProps {
 	items: Category[];
@@ -30,10 +29,6 @@ const iconMap: Record<Category["name"], IconType> = {
 	Engineering: FcEngineering,
 };
 export const Categories = ({ items = [] }: CategoriesProps) => {
-	// const response = await axios.get("/api/categories");
-	// 	console.log(response);
-	// const categories = await getCategories();
-	console.log(items);
 	return (
 		<div className="flex items-center gap-x-2 overflow-x-auto pb-2">
 			{items?.map((item) => (
