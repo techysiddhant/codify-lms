@@ -204,6 +204,14 @@ export default withAuth(
 		) {
 			return NextResponse.redirect(new URL("/", req.url));
 		}
+		if (
+			pathname.startsWith("/dashboard") &&
+			(user.role === "USER" || user.role === "CREATOR")
+		) {
+			// return NextResponse.redirect(new URL("/", req.url));
+			return NextResponse.next();
+
+		}
 	},
 
 	{
@@ -228,6 +236,7 @@ export const config = {
 		"/creator/:path*",
 		"/admin/:path*",
 		"/courses/:path*",
+		"/dashboard/:path*",
 		// "/api/webhook",
 		"/",
 		// "/((?!api|_next/static|_next/image|favicon.ico).*)",

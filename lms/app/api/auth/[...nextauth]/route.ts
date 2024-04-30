@@ -10,6 +10,7 @@ import { Adapter } from "next-auth/adapters";
 export type CustomSession = {
 	user?: CustomUser;
 	expires: ISODateString;
+	
 };
 export type CustomUser = {
 	id?: string | null;

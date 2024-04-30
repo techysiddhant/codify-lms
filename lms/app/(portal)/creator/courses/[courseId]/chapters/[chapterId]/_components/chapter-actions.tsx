@@ -30,8 +30,8 @@ export const ChapterActions = ({
       setIsLoading(true);
 
       if (isPublished) {
-        await axios.patch(`/api/courses/${courseId}/chapters/${chapterId}/unpublish`);
-        toast.success("Chapter unpublished");
+        // await axios.patch(`/api/courses/${courseId}/chapters/${chapterId}/unpublish`);
+        toast.error("Published Chapter Can't be un published");
       } else {
         await axios.patch(`/api/courses/${courseId}/chapters/${chapterId}/publish`);
         toast.success("Chapter published");

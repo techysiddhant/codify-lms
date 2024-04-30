@@ -14,13 +14,9 @@ interface ActionsProps {
   disabled: boolean;
   courseId: string;
   isPublished: boolean;
-};
+}
 
-export const Actions = ({
-  disabled,
-  courseId,
-  isPublished
-}: ActionsProps) => {
+export const Actions = ({ disabled, courseId, isPublished }: ActionsProps) => {
   const router = useRouter();
   const confetti = useConfettiStore();
   const [isLoading, setIsLoading] = useState(false);
@@ -30,8 +26,8 @@ export const Actions = ({
       setIsLoading(true);
 
       if (isPublished) {
-        await axios.patch(`/api/courses/${courseId}/unpublish`);
-        toast.success("Course unpublished");
+        // await axios.patch(`/api/courses/${courseId}/unpublish`);
+        toast.error("Published Course can't be unpublished");
       } else {
         await axios.patch(`/api/courses/${courseId}/publish`);
         toast.success("Course published");
@@ -44,23 +40,25 @@ export const Actions = ({
     } finally {
       setIsLoading(false);
     }
-  }
-  
+  };
+
   const onDelete = async () => {
     try {
       setIsLoading(true);
-
-      await axios.delete(`/api/courses/${courseId}`);
-
-      toast.success("Course deleted");
-      router.refresh();
-      router.push(`/teacher/courses`);
+      if (!isPublished) {
+        await axios.delete(`/api/courses/${courseId}`);
+        toast.success("Course deleted");
+        router.refresh();
+        router.push(`/creator/courses`);
+      } else {
+        toast.error("Publish Course Can't be Deleted!");
+      }
     } catch {
       toast.error("Something went wrong");
     } finally {
       setIsLoading(false);
     }
-  }
+  };
 
   return (
     <div className="flex items-center gap-x-2">
@@ -78,5 +76,5 @@ export const Actions = ({
         </Button>
       </ConfirmModal>
     </div>
-  )
-}
+  );
+};
