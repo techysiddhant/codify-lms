@@ -7,15 +7,14 @@ import { SearchInput } from "@/components/search-input";
 import { LoginButton } from "./login-button";
 import { useSession } from "next-auth/react";
 import { UserMenu } from "./user-menu";
-// import SearchInput from "./search-input";
-// import LoginButton from "@/components/login-button";
+import { ModeToggle } from "@/components/theme-toggle";
 
 export const NavbarRoutes = () => {
 	const { data } = useSession();
 	const pathname = usePathname();
 	const isCreatorPage = pathname?.startsWith("/creator");
 	const isCoursePage = pathname?.includes("/courses");
-	const isSearchPage = pathname === "/search";
+	const isSearchPage = pathname === "/";
 	// console.log(data);
 	return (
 		<>
@@ -24,7 +23,7 @@ export const NavbarRoutes = () => {
 					<SearchInput />
 				</div>
 			)}
-
+			
 			<div className="flex gap-x-2 ml-auto">
 				{data?.user ? <UserMenu data={data.user} /> : <LoginButton />}
 				{isCoursePage || isCreatorPage ? (
@@ -64,6 +63,8 @@ export const NavbarRoutes = () => {
 				{/* <UserButton
           afterSignOutUrl="/"
         /> */}
+					<ModeToggle />
+
 			</div>
 		</>
 	);
