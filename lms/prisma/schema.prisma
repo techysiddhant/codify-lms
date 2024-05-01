@@ -175,12 +175,13 @@ model Purchase {
 
   courseId String
   course   Course @relation(fields: [courseId], references: [id], onDelete: Cascade)
-
+  amount Float?
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt()
 
   @@unique([userId, courseId])
   @@index([courseId])
+  @@map(name:"aggregatePurchase")
 }
 
 model StripeCustomer {
