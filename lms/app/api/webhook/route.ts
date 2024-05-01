@@ -9,8 +9,6 @@ export async function POST(req: Request) {
 	const body = await req.text();
 	const signature = headers().get("stripe-signature") as string;
 	const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET!;
-	console.log("BODY :", body);
-	console.log("SIGNATURE :", signature);
 	let event: Stripe.Event;
 
 	try {
@@ -19,13 +17,12 @@ export async function POST(req: Request) {
 		console.log(error);
 		return new Response(`Webhook Error: ${error.message}`, { status: 400 });
 	}
-	console.log("EVENT :", event);
 	const session = event.data.object as Stripe.Checkout.Session;
-	console.log(session);
 	const userId = session?.metadata?.userId;
 	const courseId = session?.metadata?.courseId;
 
 	if (event.type === "checkout.session.completed") {
+		const amount = session?.amount_total! / 100;
 		if (!userId || !courseId) {
 			return new NextResponse(`Webhook Error: Missing metadata`, { status: 400 });
 		}
@@ -34,6 +31,7 @@ export async function POST(req: Request) {
 			data: {
 				courseId: courseId,
 				userId: userId,
+				amount: amount,
 			},
 		});
 	} else {
