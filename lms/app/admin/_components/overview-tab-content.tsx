@@ -9,17 +9,21 @@ import {
 } from "@/components/ui/card";
 import { OverviewChart } from "./overview-chart";
 import { OverviewRecentSales } from "./overview-recent-sales";
-import { getTotalRevenue } from "@/actions/admin.actions";
+import { getRecentSales, getTotalCreators, getTotalRevenue, getTotalUsers } from "@/actions/admin.actions";
+import { Blocks, IndianRupee, UserPlus } from "lucide-react";
 
 export default async function OverviewTabContent() {
     const revenue = await getTotalRevenue();
-    console.log(revenue);
+    const totalStudent = await getTotalUsers();
+    const totalCreators = await getTotalCreators();
+    
   return (
     <>
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-        <OverviewCard />
-        <OverviewCard />
-        <OverviewCard />
+        <OverviewCard icon={IndianRupee} amount={revenue?._sum.amount} title="Total Revenue" />
+        <OverviewCard count={totalStudent!} title="Total Student" icon={UserPlus} />
+        <OverviewCard count={totalCreators!} title="Total Creator" icon={Blocks} />
+        {/* <OverviewCard /> */}
       </div>
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-7">
         <Card className="col-span-4">
