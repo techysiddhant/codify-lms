@@ -52,11 +52,15 @@ const data = [
     total: Math.floor(Math.random() * 5000) + 1000,
   },
 ]
+type RevenueProp={
+  name:string;
+  total:number;
+}
 
-export function OverviewChart() {
+export  function OverviewChart({revenue}:{revenue:RevenueProp[]}) {
   return (
     <ResponsiveContainer width="100%" height={350}>
-      <BarChart data={data}>
+      <BarChart data={revenue!}>
         <XAxis
           dataKey="name"
           stroke="#888888"
@@ -69,7 +73,7 @@ export function OverviewChart() {
           fontSize={12}
           tickLine={false}
           axisLine={false}
-          tickFormatter={(value) => `$${value}`}
+          tickFormatter={(value) => `₹${value}`}
         />
         <Bar
           dataKey="total"
