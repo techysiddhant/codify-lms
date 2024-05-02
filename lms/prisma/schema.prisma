@@ -86,17 +86,18 @@ model Category {
 }
 
 model Course {
-  id            String    @id @default(uuid())
-  userId        String
-  user          User      @relation(fields: [userId], references: [id])
-  title         String    @db.Text
-  description   String?   @db.Text
-  imageUrl      String?   @db.Text
-  price         Float?
-  isPublished   Boolean   @default(false)
-  imagePublicId String?
-  categoryId    String?
-  category      Category? @relation(fields: [categoryId], references: [id])
+  id               String    @id @default(uuid())
+  userId           String
+  user             User      @relation(fields: [userId], references: [id])
+  title            String    @db.Text
+  description      String?   @db.Text
+  shortDescription String?   @db.Text
+  imageUrl         String?   @db.Text
+  price            Float?
+  isPublished      Boolean   @default(false)
+  imagePublicId    String?
+  categoryId       String?
+  category         Category? @relation(fields: [categoryId], references: [id])
 
   chapters  Chapter[]
   // attachments Attachment[]
@@ -173,15 +174,15 @@ model Purchase {
   id     String @id @default(uuid())
   userId String
 
-  courseId String
-  course   Course @relation(fields: [courseId], references: [id], onDelete: Cascade)
-  amount Float?
+  courseId  String
+  course    Course   @relation(fields: [courseId], references: [id], onDelete: Cascade)
+  amount    Float?
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt()
 
   @@unique([userId, courseId])
   @@index([courseId])
-  @@map(name:"aggregatePurchase")
+  @@map(name: "aggregatePurchase")
 }
 
 model StripeCustomer {

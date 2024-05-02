@@ -25,8 +25,14 @@ export const CourseEnrollButton = ({
 			const response = await axios.post(`/api/courses/${courseId}/checkout`);
 
 			window.location.assign(response.data.url);
-		} catch {
-			toast.error("Something went wrong");
+		} catch(error:any) {
+			console.log(error?.response?.status)
+			if(error?.response?.status == 401){
+				toast.error("Sign In First to Buy the Course");
+			}else{
+
+				toast.error("Something went wrong")
+			}
 		} finally {
 			setIsLoading(false);
 		}

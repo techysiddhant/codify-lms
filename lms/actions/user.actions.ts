@@ -345,3 +345,40 @@ export async function getDashboardCourses(userId: string) {
 	  }
   }
 }
+export async function getCourseDetailsByCourseId({
+  courseId,
+}: {
+  courseId: string;
+}) {
+  try {
+    const course = await db.course.findUnique({
+      where: {
+        id: courseId,
+      },
+      include: {
+        chapters: {
+          where: {
+            isPublished: true,
+          },
+          // include: {
+          //   userProgress: {
+          //     where: {
+          //       userId,
+          //     },
+          //   },
+          // },
+          orderBy: {
+            position: "asc",
+          },
+        },
+        category:true
+      },
+    });
+
+    return course;
+  } catch (error) {
+    console.log("FETCH-Course description by course id", error);
+    return null
+    throw new Error("Failed to fetch courses");
+  }
+}
