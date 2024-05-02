@@ -9,6 +9,7 @@ import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { ConfirmModal } from "@/components/modals/confirm-modal";
 import { useConfettiStore } from "@/hooks/use-confetti-store";
+import Link from "next/link";
 
 interface ActionsProps {
   disabled: boolean;
@@ -62,9 +63,12 @@ export const Actions = ({ disabled, courseId, isPublished }: ActionsProps) => {
 
   return (
     <div className="flex items-center gap-x-2">
+      <Button asChild variant={'link'}>
+        <Link href={`/creator/draft/${courseId}`}>Check Page View</Link>
+      </Button>
       <Button
         onClick={onClick}
-        disabled={disabled || isLoading}
+        disabled={disabled || isLoading || isPublished}
         variant="outline"
         size="sm"
       >

@@ -128,3 +128,30 @@ export async function getAnalytics(userId: string) {
     };
   }
 }
+export async function getDraftCourseByCourseId({
+  courseId,
+}: {
+  courseId: string;
+}) {
+  try {
+    const course = await db.course.findUnique({
+      where: {
+        id: courseId,
+      },
+      include: {
+        // chapters: {
+        //   orderBy: {
+        //     position: "asc",
+        //   },
+        // },
+        category:true
+      },
+    });
+
+    return course;
+  } catch (error) {
+    console.log("FETCH-Course description by course id", error);
+    return null
+    throw new Error("Failed to fetch courses");
+  }
+}
