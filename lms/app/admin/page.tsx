@@ -1,5 +1,6 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import OverviewTabContent from "./_components/overview-tab-content";
+import CreatorTabContent from "./_components/creator-tab-content";
 
 const AdminPage = () => {
   return (
@@ -10,10 +11,10 @@ const AdminPage = () => {
           <Tabs defaultValue="overview" className="space-y-4">
             <TabsList>
               <TabsTrigger value="overview">Overview</TabsTrigger>
-              {/* <TabsTrigger value="analytics" disabled>
-                Analytics
+              <TabsTrigger value="creators">
+                Approve Creator
               </TabsTrigger>
-              <TabsTrigger value="reports" disabled>
+              {/* <TabsTrigger value="reports" disabled>
                 Reports
               </TabsTrigger>
               <TabsTrigger value="notifications" disabled>
@@ -22,6 +23,9 @@ const AdminPage = () => {
             </TabsList>
             <TabsContent value="overview" className="space-y-4">
               <OverviewTabContent />
+            </TabsContent>
+            <TabsContent value="creators" className="space-y-4">
+             <CreatorTabContent />
             </TabsContent>
           </Tabs>
         </div>

@@ -212,6 +212,7 @@ export default withAuth(
 			return NextResponse.next();
 
 		}
+		
 	},
 
 	{
@@ -237,7 +238,7 @@ export const config = {
 		"/admin/:path*",
 		"/courses/:path*",
 		"/dashboard/:path*",
-		// "/api/webhook",
+		"/onboarding/:path*",
 		"/",
 		// "/((?!api|_next/static|_next/image|favicon.ico).*)",
 	],

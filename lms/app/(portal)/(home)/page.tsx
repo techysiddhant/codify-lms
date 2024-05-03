@@ -12,10 +12,12 @@ import {
 import { getServerSession } from "next-auth/next";
 import { CustomSession, authOptions } from "@/app/api/auth/[...nextauth]/route";
 import { CoursesList } from "@/components/courses-list";
+import { MessageBanner } from "@/components/message-banner";
 interface SearchProps {
 	searchParams: {
 		title: string;
 		categoryId: string;
+		message:string;
 	};
 }
 const HomePage = async ({ searchParams }: SearchProps) => {
@@ -31,9 +33,9 @@ const HomePage = async ({ searchParams }: SearchProps) => {
 	} else {
 		courses = await fetchCourses({ ...searchParams });
 	}
-
 	return (
 		<>
+		{searchParams.message && <MessageBanner message={searchParams?.message!} />}
 			<div className="px-6 pt-6 md:hidden md:mb-0 block">
 				<SearchInput />
 			</div>
