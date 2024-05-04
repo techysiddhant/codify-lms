@@ -5,8 +5,10 @@ import { db } from "@/lib/db";
 import Env from "@/lib/env";
 import { CustomSession, authOptions } from "@/app/api/auth/[...nextauth]/route";
 import { getServerSession } from "next-auth/next";
-
-const mux = new Mux(Env.MUX_TOKEN_ID, Env.MUX_TOKEN_SECRET);
+const mux = new Mux({
+	tokenId: Env.MUX_TOKEN_ID,
+	tokenSecret: Env.MUX_TOKEN_SECRET,
+});
 export async function DELETE(
 	req: Request,
 	{ params }: { params: { courseId: string; chapterId: string } }
@@ -119,7 +121,7 @@ export async function PATCH(
 				userId: userId!,
 			},
 		});
-
+		console.log("ownCourse: ", ownCourse);
 		if (!ownCourse) {
 			return new NextResponse("Unauthorized", { status: 401 });
 		}
@@ -133,6 +135,7 @@ export async function PATCH(
 				...values,
 			},
 		});
+		// console.log("updateChapter : ", chapter);
 
 		if (values.videoUrl) {
 			const existingMuxData = await db.muxData.findFirst({
@@ -140,21 +143,26 @@ export async function PATCH(
 					chapterId: params.chapterId,
 				},
 			});
+			// console.log("existing Mux DATA : ", existingMuxData);
 
 			if (existingMuxData) {
 				await mux.video.assets.delete(existingMuxData.assetId);
+				// console.log("deleting exist mux video: ");
+
 				await db.muxData.delete({
 					where: {
 						id: existingMuxData.id,
 					},
 				});
+				// console.log("delete mux record: ");
 			}
 
 			const asset = await mux.video.assets.create({
 				input: values.videoUrl,
-				playback_policy: "public",
+				playback_policy: ["public"],
 				test: false,
 			});
+			// console.log("added asset to mux: ", asset);
 
 			await db.muxData.create({
 				data: {
@@ -163,6 +171,7 @@ export async function PATCH(
 					playbackId: asset.playback_ids?.[0]?.id,
 				},
 			});
+			// console.log("added mux data: ");
 		}
 
 		return NextResponse.json(chapter);
