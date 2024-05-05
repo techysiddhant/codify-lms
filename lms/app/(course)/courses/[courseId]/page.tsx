@@ -17,17 +17,16 @@ const CoursePage = async ({ params }: { params: { courseId: string } }) => {
 	if (!course) {
 		return redirect("/");
 	}
-	return (
-		<div className="h-full">
-			<div className="flex items-center justify-center h-full my-5">
-				<Button asChild>
-					<Link href={`/courses/${course.id}/chapters/${course.chapters[0].id}`}>
-						Continue to the Course
-					</Link>
-				</Button>
-			</div>
-		</div>
-	);
+	return redirect(`/courses/${course.id}/chapters/${course.chapters[0].id}`);
+	// <div className="h-full">
+	// 	<div className="flex items-center justify-center h-full my-5">
+	// 		<Button asChild>
+	// 			<Link href={`/courses/${course.id}/chapters/${course.chapters[0].id}`}>
+	// 				Continue to the Course
+	// 			</Link>
+	// 		</Button>
+	// 	</div>
+	// </div>
 };
 
 export default CoursePage;

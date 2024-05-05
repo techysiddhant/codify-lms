@@ -203,6 +203,7 @@ model Creator {
   email       String  @unique
   description String
   terms       Boolean @default(false)
+  status      String  @default("pending")
   user        User    @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   createdAt DateTime @default(now())

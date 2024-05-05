@@ -31,7 +31,6 @@ const ChapterIdPage = async ({
 		chapterId: params.chapterId,
 		courseId: params.courseId,
 	});
-	console.log(chapter);
 	if (!chapter || !course) {
 		return redirect("/");
 	}
