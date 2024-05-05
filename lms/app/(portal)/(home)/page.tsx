@@ -1,9 +1,5 @@
 import { SearchInput } from "@/components/search-input";
-import React from "react";
 import { Categories } from "./_components/categories";
-import axios from "axios";
-import { db } from "@/lib/db";
-import getCategories from "@/actions/getCategories";
 import {
 	fetchCategories,
 	fetchCourses,
@@ -17,7 +13,7 @@ interface SearchProps {
 	searchParams: {
 		title: string;
 		categoryId: string;
-		message:string;
+		message: string;
 	};
 }
 const HomePage = async ({ searchParams }: SearchProps) => {
@@ -35,11 +31,11 @@ const HomePage = async ({ searchParams }: SearchProps) => {
 	}
 	return (
 		<>
-		{searchParams.message && <MessageBanner message={searchParams?.message!} />}
+			{searchParams.message && <MessageBanner message={searchParams?.message!} />}
 			<div className="px-6 pt-6 md:hidden md:mb-0 block">
 				<SearchInput />
 			</div>
-			<div className="p-6 space-y-4">
+			<div className="p-6 space-y-4 bg-primary-foreground ">
 				<Categories items={categories ? categories : []} />
 				<CoursesList items={courses} />
 			</div>

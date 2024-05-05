@@ -12,7 +12,7 @@ interface CourseCardProps {
 	price: number;
 	progress?: number | null;
 	category: string;
-	shortDescription:string;
+	shortDescription: string;
 }
 export const CourseCard = ({
 	id,
@@ -22,7 +22,7 @@ export const CourseCard = ({
 	price,
 	progress,
 	category,
-	shortDescription
+	shortDescription,
 }: CourseCardProps) => {
 	return (
 		<Link href={`/course/${id}`}>
@@ -39,7 +39,9 @@ export const CourseCard = ({
 					<div className="text-lg md:text-base font-medium group-hover:text-sky-700 transition line-clamp-2">
 						{title}
 					</div>
-					<p className="text-sm text-secondary-foreground my-1">{formatDescription(shortDescription!)}</p>
+					<p className="text-sm text-secondary-foreground my-1">
+						{formatDescription(shortDescription!)}
+					</p>
 					<p className="text-xs text-primary font-medium">{category}</p>
 					<div className="my-3 flex items-center gap-x-2 text-sm md:text-xs">
 						<div className="flex items-center gap-x-1 text-slate-500">
@@ -59,7 +61,7 @@ export const CourseCard = ({
 							value={progress}
 						/>
 					) : (
-						<p className="text-md md:text-sm font-medium text-slate-700">
+						<p className="text-md md:text-sm font-medium text-primary">
 							{formatPrice(price)}
 						</p>
 					)}
