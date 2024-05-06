@@ -6,11 +6,11 @@ import { PrismaAdapter } from "@auth/prisma-adapter";
 import { ISODateString, Session, User, AuthOptions } from "next-auth";
 import { JWT } from "next-auth/jwt";
 import { Adapter } from "next-auth/adapters";
+import { sendWelcomeEmail } from "@/lib/send-welcome";
 
 export type CustomSession = {
 	user?: CustomUser;
 	expires: ISODateString;
-	
 };
 export type CustomUser = {
 	id?: string | null;
@@ -91,6 +91,17 @@ export const authOptions: AuthOptions = {
 			session.user = token.user as CustomUser;
 			// console.log(session);
 			return session;
+		},
+	},
+	events: {
+		async createUser(message) {
+			const params = {
+				user: {
+					name: message.user.name,
+					email: message.user.email,
+				},
+			};
+			await sendWelcomeEmail(params.user!);
 		},
 	},
 };
