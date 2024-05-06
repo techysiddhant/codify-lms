@@ -4,7 +4,6 @@ import { creatorColumns } from "./creator-column";
 
 export default async function CreatorTabContent() {
 	const creators = await getUnApproveCreators();
-	// console.log(creators);
 	return (
 		<div>
 			<CreatorDataTable
