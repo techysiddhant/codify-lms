@@ -43,7 +43,7 @@ export const CourseEnrollButton = ({
 			onClick={onClick}
 			disabled={isLoading}
 			size="sm"
-			className="w-full md:w-auto"
+			className="w-full md:w-full"
 		>
 			Enroll for {formatPrice(price)}
 		</Button>

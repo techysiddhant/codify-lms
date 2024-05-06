@@ -87,22 +87,23 @@ model Category {
 }
 
 model Course {
-  id               String    @id @default(uuid())
+  id               String     @id @default(uuid())
   userId           String
-  user             User      @relation(fields: [userId], references: [id])
-  title            String    @db.Text
-  description      String?   @db.Text
-  shortDescription String?   @db.Text
-  imageUrl         String?   @db.Text
+  user             User       @relation(fields: [userId], references: [id])
+  title            String     @db.Text
+  description      String?    @db.Text
+  shortDescription String?    @db.Text
+  imageUrl         String?    @db.Text
   price            Float?
-  isPublished      Boolean   @default(false)
+  isPublished      Boolean    @default(false)
   imagePublicId    String?
   categoryId       String?
-  category         Category? @relation(fields: [categoryId], references: [id])
-
-  chapters  Chapter[]
+  creatorId        String?
+  category         Category?  @relation(fields: [categoryId], references: [id])
+  creator          Creator?   @relation(fields: [creatorId], references: [id], onDelete: Cascade)
+  chapters         Chapter[]
   // attachments Attachment[]
-  purchases Purchase[]
+  purchases        Purchase[]
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -204,8 +205,10 @@ model Creator {
   description String
   terms       Boolean @default(false)
   status      String  @default("pending")
+  image       String?
   user        User    @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+  courses   Course[]
 }

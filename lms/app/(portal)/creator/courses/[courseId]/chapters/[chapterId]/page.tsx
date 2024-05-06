@@ -19,7 +19,7 @@ const CourseChapter = async ({
 	const requiredFields = [
 		chapter?.title,
 		chapter?.description,
-		chapter?.videoUrl,
+		// chapter?.videoUrl,
 	];
 
 	const totalFields = requiredFields.length;
@@ -57,7 +57,7 @@ const CourseChapter = async ({
 								disabled={!isComplete}
 								courseId={params?.courseId}
 								chapterId={params?.chapterId}
-								isPublished={chapter?.isPublished}
+								isPublished={chapter?.isPublished!}
 							/>
 						</div>
 					</div>
@@ -70,12 +70,12 @@ const CourseChapter = async ({
 								<h2 className="text-xl">Customize your chapter</h2>
 							</div>
 							<ChapterTitleForm
-								initialData={chapter}
+								initialData={chapter!}
 								courseId={params?.courseId}
 								chapterId={params?.chapterId}
 							/>
 							<ChapterDescriptionForm
-								initialData={chapter}
+								initialData={chapter!}
 								courseId={params?.courseId}
 								chapterId={params?.chapterId}
 							/>
@@ -86,7 +86,7 @@ const CourseChapter = async ({
 								<h2 className="text-xl">Access Settings</h2>
 							</div>
 							<ChapterAccessForm
-								initialData={chapter}
+								initialData={chapter!}
 								courseId={params?.courseId}
 								chapterId={params?.chapterId}
 							/>
@@ -98,7 +98,7 @@ const CourseChapter = async ({
 							<h2 className="text-xl">Add a video</h2>
 						</div>
 						<ChapterVideoForm
-							initialData={chapter}
+							initialData={chapter!}
 							chapterId={params?.chapterId}
 							courseId={params?.courseId}
 						/>
@@ -109,7 +109,7 @@ const CourseChapter = async ({
 							<h2 className="text-xl">Resources & Attachments</h2>
 						</div>
 						<AttachmentForm
-							initialData={chapter}
+							initialData={chapter!}
 							chapterId={params?.chapterId}
 							courseId={params?.courseId}
 						/>

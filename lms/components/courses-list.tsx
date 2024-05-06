@@ -5,12 +5,12 @@ type CourseWithProgressWithCategory = Course & {
 	category: Category | null;
 	chapters: { id: string }[];
 	progress?: number | null;
+	creator?:{displayName:string; image?:string;};
 };
 
 interface CoursesListProps {
 	items: CourseWithProgressWithCategory[];
 }
-
 export const CoursesList = ({ items }: CoursesListProps) => {
 	return (
 		<div>
@@ -26,6 +26,8 @@ export const CoursesList = ({ items }: CoursesListProps) => {
 						progress={item?.progress}
 						category={item?.category?.name!}
 						shortDescription={item?.shortDescription!}
+						creatorName = {item?.creator?.displayName!}
+						creatorImage = {item?.creator?.image!}
 					/>
 				))}
 			</div>

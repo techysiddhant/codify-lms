@@ -14,10 +14,8 @@ import { Actions } from "./_components/actions";
 import { ShortDescriptionForm } from "./_components/short-description";
 
 const CoursePage = async ({ params }: { params: { courseId: string } }) => {
-  console.log(params);
   const course = await fetchCreatorCourse(params?.courseId);
   const categories = await fetchCategories();
-  console.log("Categories :", categories);
   const requiredFields = [
     course?.title,
     course?.description,
@@ -51,7 +49,7 @@ const CoursePage = async ({ params }: { params: { courseId: string } }) => {
           <Actions
             disabled={!isComplete}
             courseId={params.courseId}
-            isPublished={course?.isPublished}
+            isPublished={course?.isPublished!}
           />
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-16">
@@ -60,13 +58,13 @@ const CoursePage = async ({ params }: { params: { courseId: string } }) => {
               <IconBadge icon={LayoutDashboard} />
               <h2 className="text-xl">Customize your course</h2>
             </div>
-            <TitleForm initialData={course} courseId={course?.id} />
-            <ShortDescriptionForm initialData={course} courseId={course?.id} />
-            <DescriptionForm initialData={course} courseId={course?.id} />
-            <ImageForm initialData={course} courseId={course?.id} />
+            <TitleForm initialData={course!} courseId={course?.id!} />
+            <ShortDescriptionForm initialData={course!} courseId={course?.id!} />
+            <DescriptionForm initialData={course!} courseId={course?.id!} />
+            <ImageForm initialData={course!} courseId={course?.id!} />
             <CategoryForm
-              initialData={course}
-              courseId={course?.id}
+              initialData={course!}
+              courseId={course?.id!}
               options={categories?.map((category) => ({
                 label: category.name,
                 value: category.id,
@@ -79,14 +77,14 @@ const CoursePage = async ({ params }: { params: { courseId: string } }) => {
                 <IconBadge icon={ListChecks} />
                 <h2 className="text-xl">Course chapters</h2>
               </div>
-              <ChaptersForm initialData={course} courseId={course?.id} />
+              <ChaptersForm initialData={course!} courseId={course?.id!} />
             </div>
             <div>
               <div className="flex items-center gap-x-2">
                 <IconBadge icon={IndianRupee} />
                 <h2 className="text-xl">Sell your course</h2>
               </div>
-              <PriceForm initialData={course} courseId={course?.id} />
+              <PriceForm initialData={course!} courseId={course?.id!} />
             </div>
           </div>
         </div>

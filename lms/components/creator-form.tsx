@@ -22,6 +22,9 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "./ui/textarea";
 import { Checkbox } from "./ui/checkbox";
 import { Creator } from "@prisma/client";
+import { UploadButton } from "@/lib/uploadthing";
+import { ImageIcon, User } from "lucide-react";
+import Image from "next/image";
 
 const formSchema = z.object({
 	firstName: z.string().min(1, {
@@ -37,7 +40,13 @@ const formSchema = z.object({
 		message: "Description is required",
 	}),
 	terms: z.boolean(),
+	image: z.string().optional()
 });
+const imageSchema = z.object({
+	image: z.string().min(1, {
+		message: 'Image Required!'
+	})
+})
 export const CreatorOnBoardingForm = ({
 	profileData,
 }: {
@@ -52,6 +61,7 @@ export const CreatorOnBoardingForm = ({
 			displayName: profileData ? profileData?.displayName : "",
 			description: profileData ? profileData?.description : "",
 			terms: profileData ? profileData?.terms : false,
+			image: profileData?.image || ""
 		},
 	});
 
@@ -61,8 +71,19 @@ export const CreatorOnBoardingForm = ({
 		try {
 			const response = await axios.post("/api/onboarding", values);
 			router.push(`/?message=${"success!!!!!!"}`);
-			// console.log(response);
 			toast.success("Thank you for applying Check you email for verified!");
+		} catch {
+			toast.error("Something went wrong");
+		}
+	};
+	const onImageSubmit = async (values: z.infer<typeof imageSchema>) => {
+		try {
+			await axios.patch(`/api/onboarding`, {
+				id: profileData?.id,
+				image: values.image
+			});
+			toast.success("Course updated");
+			router.refresh();
 		} catch {
 			toast.error("Something went wrong");
 		}
@@ -74,10 +95,33 @@ export const CreatorOnBoardingForm = ({
 					{profileData?.id ? "Creator Details" : "Sign up as an creator"}
 				</h1>
 				<p className="text-sm text-slate-600">Build and sell coding courses</p>
+				{
+					profileData?.image && <div className="w-[150px] h-[150px] rounded-full  border  my-2">
+						<Image
+							alt="profile-picture"
+							width={150}
+							height={150}
+							className="rounded-full object-cover"
+							src={profileData?.image}
+						/>
+					</div>
+				}
+				<div className="flex w-full gap-2 flex-col items-start justify-start mt-8">
+					<div className="">
+						<h2 className="font-medium">Upload a display picture</h2>
+					</div>
+					<UploadButton className="" endpoint="creatorImage" onClientUploadComplete={(res) => {
+						onImageSubmit({ image: res[0].url })
+					}} onUploadError={(error: Error) => {
+						// Do something with the error.
+						// alert(`ERROR! ${error.message}`);
+						toast.error('Something went wrong try again')
+					}} />
+				</div>
 				<Form {...form}>
 					<form
 						onSubmit={form.handleSubmit(onSubmit)}
-						className="space-y-8 mt-8 "
+						className="space-y-8  "
 					>
 						<FormField
 							control={form.control}

@@ -4,6 +4,8 @@ import { BookOpen } from "lucide-react";
 import { IconBadge } from "@/components/icon-badge";
 import { formatDescription, formatPrice } from "@/lib/format";
 import { CourseProgress } from "@/components/course-progress";
+import { CourseEnrollButton } from "@/app/(course)/courses/[courseId]/chapters/[chapterId]/_components/course-enroll-button";
+import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 interface CourseCardProps {
 	id: string;
 	title: string;
@@ -13,6 +15,8 @@ interface CourseCardProps {
 	progress?: number | null;
 	category: string;
 	shortDescription: string;
+	creatorName:string;
+	creatorImage?:string;
 }
 export const CourseCard = ({
 	id,
@@ -23,10 +27,12 @@ export const CourseCard = ({
 	progress,
 	category,
 	shortDescription,
+	creatorName,
+	creatorImage
 }: CourseCardProps) => {
 	return (
-		<Link href={`/course/${id}`}>
-			<div className="group hover:shadow-sm transition overflow-hidden border rounded-lg p-3 h-full">
+		<Link href={`/course/${id}`} className="">
+			<div className="group hover:shadow-sm transition overflow-hidden border rounded-lg p-3 h-full ">
 				<div className="relative w-full aspect-video rounded-md overflow-hidden">
 					<Image
 						fill
@@ -35,7 +41,7 @@ export const CourseCard = ({
 						src={imageUrl}
 					/>
 				</div>
-				<div className="flex flex-col pt-2">
+				<div className="flex flex-col pt-2 w-full">
 					<div className="text-lg md:text-base font-medium group-hover:text-sky-700 transition line-clamp-2">
 						{title}
 					</div>
@@ -54,17 +60,28 @@ export const CourseCard = ({
 							</span>
 						</div>
 					</div>
-					{progress && progress !== null ? (
+					<div className="mb-1">
+						<p className="text-muted-foreground text-sm">Created By:</p>
+						<div className="flex items-center gap-x-4 my-1">
+							<Avatar>
+								<AvatarImage src={creatorImage} alt="@shadcn" />
+								<AvatarFallback>PIC</AvatarFallback>
+							</Avatar>
+							<h3 className="text-primary font-medium capitalize">{creatorName}</h3>
+						</div>
+					</div>
+					{  progress !== null ? (
 						<CourseProgress
 							variant={progress === 100 ? "success" : "default"}
 							size="sm"
-							value={progress}
+							value={progress ? progress : 0}
 						/>
 					) : (
-						<p className="text-md md:text-sm font-medium text-primary">
-							{formatPrice(price)}
-						</p>
+						<div className="my-2  w-full">
+							<CourseEnrollButton price={price} courseId={id} />
+						</div>
 					)}
+
 				</div>
 			</div>
 		</Link>

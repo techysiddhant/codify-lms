@@ -166,3 +166,16 @@ export async function getCreatorProfileById(id: string) {
 		return null;
 	}
 }
+export async function getCreatorProfileByEmail(email: string) {
+	try {
+		const creator = await db.creator.findUnique({
+			where: {
+				email,
+			},
+		});
+		return creator;
+	} catch (error) {
+		console.log(error);
+		return null;
+	}
+}

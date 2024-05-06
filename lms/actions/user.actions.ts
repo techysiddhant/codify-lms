@@ -126,6 +126,12 @@ export async function fetchCoursesWithUserId({
 						userId,
 					},
 				},
+				creator:{
+					select:{
+						displayName:true,
+						image:true
+					}
+				}
 			},
 			orderBy: {
 				createdAt: "desc",

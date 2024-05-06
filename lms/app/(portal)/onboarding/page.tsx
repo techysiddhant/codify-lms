@@ -1,16 +1,18 @@
-import { getCreatorProfileById } from "@/actions/creator.actions";
+import { getCreatorProfileByEmail, getCreatorProfileById } from "@/actions/creator.actions";
 import { CreatorOnBoardingForm } from "@/components/creator-form";
 import { Creator } from "@prisma/client";
 interface SearchProps {
 	searchParams: {
-		id: string;
+		id?: string;
+		email?:string;
 	};
 }
 const CreatorOnBoardingPage = async ({ searchParams }: SearchProps) => {
-	console.log(searchParams);
 	let profileData: Creator | null = null;
 	if (searchParams && searchParams.id) {
 		profileData = await getCreatorProfileById(searchParams.id!);
+	}else if(searchParams && searchParams.email){
+		profileData = await getCreatorProfileByEmail(searchParams.email!)
 	}
 	return (
 		<div>

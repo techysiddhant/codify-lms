@@ -32,33 +32,46 @@ export async function POST(req: Request) {
 export async function PATCH(req: Request) {
 	try {
 		const session: CustomSession | null = await getServerSession(authOptions);
-		const { id } = await req.json();
+		const { id,image } = await req.json();
 		if (!session) {
 			return new NextResponse("Unauthorized", { status: 401 });
 		}
-		if (session?.user?.role !== "ADMIN") {
+		if (session?.user?.role === "USER" ) {
 			return new NextResponse("Unauthorized", { status: 401 });
 		}
-
-		const creator = await db.creator.update({
-			where: {
-				id,
-			},
-			data: {
-				status: "approve",
-			},
-		});
-		if (creator) {
-			const user = await db.user.update({
+		if(session?.user?.role === "ADMIN"){
+			const creator = await db.creator.update({
 				where: {
-					id: creator.userId,
+					id,
 				},
 				data: {
-					role: "CREATOR",
+					status: "approve",
+				},
+			});
+			if (creator) {
+				const user = await db.user.update({
+					where: {
+						id: creator.userId,
+					},
+					data: {
+						role: "CREATOR",
+					},
+				});
+				return NextResponse.json(creator);
+			}
+		}else if(session?.user?.role === "CREATOR"){
+			const creator = await db.creator.update({
+				where: {
+					id,
+				},
+				data: {
+					image
 				},
 			});
 			return NextResponse.json(creator);
 		}
+		
+		
 
 		return new NextResponse("Something went wrong", { status: 500 });
 	} catch (error) {
