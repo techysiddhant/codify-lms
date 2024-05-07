@@ -77,14 +77,19 @@ export const PriceForm = ({ initialData, courseId }: PriceFormProps) => {
 				</Button>
 			</div>
 			{!isEditing && (
-				<p
-					className={cn(
-						"text-sm mt-2",
-						!initialData.price && "text-slate-500 italic"
-					)}
-				>
-					{initialData.price ? formatPrice(initialData.price) : "No price"}
-				</p>
+				<>
+					<p
+						className={cn(
+							"text-sm mt-2",
+							!initialData.price && "text-slate-500 italic"
+						)}
+					>
+						{initialData.price ? formatPrice(initialData.price) : "No price"}
+					</p>
+					<p className="text-muted-foreground text-sm my-1">
+						Once you publish a course you can't change the course price!
+					</p>
+				</>
 			)}
 			{isEditing && (
 				<Form {...form}>

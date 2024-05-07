@@ -17,16 +17,41 @@ export async function PATCH(
 		if (session?.user?.role !== "CREATOR") {
 			return NextResponse.json("Unauthorized");
 		}
-		const values = await req.json();
+		const { price, title, description, shortDescription, imageUrl, categoryId } =
+			await req.json();
 		const { courseId } = params;
 		const userId = session?.user?.id;
+		const isCoursePublished = await db.course.findUnique({
+			where: { id: courseId },
+		});
+		if (isCoursePublished?.isPublished) {
+			const course = await db.course.update({
+				where: {
+					id: courseId,
+					userId: userId!,
+				},
+				data: {
+					title,
+					description,
+					shortDescription,
+					imageUrl,
+					categoryId,
+				},
+			});
+			return NextResponse.json(course);
+		}
 		const course = await db.course.update({
 			where: {
 				id: courseId,
 				userId: userId!,
 			},
 			data: {
-				...values,
+				price,
+				title,
+				description,
+				shortDescription,
+				imageUrl,
+				categoryId,
 			},
 		});
 
