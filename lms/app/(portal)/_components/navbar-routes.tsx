@@ -8,7 +8,8 @@ import { LoginButton } from "./login-button";
 import { useSession } from "next-auth/react";
 import { UserMenu } from "./user-menu";
 import { ModeToggle } from "@/components/theme-toggle";
-import { CustomUser } from "@/app/api/auth/[...nextauth]/route";
+import { CustomUser } from "@/app/api/auth/[...nextauth]/options";
+import { Searchbar } from "../(home)/_components/search-bar";
 
 export const NavbarRoutes = () => {
 	const { data } = useSession();
@@ -23,7 +24,8 @@ export const NavbarRoutes = () => {
 		<>
 			{isSearchPage && (
 				<div className="hidden md:block">
-					<SearchInput />
+					{/* <SearchInput /> */}
+					<Searchbar />
 				</div>
 			)}
 

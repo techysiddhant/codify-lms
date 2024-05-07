@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 
 import { db } from "@/lib/db";
 import { getServerSession } from "next-auth/next";
-import { CustomSession, authOptions } from "../auth/[...nextauth]/route";
+import { CustomSession, authOptions } from "../auth/[...nextauth]/options";
 
 export async function POST(req: Request) {
 	try {
@@ -32,14 +32,14 @@ export async function POST(req: Request) {
 export async function PATCH(req: Request) {
 	try {
 		const session: CustomSession | null = await getServerSession(authOptions);
-		const { id,image } = await req.json();
+		const { id, image } = await req.json();
 		if (!session) {
 			return new NextResponse("Unauthorized", { status: 401 });
 		}
-		if (session?.user?.role === "USER" ) {
+		if (session?.user?.role === "USER") {
 			return new NextResponse("Unauthorized", { status: 401 });
 		}
-		if(session?.user?.role === "ADMIN"){
+		if (session?.user?.role === "ADMIN") {
 			const creator = await db.creator.update({
 				where: {
 					id,
@@ -59,19 +59,17 @@ export async function PATCH(req: Request) {
 				});
 				return NextResponse.json(creator);
 			}
-		}else if(session?.user?.role === "CREATOR"){
+		} else if (session?.user?.role === "CREATOR") {
 			const creator = await db.creator.update({
 				where: {
 					id,
 				},
 				data: {
-					image
+					image,
 				},
 			});
 			return NextResponse.json(creator);
 		}
-		
-		
 
 		return new NextResponse("Something went wrong", { status: 500 });
 	} catch (error) {

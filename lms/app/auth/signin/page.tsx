@@ -1,4 +1,4 @@
-import { authOptions } from "@/app/api/auth/[...nextauth]/route";
+import { authOptions } from "@/app/api/auth/[...nextauth]/options";
 import { Button } from "@/components/ui/button";
 import { getServerSession } from "next-auth";
 import { signIn } from "next-auth/react";

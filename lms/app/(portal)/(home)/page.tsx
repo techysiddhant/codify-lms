@@ -6,10 +6,14 @@ import {
 	fetchCoursesWithUserId,
 } from "@/actions/user.actions";
 import { getServerSession } from "next-auth/next";
-import { CustomSession, authOptions } from "@/app/api/auth/[...nextauth]/route";
 import { CoursesList } from "@/components/courses-list";
 import { MessageBanner } from "@/components/message-banner";
 import { Category, Course, Creator } from "@prisma/client";
+import {
+	CustomSession,
+	authOptions,
+} from "@/app/api/auth/[...nextauth]/options";
+import { Searchbar } from "./_components/search-bar";
 interface SearchProps {
 	searchParams: {
 		title: string;
@@ -33,9 +37,10 @@ const HomePage = async ({ searchParams }: SearchProps) => {
 	}
 	return (
 		<>
-			{searchParams.message && <MessageBanner message={searchParams?.message!} />}
+			{/* {searchParams.message && <MessageBanner message={searchParams?.message!} />} */}
 			<div className="px-6 pt-6 md:hidden md:mb-0 block">
-				<SearchInput />
+				{/* <SearchInput /> */}
+				<Searchbar />
 			</div>
 			<div className="p-6 space-y-4 bg-primary-foreground ">
 				<Categories items={categories ? categories : []} />

@@ -5,8 +5,11 @@ import { db } from "@/lib/db";
 import { CourseProgress } from "@/components/course-progress";
 
 import { CourseSidebarItem } from "./course-sidebar-item";
-import { CustomSession, authOptions } from "@/app/api/auth/[...nextauth]/route";
 import { getServerSession } from "next-auth/next";
+import {
+	CustomSession,
+	authOptions,
+} from "@/app/api/auth/[...nextauth]/options";
 
 interface CourseSidebarProps {
 	course: Course & {

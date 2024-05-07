@@ -1,6 +1,6 @@
 import { getCourseDetailsByCourseId } from "@/actions/user.actions";
 import { CourseEnrollButton } from "@/app/(course)/courses/[courseId]/chapters/[chapterId]/_components/course-enroll-button";
-import { authOptions } from "@/app/api/auth/[...nextauth]/route";
+import { authOptions } from "@/app/api/auth/[...nextauth]/options";
 import { Preview } from "@/components/preview";
 import { formatDate } from "@/lib/format";
 import { getServerSession } from "next-auth/next";

@@ -3,7 +3,10 @@ import { NextResponse } from "next/server";
 
 import { db } from "@/lib/db";
 import Env from "@/lib/env";
-import { CustomSession, authOptions } from "@/app/api/auth/[...nextauth]/route";
+import {
+	CustomSession,
+	authOptions,
+} from "@/app/api/auth/[...nextauth]/options";
 import { getServerSession } from "next-auth/next";
 const mux = new Mux({
 	tokenId: Env.MUX_TOKEN_ID,

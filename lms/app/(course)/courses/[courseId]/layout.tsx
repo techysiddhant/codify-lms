@@ -5,8 +5,11 @@ import { db } from "@/lib/db";
 import { CourseSidebar } from "./_components/course-sidebar";
 import { CourseNavbar } from "./_components/course-navbar";
 import { getCourseByCourseId, getProgress } from "@/actions/user.actions";
-import { CustomSession, authOptions } from "@/app/api/auth/[...nextauth]/route";
 import { getServerSession } from "next-auth/next";
+import {
+	CustomSession,
+	authOptions,
+} from "@/app/api/auth/[...nextauth]/options";
 
 const CourseLayout = async ({
 	children,

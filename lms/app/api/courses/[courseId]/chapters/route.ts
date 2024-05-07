@@ -1,8 +1,11 @@
 import { NextResponse } from "next/server";
 
 import { db } from "@/lib/db";
-import { CustomSession, authOptions } from "@/app/api/auth/[...nextauth]/route";
 import { getServerSession } from "next-auth/next";
+import {
+	CustomSession,
+	authOptions,
+} from "@/app/api/auth/[...nextauth]/options";
 
 export async function POST(
 	req: Request,

@@ -1,6 +1,6 @@
 // import { getToken } from "next-auth/jwt";
 // import { NextRequest, NextResponse } from "next/server";
-// import { CustomUser } from "./app/api/auth/[...nextauth]/route";
+
 // export async function middleware(request: NextRequest) {
 //   const { pathname } = request.nextUrl;
 //   if (pathname == "/") {
@@ -113,7 +113,6 @@
 // import { getToken } from "next-auth/jwt";
 // import { NextResponse } from "next/server";
 // import type { NextRequest } from "next/server";
-// import { CustomUser } from "./app/api/auth/[...nextauth]/route";
 
 // // This function can be marked `async` if using `await` inside
 // export async function middleware(request: NextRequest) {
@@ -180,7 +179,7 @@
 // 	],
 // };
 import { withAuth } from "next-auth/middleware";
-import { CustomUser } from "./app/api/auth/[...nextauth]/route";
+import { CustomUser } from "./app/api/auth/[...nextauth]/options";
 import { NextResponse } from "next/server";
 
 export default withAuth(
@@ -210,9 +209,7 @@ export default withAuth(
 		) {
 			// return NextResponse.redirect(new URL("/", req.url));
 			return NextResponse.next();
-
 		}
-		
 	},
 
 	{

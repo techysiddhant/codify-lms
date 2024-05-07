@@ -1,5 +1,8 @@
 import { getCourseByCourseId } from "@/actions/user.actions";
-import { CustomSession, authOptions } from "@/app/api/auth/[...nextauth]/route";
+import {
+	CustomSession,
+	authOptions,
+} from "@/app/api/auth/[...nextauth]/options";
 import { Button } from "@/components/ui/button";
 import { getServerSession } from "next-auth/next";
 import Link from "next/link";

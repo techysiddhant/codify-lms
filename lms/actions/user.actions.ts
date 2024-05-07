@@ -36,6 +36,7 @@ type CourseWithProgressWithCategoryDashboard = Course & {
 	category: Category;
 	chapters: Chapter[];
 	progress: number | null;
+	creator: { displayName: string; image: string | null } | null;
 };
 // interface NextChapter extends Chapter {
 // 	videoUrl?: string | null;

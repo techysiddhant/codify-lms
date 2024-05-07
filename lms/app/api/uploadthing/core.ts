@@ -1,7 +1,7 @@
 // import { auth } from "@clerk/nextjs";
 import { getServerSession } from "next-auth/next";
 import { createUploadthing, type FileRouter } from "uploadthing/next";
-import { CustomSession, authOptions } from "../auth/[...nextauth]/route";
+import { CustomSession, authOptions } from "../auth/[...nextauth]/options";
 
 // import { isTeacher } from "@/lib/teacher";
 
