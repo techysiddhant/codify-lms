@@ -7,6 +7,7 @@ import NextAuthProvider from "@/components/providers/NextAuthProvider";
 const inter = Inter({ subsets: ["latin"] });
 import { ToastProvider } from "@/components/providers/toaster-provider";
 import { ThemeProvider } from "@/components/providers/theme-provider";
+import { ConfettiProvider } from "@/components/providers/confetti-provider";
 
 export const metadata: Metadata = {
 	title: "Codify",
@@ -21,6 +22,7 @@ export default function RootLayout({
 	return (
 		<html lang="en">
 			<body className={cn(inter.className, "bg-primary-foreground")}>
+				<ConfettiProvider />
 				<ToastProvider />
 				<NextAuthProvider>
 					<ThemeProvider

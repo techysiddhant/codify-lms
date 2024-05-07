@@ -15,8 +15,8 @@ interface CourseCardProps {
 	progress?: number | null;
 	category: string;
 	shortDescription: string;
-	creatorName:string;
-	creatorImage?:string;
+	creatorName: string;
+	creatorImage?: string;
 }
 export const CourseCard = ({
 	id,
@@ -28,10 +28,13 @@ export const CourseCard = ({
 	category,
 	shortDescription,
 	creatorName,
-	creatorImage
+	creatorImage,
 }: CourseCardProps) => {
 	return (
-		<Link href={`/course/${id}`} className="">
+		<Link
+			href={`/course/${id}`}
+			className=""
+		>
 			<div className="group hover:shadow-sm transition overflow-hidden border rounded-lg p-3 h-full ">
 				<div className="relative w-full aspect-video rounded-md overflow-hidden">
 					<Image
@@ -42,15 +45,15 @@ export const CourseCard = ({
 					/>
 				</div>
 				<div className="flex flex-col pt-2 w-full">
-					<div className="text-lg md:text-base font-medium group-hover:text-sky-700 transition line-clamp-2">
+					<div className="text-lg md:text-xl font-medium group-hover:text-sky-700 transition line-clamp-2">
 						{title}
 					</div>
-					<p className="text-sm text-secondary-foreground my-1">
+					<p className=" text-secondary-foreground my-1">
 						{formatDescription(shortDescription!)}
 					</p>
-					<p className="text-xs text-primary font-medium">{category}</p>
-					<div className="my-3 flex items-center gap-x-2 text-sm md:text-xs">
-						<div className="flex items-center gap-x-1 text-slate-500">
+					<p className="text-sm text-primary font-medium">{category}</p>
+					<div className="my-3 flex items-center gap-x-2 text-sm ">
+						<div className="flex items-center gap-x-1 text-secondary-foreground font-medium">
 							<IconBadge
 								size="sm"
 								icon={BookOpen}
@@ -64,13 +67,16 @@ export const CourseCard = ({
 						<p className="text-muted-foreground text-sm">Created By:</p>
 						<div className="flex items-center gap-x-4 my-1">
 							<Avatar>
-								<AvatarImage src={creatorImage} alt="@shadcn" />
+								<AvatarImage
+									src={creatorImage}
+									alt="@shadcn"
+								/>
 								<AvatarFallback>PIC</AvatarFallback>
 							</Avatar>
 							<h3 className="text-primary font-medium capitalize">{creatorName}</h3>
 						</div>
 					</div>
-					{  progress !== null ? (
+					{progress && progress !== null ? (
 						<CourseProgress
 							variant={progress === 100 ? "success" : "default"}
 							size="sm"
@@ -78,10 +84,12 @@ export const CourseCard = ({
 						/>
 					) : (
 						<div className="my-2  w-full">
-							<CourseEnrollButton price={price} courseId={id} />
+							<CourseEnrollButton
+								price={price}
+								courseId={id}
+							/>
 						</div>
 					)}
-
 				</div>
 			</div>
 		</Link>

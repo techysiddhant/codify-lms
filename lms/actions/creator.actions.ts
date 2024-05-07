@@ -137,11 +137,13 @@ export async function getDraftCourseByCourseId({
 				id: courseId,
 			},
 			include: {
-				// chapters: {
-				//   orderBy: {
-				//     position: "asc",
-				//   },
-				// },
+				creator: {
+					select: {
+						displayName: true,
+						image: true,
+						description: true,
+					},
+				},
 				category: true,
 			},
 		});

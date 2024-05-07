@@ -14,6 +14,7 @@ type CourseWithProgressWithCategory = Course & {
 	category: Category | null;
 	chapters: { id: string }[];
 	progress: number | null;
+	creator: { displayName: string; image: string | null } | null;
 };
 
 type GetCoursesWithUser = {
@@ -126,12 +127,12 @@ export async function fetchCoursesWithUserId({
 						userId,
 					},
 				},
-				creator:{
-					select:{
-						displayName:true,
-						image:true
-					}
-				}
+				creator: {
+					select: {
+						displayName: true,
+						image: true,
+					},
+				},
 			},
 			orderBy: {
 				createdAt: "desc",
@@ -180,6 +181,12 @@ export async function fetchCourses({ title, categoryId }: GetCourses) {
 					},
 					select: {
 						id: true,
+					},
+				},
+				creator: {
+					select: {
+						displayName: true,
+						image: true,
 					},
 				},
 				// purchases: {
@@ -398,6 +405,7 @@ export async function getCourseDetailsByCourseId({
 					where: {
 						isPublished: true,
 					},
+
 					// include: {
 					//   userProgress: {
 					//     where: {
@@ -407,6 +415,13 @@ export async function getCourseDetailsByCourseId({
 					// },
 					orderBy: {
 						position: "asc",
+					},
+				},
+				creator: {
+					select: {
+						displayName: true,
+						image: true,
+						description: true,
 					},
 				},
 				category: true,

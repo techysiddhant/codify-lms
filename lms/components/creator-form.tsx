@@ -40,13 +40,13 @@ const formSchema = z.object({
 		message: "Description is required",
 	}),
 	terms: z.boolean(),
-	image: z.string().optional()
+	image: z.string().optional(),
 });
 const imageSchema = z.object({
 	image: z.string().min(1, {
-		message: 'Image Required!'
-	})
-})
+		message: "Image Required!",
+	}),
+});
 export const CreatorOnBoardingForm = ({
 	profileData,
 }: {
@@ -61,7 +61,7 @@ export const CreatorOnBoardingForm = ({
 			displayName: profileData ? profileData?.displayName : "",
 			description: profileData ? profileData?.description : "",
 			terms: profileData ? profileData?.terms : false,
-			image: profileData?.image || ""
+			image: profileData?.image || "",
 		},
 	});
 
@@ -69,9 +69,19 @@ export const CreatorOnBoardingForm = ({
 
 	const onSubmit = async (values: z.infer<typeof formSchema>) => {
 		try {
-			const response = await axios.post("/api/onboarding", values);
-			router.push(`/?message=${"success!!!!!!"}`);
-			toast.success("Thank you for applying Check you email for verified!");
+			if (!profileData) {
+				const response = await axios.post("/api/onboarding", values);
+				router.push(`/?message=${"success!!!!!!"}`);
+				toast.success("Thank you for applying Check you email for verified!");
+			} else {
+				const response = await axios.patch(
+					`/api/onboarding/${profileData.id}`,
+					values
+				);
+				// router.push(`/?message=${"success!!!!!!"}`);
+				toast.success("profile update Successfully!");
+				router.refresh();
+			}
 		} catch {
 			toast.error("Something went wrong");
 		}
@@ -80,7 +90,7 @@ export const CreatorOnBoardingForm = ({
 		try {
 			await axios.patch(`/api/onboarding`, {
 				id: profileData?.id,
-				image: values.image
+				image: values.image,
 			});
 			toast.success("Course updated");
 			router.refresh();
@@ -95,8 +105,8 @@ export const CreatorOnBoardingForm = ({
 					{profileData?.id ? "Creator Details" : "Sign up as an creator"}
 				</h1>
 				<p className="text-sm text-slate-600">Build and sell coding courses</p>
-				{
-					profileData?.image && <div className="w-[150px] h-[150px] rounded-full  border  my-2">
+				{profileData?.image && (
+					<div className="w-[150px] h-[150px] rounded-full  border  my-2">
 						<Image
 							alt="profile-picture"
 							width={150}
@@ -105,18 +115,23 @@ export const CreatorOnBoardingForm = ({
 							src={profileData?.image}
 						/>
 					</div>
-				}
+				)}
 				<div className="flex w-full gap-2 flex-col items-start justify-start mt-8">
 					<div className="">
 						<h2 className="font-medium">Upload a display picture</h2>
 					</div>
-					<UploadButton className="" endpoint="creatorImage" onClientUploadComplete={(res) => {
-						onImageSubmit({ image: res[0].url })
-					}} onUploadError={(error: Error) => {
-						// Do something with the error.
-						// alert(`ERROR! ${error.message}`);
-						toast.error('Something went wrong try again')
-					}} />
+					<UploadButton
+						className=""
+						endpoint="creatorImage"
+						onClientUploadComplete={(res) => {
+							onImageSubmit({ image: res[0].url });
+						}}
+						onUploadError={(error: Error) => {
+							// Do something with the error.
+							// alert(`ERROR! ${error.message}`);
+							toast.error("Something went wrong try again");
+						}}
+					/>
 				</div>
 				<Form {...form}>
 					<form
@@ -225,9 +240,9 @@ export const CreatorOnBoardingForm = ({
 							</Link>
 							<Button
 								type="submit"
-								disabled={!isValid || isSubmitting || profileData?.terms}
+								disabled={!isValid || isSubmitting}
 							>
-								Continue
+								{!profileData ? "Continue" : "Update"}
 							</Button>
 						</div>
 					</form>

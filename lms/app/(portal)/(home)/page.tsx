@@ -9,6 +9,7 @@ import { getServerSession } from "next-auth/next";
 import { CustomSession, authOptions } from "@/app/api/auth/[...nextauth]/route";
 import { CoursesList } from "@/components/courses-list";
 import { MessageBanner } from "@/components/message-banner";
+import { Category, Course, Creator } from "@prisma/client";
 interface SearchProps {
 	searchParams: {
 		title: string;
@@ -16,6 +17,7 @@ interface SearchProps {
 		message: string;
 	};
 }
+
 const HomePage = async ({ searchParams }: SearchProps) => {
 	const session: CustomSession | null = await getServerSession(authOptions);
 	const user = session?.user;
