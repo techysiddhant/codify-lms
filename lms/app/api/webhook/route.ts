@@ -4,6 +4,7 @@ import { NextResponse } from "next/server";
 
 import { stripe } from "@/lib/stripe";
 import { db } from "@/lib/db";
+import { sendTransactionEmail } from "@/lib/send-transaction";
 
 export async function POST(req: Request) {
 	const body = await req.text();
@@ -34,6 +35,19 @@ export async function POST(req: Request) {
 				amount: amount,
 			},
 		});
+		const user = await db.user.findUnique({
+			where: { id: userId },
+		});
+		const course = await db.course.findUnique({
+			where: { id: courseId },
+		});
+		if (user && course) {
+			await sendTransactionEmail({
+				name: user.name,
+				email: user.email,
+				courseName: course.title,
+			});
+		}
 	} else {
 		return new NextResponse(`Webhook Error: Unhandled event type ${event.type}`, {
 			status: 200,

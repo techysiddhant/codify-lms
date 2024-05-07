@@ -14,15 +14,19 @@ import {
 } from "@react-email/components";
 import * as React from "react";
 
-interface WelcomeEmailProps {
+interface CoursePurchaseEmailProps {
 	userFirstname: string;
+	courseTitle: string;
 }
 
 const baseUrl = process.env.VERCEL_URL
 	? `https://${process.env.VERCEL_URL}`
 	: "";
 
-export const WelcomeEmail = ({ userFirstname }: WelcomeEmailProps) => (
+export const CoursePurchaseEmail = ({
+	userFirstname,
+	courseTitle,
+}: CoursePurchaseEmailProps) => (
 	<Html>
 		<Head />
 
@@ -41,13 +45,17 @@ export const WelcomeEmail = ({ userFirstname }: WelcomeEmailProps) => (
 				{/* <Heading className="text-center my-0 leading-8">CODIFY</Heading> */}
 				<Text style={paragraph}>Hi {userFirstname},</Text>
 				<Text style={paragraph}>
-					Welcome to Codify, the sales intelligence platform that helps you uncover
-					qualified leads and close deals faster.
+					You have just signed up for the {courseTitle} course - a smart move!
 				</Text>
+				<Text style={paragraph}>
+					Congratulations on taking a big step towards learning something new. Here's
+					you can go to dashboard by just click to the below button to access course:
+				</Text>
+				<Text style={paragraph}>Happy coding!</Text>
 				<Section style={btnContainer}>
 					<Button
 						style={button}
-						href="https://getkoala.com"
+						href={`${baseUrl}/dashboard`}
 					>
 						Let's Goo!
 					</Button>
@@ -64,11 +72,11 @@ export const WelcomeEmail = ({ userFirstname }: WelcomeEmailProps) => (
 	</Html>
 );
 
-WelcomeEmail.PreviewProps = {
+CoursePurchaseEmail.PreviewProps = {
 	userFirstname: "UserName",
-} as WelcomeEmailProps;
+} as CoursePurchaseEmailProps;
 
-export default WelcomeEmail;
+export default CoursePurchaseEmail;
 
 const main = {
 	backgroundColor: "#ffffff",
