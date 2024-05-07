@@ -87,7 +87,7 @@ export const PriceForm = ({ initialData, courseId }: PriceFormProps) => {
 						{initialData.price ? formatPrice(initialData.price) : "No price"}
 					</p>
 					<p className="text-muted-foreground text-sm my-1">
-						Once you publish a course you can't change the course price!
+						Once you publish a course you can&apos;t change the course price!
 					</p>
 				</>
 			)}
