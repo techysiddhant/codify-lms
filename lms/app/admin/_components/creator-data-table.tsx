@@ -12,8 +12,6 @@ import {
 	getSortedRowModel,
 	useReactTable,
 } from "@tanstack/react-table";
-import Link from "next/link";
-import { PlusCircle } from "lucide-react";
 
 import {
 	Table,
@@ -56,7 +54,7 @@ export function CreatorDataTable<TData, TValue>({
 	});
 
 	return (
-		<div>
+		<div className="bg-white">
 			<div className="flex items-center py-4 justify-between">
 				<Input
 					placeholder="Filter creators"
@@ -67,7 +65,7 @@ export function CreatorDataTable<TData, TValue>({
 					className="max-w-sm"
 				/>
 			</div>
-			<div className="rounded-md border">
+			<div className="rounded-md border ">
 				<Table>
 					<TableHeader>
 						{table.getHeaderGroups().map((headerGroup) => (

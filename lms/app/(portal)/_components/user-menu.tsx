@@ -41,12 +41,9 @@ export const UserMenu = ({ data }: any) => {
 		await signOut();
 	};
 	const router = useRouter();
-	const handleProfile = ()=>{
-		router.push(`/onboarding?email=${data?.email}`)
-	}
-	console.log(data);
-	//   const session = await getServerSession();
-	//   console.log(session);
+	const handleProfile = () => {
+		router.push(`/onboarding?email=${data?.email}`);
+	};
 	return (
 		<DropdownMenu>
 			<DropdownMenuTrigger asChild>
