@@ -8,17 +8,26 @@ export async function POST(req: Request) {
 	try {
 		const session: CustomSession | null = await getServerSession(authOptions);
 		const { title } = await req.json();
+		const user = session?.user;
 		if (!session) {
+			return new NextResponse("Unauthorized", { status: 401 });
+		}
+		if (!user) {
 			return new NextResponse("Unauthorized", { status: 401 });
 		}
 		if (session?.user?.role !== "CREATOR") {
 			return new NextResponse("Unauthorized", { status: 401 });
 		}
-
+		const creator = await db.creator.findUnique({
+			where: {
+				email: user?.email!,
+			},
+		});
 		const course = await db.course.create({
 			data: {
 				userId: session?.user?.id!,
 				title,
+				creatorId: creator?.id,
 			},
 		});
 
