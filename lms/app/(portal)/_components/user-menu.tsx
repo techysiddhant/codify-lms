@@ -42,7 +42,9 @@ export const UserMenu = ({ data }: any) => {
 	};
 	const router = useRouter();
 	const handleProfile = () => {
-		router.push(`/onboarding?email=${data?.email}`);
+		if (data.role === "CREATOR") {
+			router.push(`/onboarding?email=${data?.email}`);
+		}
 	};
 	return (
 		<DropdownMenu>
