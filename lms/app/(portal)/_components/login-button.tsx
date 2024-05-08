@@ -29,7 +29,7 @@ export const LoginButton = () => {
 					<DialogTitle className="text-center">
 						<div className="space-y-4">
 							<h3 className="font-medium text-xl text-secondary-foreground">
-								Let's get Started!
+								Let&apos;s get Started!
 							</h3>
 							<h2 className="text-3xl font-semibold text-primary">Sign In Here!</h2>
 						</div>
