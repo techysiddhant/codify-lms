@@ -12,6 +12,7 @@ import { useRouter } from "next/navigation";
 import {
 	Form,
 	FormControl,
+	FormDescription,
 	FormField,
 	FormItem,
 	FormMessage,
@@ -27,7 +28,7 @@ interface TitleFormProps {
 }
 
 const formSchema = z.object({
-	title: z.string().min(1, {
+	title: z.string().min(40, {
 		message: "Title is required",
 	}),
 });
@@ -94,6 +95,9 @@ export const TitleForm = ({ initialData, courseId }: TitleFormProps) => {
 											{...field}
 										/>
 									</FormControl>
+									<FormDescription>
+										Title at least contains 40 characters!
+									</FormDescription>
 									<FormMessage />
 								</FormItem>
 							)}

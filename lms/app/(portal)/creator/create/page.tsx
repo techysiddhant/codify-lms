@@ -21,7 +21,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 
 const formSchema = z.object({
-	title: z.string().min(1, {
+	title: z.string().min(40, {
 		message: "Title is required",
 	}),
 });
@@ -73,6 +73,9 @@ const CreateCoursePage = () => {
 										/>
 									</FormControl>
 									<FormDescription>What will you teach in this course?</FormDescription>
+									<FormDescription>
+										Title at least contains 40 characters!
+									</FormDescription>
 									<FormMessage />
 								</FormItem>
 							)}
@@ -88,7 +91,7 @@ const CreateCoursePage = () => {
 							</Link>
 							<Button
 								type="submit"
-								disabled={!isValid || isSubmitting}
+								disabled={isSubmitting}
 							>
 								Continue
 							</Button>

@@ -109,7 +109,7 @@ export async function fetchCoursesWithUserId({
 			where: {
 				isPublished: true,
 				title: {
-					contains: title,
+					search: title?.split(" ").join(" & "),
 				},
 				categoryId,
 			},
@@ -170,7 +170,8 @@ export async function fetchCourses({ title, categoryId }: GetCourses) {
 			where: {
 				isPublished: true,
 				title: {
-					contains: title,
+					// contains: title,
+					search: title?.split(" ").join(" & "),
 				},
 				categoryId,
 			},
@@ -359,6 +360,12 @@ export async function getDashboardCourses(userId: string) {
 						chapters: {
 							where: {
 								isPublished: true,
+							},
+						},
+						creator: {
+							select: {
+								displayName: true,
+								image: true,
 							},
 						},
 					},
