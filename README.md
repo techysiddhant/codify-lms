@@ -1,6 +1,6 @@
 # Codify a Coding Platform for coders by coders
 
-This is a Next.js project built with TypeScript and Prisma ORM for PostgreSQL database.
+This is a Next.js project built with TypeScript and Prisma ORM for the PostgreSQL database.
 
 ## Overview
 
@@ -21,5 +21,5 @@ This project serves as a starting point for building web applications using Next
 - **Uploadthing**: Library used for handling file uploads.
 
 ## Screenshots
-
-
+![landing-page1](https://github.com/techysiddhant/codify-lms/assets/68164152/8003720f-c8e5-45e9-947c-ea34c4de2f78)
+![dashboard-1](https://github.com/techysiddhant/codify-lms/assets/68164152/21f99dd7-f407-4fe9-9d41-8132baf46d05)
