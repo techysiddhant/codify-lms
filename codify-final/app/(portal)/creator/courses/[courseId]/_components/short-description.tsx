@@ -27,7 +27,7 @@ interface DescriptionFormProps {
 };
 
 const formSchema = z.object({
-    shortDescription: z.string().min(1, {
+  shortDescription: z.string().min(1, {
     message: "Description is required",
   }),
 });
@@ -45,7 +45,7 @@ export const ShortDescriptionForm = ({
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-        shortDescription: initialData?.shortDescription || ""
+      shortDescription: initialData?.shortDescription || ""
     },
   });
 
@@ -63,7 +63,7 @@ export const ShortDescriptionForm = ({
   }
 
   return (
-    <div className="mt-6 border bg-slate-100 rounded-md p-4">
+    <div className="mt-6 border bg-slate-100 dark:bg-inherit rounded-md p-4">
       <div className="font-medium flex items-center justify-between">
         Course description
         <Button onClick={toggleEdit} variant="ghost">
